@@ -5,6 +5,14 @@
         "ja": "Japanese",
         "label": "Language"
     },
+    "values": {
+        "title_1": "Make",
+        "title_2": "beautiful",
+        "title_3": "things happen",
+        "subtitle": "Beautiful, fast, secure and powerful",
+        "mission": "Turbo AI is dedicated to empowering enterprises with cutting-edge AI technologies, creating efficient and innovative intelligent solutions to accelerate business transformation, unleash unlimited potential, and lead the industry's intelligent revolution.",
+        "vision": "To become a global leader in AI, driving every industry to achieve intelligent transformation at Turbo speed, creating a world defined by innovation, efficiency, and wisdom."
+    },
     "Navbar": {
         "overview": "Overview",
         "solutions": "Solutions",
@@ -13,7 +21,7 @@
         "about": "About",
         "signin": "Sign In",
         "signup": "Sign Up",
-        "promo": "Join Turbo · ai and get the best AI solutions."
+        "promo": "Join Turbo ai and get the best AI solutions."
     },
     "Footer": {
         "value_description": "Turbo ai is dedicated to delivering efficient and innovative AI solutions for enterprises, empowering clients to achieve intelligent transformation and business advancement, and driving the development of industry intelligence.",
@@ -47,8 +55,6 @@
         "cookie_policy": "Cookie Policy",
         "cookie_consent": "Cookie Consent",
         "cookie_preferences": "Cookie Preferences",
-        "mission": "Mission",
-        "vision": "Vision",
         "values": "Values",
         "contact": "Contact"
     },

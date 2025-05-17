@@ -1,4 +1,12 @@
 {
+    "values": {
+        "title_1": "クールで",
+        "title_2": "美しいことが",
+        "title_3": "起こる",
+        "subtitle": "クールで、速く、安全で、強力",
+        "mission": "Turbo AI は、最先端のAI技術を活用して企業を支援し、効率的で革新的な知的ソリューションを提供し、ビジネスの変革を加速し、無限の可能性を解放し、業界の知的革命をリードします。",
+        "vision": "AI の世界をリードすることを目指し、すべての業界をTurboスピードで知的変革へと導き、革新、効率、知性で定義される世界を創造します。"
+    },
     "LocaleSwitcher": {
         "ja": "日本語",
         "en": "英語",
@@ -13,7 +21,7 @@
         "about": "私たちについて",
         "signin": "ログイン",
         "signup": "登録",
-        "promo": "Turbo・aiに参加して、最高のAIソリューションを手に入れましょう。"
+        "promo": "Turbo ai に参加して、最高のAIソリューションを手に入れましょう。"
     },
     "Footer": {
         "value_description": "Turbo ai は、企業向けに効率的で革新的なAIソリューションを提供し、お客様のインテリジェントな変革とビジネスの成長を支援し、業界のスマート化を推進します。",
@@ -47,8 +55,6 @@
         "cookie_policy": "Cookieポリシー",
         "cookie_consent": "Cookie同意",
         "cookie_preferences": "Cookie設定",
-        "mission": "ミッション",
-        "vision": "ビジョン",
         "values": "価値観",
         "contact": "お問い合わせ"
     },

@@ -26,7 +26,7 @@ export const title = tv({
     },
   },
   defaultVariants: {
-    size: "md",
+    size: "xs",
     fontBold: false,
   },
   compoundVariants: [
