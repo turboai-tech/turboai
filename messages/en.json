@@ -10,8 +10,14 @@
         "title_2": "beautiful",
         "title_3": "things happen",
         "subtitle": "Beautiful, fast, secure and powerful",
-        "mission": "Turbo AI is dedicated to empowering enterprises with cutting-edge AI technologies, creating efficient and innovative intelligent solutions to accelerate business transformation, unleash unlimited potential, and lead the industry's intelligent revolution.",
-        "vision": "To become a global leader in AI, driving every industry to achieve intelligent transformation at Turbo speed, creating a world defined by innovation, efficiency, and wisdom."
+        "mission": {
+            "title": "Mission",
+            "content": "Turbo AI is dedicated to empowering enterprises with cutting-edge AI technologies, creating efficient and innovative intelligent solutions to accelerate business transformation, unleash unlimited potential, and lead the industry's intelligent revolution."
+        },
+        "vision": {
+            "title": "Vision",
+            "content": "To become a global leader in AI, driving every industry to achieve intelligent transformation at Turbo speed, creating a world defined by innovation, efficiency, and wisdom."
+        }
     },
     "Navbar": {
         "overview": "Overview",
