@@ -24,17 +24,19 @@ export default function Footer() {
                     className="text-primary text-2xl"
                   />
                   <Logo
-                    width={64}
-                    height={30}
+                    width={96}
+                    height={32}
                     className="ml-1 hidden md:block"
                   />
                 </div>
                 {/* <span className="font-bold text-sm text-inherit">AI · 101</span> */}
               </Link>
             </NextLink>
-            <span className="text-foreground-500 text-sm">
-              © {currentYear} IP AI 101. All Rights Reserved.
-            </span>
+            <div className="flex flex-col items-center">
+              <span className="text-foreground-500 text-sm">
+                © {currentYear} Turbo · ai | All Rights Reserved.
+              </span>
+            </div>
           </div>
 
           {/* Right Side: Links */}
