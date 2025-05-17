@@ -1,0 +1,18 @@
+{
+    "LocaleSwitcher": {
+        "en": "English",
+        "zh-CN": "Chinese",
+        "ja": "Japanese",
+        "label": "Language"
+    },
+    "Navbar": {
+        "overview": "Overview",
+        "solutions": "Solutions",
+        "products": "Products",
+        "pricing": "Pricing",
+        "about": "About",
+        "signin": "Sign In",
+        "signup": "Sign Up"
+    },
+    "greeting": "Hello, world"
+}

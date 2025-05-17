@@ -1,0 +1,18 @@
+{
+    "LocaleSwitcher": {
+        "ja": "日本語",
+        "en": "英語",
+        "zh-CN": "簡体字中国語",
+        "label": "言語"
+    },
+    "Navbar": {
+        "overview": "概要",
+        "solutions": "ソリューション",
+        "products": "製品",
+        "pricing": "価格",
+        "about": "私たちについて",
+        "signin": "ログイン",
+        "signup": "登録"
+    },
+    "greeting": "こんにちは、世界"
+}

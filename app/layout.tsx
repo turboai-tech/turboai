@@ -5,11 +5,12 @@ import { Providers } from '@/app/providers';
 import './globals.css';
 
 import Footer from '@/components/layout/footer';
-// import NavbarComponent from '@/components/layout/navbar';
-import NavbarComponent from '@/components/layout/navbar_centered';
+import NavbarComponent from '@/components/layout/navbar';
 import { fontPacifico, fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
 import { ClerkProvider } from '@clerk/nextjs';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: {
@@ -29,16 +30,18 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const locale = await getLocale();
+
   return (
     <ClerkProvider>
       <html
         suppressHydrationWarning
-        lang="en">
+        lang={locale}>
         <head>
           <link
             rel="preconnect"
@@ -60,31 +63,27 @@ export default function RootLayout({
             fontSans.variable,
             fontPacifico.variable
           )}>
-          <Providers
-            themeProps={{
-              attribute: 'class',
-              defaultTheme: 'dark',
-              enableSystem: true,
-              disableTransitionOnChange: true,
-            }}>
-            <div className="max-w-full relative flex flex-col h-screen gap-y-2">
-              {/* <div className="w-4/5 mx-auto">
-                {siteConfig.pinned && <Pinned />}
-              </div> */}
-              {/* <div className="w-full mx-auto">
-                <Divider />
-              </div> */}
-              <div className="w-4/5 mx-auto">
-                <NavbarComponent />
+          <NextIntlClientProvider locale={locale}>
+            <Providers
+              themeProps={{
+                attribute: 'class',
+                defaultTheme: 'dark',
+                enableSystem: true,
+                disableTransitionOnChange: true,
+              }}>
+              <div className="max-w-full relative flex flex-col h-screen gap-y-2">
+                <div className="w-4/5 mx-auto">
+                  <NavbarComponent />
+                </div>
+                <main className="container w-4/5 mx-auto flex-grow mt-[60px]">
+                  {children}
+                </main>
+                <div className="w-4/5 mx-auto">
+                  <Footer />
+                </div>
               </div>
-              <main className="container w-4/5 mx-auto flex-grow mt-[60px]">
-                {children}
-              </main>
-              <div className="w-4/5 mx-auto">
-                <Footer />
-              </div>
-            </div>
-          </Providers>
+            </Providers>
+          </NextIntlClientProvider>
         </body>
       </html>
     </ClerkProvider>
