@@ -122,17 +122,19 @@ export default function NavbarComponent(props: NavbarProps) {
         className="fixed top-[5vh] min-h-[40px] left-0 right-0 z-40 bg-background/70 backdrop-blur-lg  h-[5vh] flex items-center w-4/5 mx-auto"
         disableScrollHandler>
         <NavbarBrand className="max-w-[20%]">
-          <div className="flex justify-between gap-1">
-            <Icon
-              icon="lucide:layers"
-              className="text-primary text-2xl"
-            />
-            <Logo
-              width={96}
-              height={32}
-              className="ml-1 hidden md:block"
-            />
-          </div>
+          <Link href="/">
+            <div className="flex justify-between gap-1">
+              <Icon
+                icon="lucide:layers"
+                className="text-primary text-2xl"
+              />
+              <Logo
+                width={96}
+                height={32}
+                className="ml-1 hidden md:block"
+              />
+            </div>
+          </Link>
         </NavbarBrand>
         <NavbarContent
           className="ml-4 hidden h-12 w-full max-w-fit gap-4 !rounded-full bg-content2 px-4 dark:bg-content1 sm:flex"

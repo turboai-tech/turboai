@@ -30,7 +30,7 @@ export const Logo: React.FC<IconSvgProps> = ({
         fontSize={dynamicFontSize}
         fontWeight="bold"
         fontFamily="'Pacifico', cursive">
-        Turbo · ai
+        Turbo ai
       </text>
     </svg>
   );

@@ -1,68 +1,189 @@
 'use client';
 
-import { Logo } from '@/components/icons';
-import { Link } from '@heroui/react';
-import { Icon } from '@iconify/react';
-import NextLink from 'next/link';
+import type { IconProps } from '@iconify/react';
 
-export default function Footer() {
+import { Divider, Link } from '@heroui/react';
+import { Icon } from '@iconify/react';
+import { useTranslations } from 'next-intl';
+import React from 'react';
+import { Logo } from '../icons';
+
+type SocialIconProps = Omit<IconProps, 'icon'>;
+
+export default function FooterComponent() {
+  const t = useTranslations('Footer');
   const currentYear = new Date().getFullYear();
 
-  return (
-    <footer className="w-4/5 mx-auto py-8">
-      <div className="max-w-xl mx-auto px-6">
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          {/* Left Side: Logo and Copyright */}
-          <div className="flex flex-col items-center sm:items-start">
-            <NextLink
-              href="/"
-              passHref>
-              <Link className="flex items-center gap-1 mb-2">
-                <div className="flex justify-between gap-1">
-                  <Icon
-                    icon="lucide:layers"
-                    className="text-primary text-2xl"
-                  />
-                  <Logo
-                    width={96}
-                    height={32}
-                    className="ml-1 hidden md:block"
-                  />
-                </div>
-                {/* <span className="font-bold text-sm text-inherit">AI · 101</span> */}
+  const footerNavigation = {
+    services: [
+      { name: t('branding'), href: '#' },
+      { name: t('data_analysis'), href: '#' },
+      { name: t('ecommerce_solutions'), href: '#' },
+      { name: t('market_research'), href: '#' },
+    ],
+    supportOptions: [
+      { name: t('pricing_plans'), href: '#' },
+      { name: t('user_guides'), href: '#' },
+      { name: t('tutorials'), href: '#' },
+      { name: t('service_status'), href: '#' },
+    ],
+    aboutUs: [
+      { name: t('our_story'), href: '#' },
+      { name: t('latest_news'), href: '#' },
+      { name: t('career_opportunities'), href: '#' },
+      { name: t('media_enquiries'), href: '#' },
+      { name: t('collaborations'), href: '#' },
+    ],
+    legal: [
+      { name: t('claim'), href: '#' },
+      { name: t('privacy'), href: '#' },
+      { name: t('terms'), href: '#' },
+      { name: t('user_agreement'), href: '#' },
+    ],
+    social: [
+      {
+        name: 'Facebook',
+        href: '#',
+        icon: (props: SocialIconProps) => (
+          <Icon
+            {...props}
+            icon="fontisto:facebook"
+          />
+        ),
+      },
+      {
+        name: 'Instagram',
+        href: '#',
+        icon: (props: SocialIconProps) => (
+          <Icon
+            {...props}
+            icon="fontisto:instagram"
+          />
+        ),
+      },
+      {
+        name: 'Twitter',
+        href: '#',
+        icon: (props: SocialIconProps) => (
+          <Icon
+            {...props}
+            icon="fontisto:twitter"
+          />
+        ),
+      },
+      {
+        name: 'GitHub',
+        href: '#',
+        icon: (props: SocialIconProps) => (
+          <Icon
+            {...props}
+            icon="fontisto:github"
+          />
+        ),
+      },
+    ],
+  };
+
+  const renderList = React.useCallback(
+    ({
+      title,
+      items,
+    }: {
+      title: string;
+      items: { name: string; href: string }[];
+    }) => (
+      <div>
+        <h3 className="text-small font-semibold text-default-600">{title}</h3>
+        <ul className="mt-6 space-y-4">
+          {items.map((item) => (
+            <li key={item.name}>
+              <Link
+                className="text-default-400"
+                href={item.href}
+                size="sm">
+                {item.name}
               </Link>
-            </NextLink>
-            <div className="flex flex-col items-center">
-              <span className="text-foreground-500 text-sm">
-                © {currentYear} Turbo · ai | All Rights Reserved.
-              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ),
+    []
+  );
+
+  return (
+    <footer className="flex w-4/5 mx-auto flex-col bg-background">
+      <div className="max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+          <div className="space-y-8 md:pr-8">
+            <Link href="/">
+              <div className="flex justify-between gap-1">
+                <Icon
+                  icon="lucide:layers"
+                  className="text-primary text-2xl"
+                />
+                <Logo
+                  width={96}
+                  height={32}
+                  className="ml-1 hidden md:block"
+                />
+              </div>
+            </Link>
+            <p className="text-small text-default-500">
+              {t('value_description')}
+            </p>
+            <div className="flex space-x-6">
+              {footerNavigation.social.map((item) => (
+                <Link
+                  key={item.name}
+                  isExternal
+                  className="text-default-400"
+                  href={item.href}>
+                  <span className="sr-only">{item.name}</span>
+                  <item.icon
+                    aria-hidden="true"
+                    className="w-6"
+                  />
+                </Link>
+              ))}
             </div>
           </div>
-
-          {/* Right Side: Links */}
-          <div className="flex gap-4">
-            <Link
-              href="#"
-              color="foreground"
-              size="sm"
-              className="text-foreground-600 hover:text-foreground-900">
-              Terms
-            </Link>
-            <Link
-              href="#"
-              color="foreground"
-              size="sm"
-              className="text-foreground-600 hover:text-foreground-900">
-              Privacy
-            </Link>
-            <Link
-              href="#"
-              color="foreground"
-              size="sm"
-              className="text-foreground-600 hover:text-foreground-900">
-              Contact
-            </Link>
+          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                {renderList({
+                  title: t('services'),
+                  items: footerNavigation.services,
+                })}
+              </div>
+              <div className="mt-10 md:mt-0">
+                {renderList({
+                  title: t('support'),
+                  items: footerNavigation.supportOptions,
+                })}
+              </div>
+            </div>
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                {renderList({
+                  title: t('about'),
+                  items: footerNavigation.aboutUs,
+                })}
+              </div>
+              <div className="mt-10 md:mt-0">
+                {renderList({
+                  title: t('legal'),
+                  items: footerNavigation.legal,
+                })}
+              </div>
+            </div>
           </div>
+        </div>
+        <Divider className="mt-16 sm:mt-20 lg:mt-24" />
+        <div className="flex flex-wrap justify-between gap-2 pt-8">
+          <p className="text-small text-default-400">
+            Turbo ai &copy; {currentYear}, {t('all_rights_reserved')}.
+          </p>
         </div>
       </div>
     </footer>

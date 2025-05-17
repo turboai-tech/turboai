@@ -4,7 +4,7 @@ import { Metadata, Viewport } from 'next';
 import { Providers } from '@/app/providers';
 import './globals.css';
 
-import Footer from '@/components/layout/footer';
+import FooterComponent from '@/components/layout/footer';
 import NavbarComponent from '@/components/layout/navbar';
 import { fontPacifico, fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
@@ -75,7 +75,7 @@ export default async function RootLayout({
               <main className="container w-4/5 mx-auto flex-grow mt-20">
                 {children}
               </main>
-              <Footer />
+              <FooterComponent />
             </Providers>
           </NextIntlClientProvider>
         </body>
