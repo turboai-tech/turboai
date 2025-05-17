@@ -11,7 +11,8 @@ import {
   NavbarItem,
 } from '@heroui/react';
 import { Icon } from '@iconify/react/dist/iconify.js';
-import React, { useTransition } from 'react';
+import { useLocale } from 'next-intl';
+import React, { useEffect, useTransition } from 'react';
 
 type Props = {
   defaultValue: string;
@@ -25,9 +26,14 @@ export default function LocaleSwitcherSelect({
   label,
 }: Props) {
   const [, startTransition] = useTransition();
+  const locale = useLocale();
   const [selected, setSelected] = React.useState(
     items.find((item) => item.value === defaultValue) || items[0]
   );
+
+  useEffect(() => {
+    setSelected(items.find((item) => item.value === locale) || items[0]);
+  }, [locale, items]);
 
   // 语言图标映射
   const iconMap: Record<string, string> = {

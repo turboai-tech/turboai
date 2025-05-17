@@ -12,7 +12,15 @@
         "pricing": "Pricing",
         "about": "About",
         "signin": "Sign In",
-        "signup": "Sign Up"
+        "signup": "Sign Up",
+        "promo": "Join Turbo · ai and get the best AI solutions."
+    },
+    "NotFound": {
+        "title": "404 - Page Not Found",
+        "description": "The page you are looking for does not exist.",
+        "back": "Back to Home",
+        "feedback_placeholder": "Ideas or suggestions to improve our product",
+        "submit": "Submit"
     },
     "greeting": "Hello, world"
 }

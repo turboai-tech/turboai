@@ -86,7 +86,7 @@ export default function NavbarComponent(props: NavbarProps) {
                   WebkitBackgroundClip: 'text',
                   color: 'transparent',
                 }}>
-                Join Turbo · ai and get 100% off your first month.
+                {t('promo')}
               </span>
             </Link>
             <a
@@ -140,7 +140,7 @@ export default function NavbarComponent(props: NavbarProps) {
           <NavbarItem>
             <Link
               className="flex gap-2 text-inherit"
-              href="#">
+              href="/overview">
               {t('overview')}
             </Link>
           </NavbarItem>
@@ -148,28 +148,28 @@ export default function NavbarComponent(props: NavbarProps) {
             <Link
               aria-current="page"
               className="flex gap-2 text-inherit"
-              href="#">
+              href="/solutions">
               {t('solutions')}
             </Link>
           </NavbarItem>
           <NavbarItem>
             <Link
               className="flex gap-2 text-inherit"
-              href="#">
+              href="/products">
               {t('products')}
             </Link>
           </NavbarItem>
           <NavbarItem>
             <Link
               className="flex gap-2 text-inherit"
-              href="#">
+              href="/pricing">
               {t('pricing')}
             </Link>
           </NavbarItem>
           <NavbarItem>
             <Link
               className="flex gap-2 text-inherit"
-              href="#">
+              href="/about">
               {t('about')}
             </Link>
           </NavbarItem>

@@ -6,6 +6,11 @@ const config = {
   content: [
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './messages/**/*.{js,ts,jsx,tsx,mdx}',
+    './services/**/*.{js,ts,jsx,tsx,mdx}',
+    './i18n/**/*.{js,ts,jsx,tsx,mdx}',
+    './config/**/*.{js,ts,jsx,tsx,mdx}',
+    './types/**/*.{js,ts,jsx,tsx,mdx}',
     './node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
@@ -46,16 +51,16 @@ const config = {
         sm: 'calc(var(--radius) - 4px)'
       },
       colors: {
-        // sidebar: {
-        //   DEFAULT: 'hsl(var(--sidebar-background))',
-        //   foreground: 'hsl(var(--sidebar-foreground))',
-        //   primary: 'hsl(var(--sidebar-primary))',
-        //   'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-        //   accent: 'hsl(var(--sidebar-accent))',
-        //   'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-        //   border: 'hsl(var(--sidebar-border))',
-        //   ring: 'hsl(var(--sidebar-ring))'
-        // }
+        sidebar: {
+          DEFAULT: 'hsl(var(--sidebar-background))',
+          foreground: 'hsl(var(--sidebar-foreground))',
+          primary: 'hsl(var(--sidebar-primary))',
+          'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+          accent: 'hsl(var(--sidebar-accent))',
+          'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+          border: 'hsl(var(--sidebar-border))',
+          ring: 'hsl(var(--sidebar-ring))'
+        }
       },
       screens: {
         'sm': '640px',

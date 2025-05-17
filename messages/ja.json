@@ -2,7 +2,7 @@
     "LocaleSwitcher": {
         "ja": "日本語",
         "en": "英語",
-        "zh-CN": "簡体字中国語",
+        "zh-CN": "中国語(簡体)",
         "label": "言語"
     },
     "Navbar": {
@@ -12,7 +12,15 @@
         "pricing": "価格",
         "about": "私たちについて",
         "signin": "ログイン",
-        "signup": "登録"
+        "signup": "登録",
+        "promo": "Turbo・aiに参加して、最高のAIソリューションを手に入れましょう。"
+    },
+    "NotFound": {
+        "title": "404 - ページが見つかりません",
+        "description": "お探しのページは存在しません。",
+        "back": "ホームに戻る",
+        "feedback_placeholder": "製品に対するアイデアや提案を入力してください。",
+        "submit": "送信"
     },
     "greeting": "こんにちは、世界"
 }

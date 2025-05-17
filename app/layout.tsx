@@ -71,17 +71,11 @@ export default async function RootLayout({
                 enableSystem: true,
                 disableTransitionOnChange: true,
               }}>
-              <div className="max-w-full relative flex flex-col h-screen gap-y-2">
-                <div className="w-4/5 mx-auto">
-                  <NavbarComponent />
-                </div>
-                <main className="container w-4/5 mx-auto flex-grow mt-[60px]">
-                  {children}
-                </main>
-                <div className="w-4/5 mx-auto">
-                  <Footer />
-                </div>
-              </div>
+              <NavbarComponent />
+              <main className="container w-4/5 mx-auto flex-grow mt-20">
+                {children}
+              </main>
+              <Footer />
             </Providers>
           </NextIntlClientProvider>
         </body>
