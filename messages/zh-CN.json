@@ -1,0 +1,26 @@
+{
+    "LocaleSwitcher": {
+        "zh-CN": "中文(简体)",
+        "en": "英语",
+        "ja": "日语",
+        "label": "语言"
+    },
+    "Navbar": {
+        "overview": "概览",
+        "solutions": "解决方案",
+        "products": "产品",
+        "pricing": "定价",
+        "about": "关于我们",
+        "signin": "登录",
+        "signup": "注册",
+        "promo": "加入 Turbo · ai，获得最佳 AI 解决方案。"
+    },
+    "NotFound": {
+        "title": "404 - 页面不存在",
+        "description": "您访问的页面不存在。",
+        "back": "返回首页",
+        "feedback_placeholder": "对我们的产品有什么建议或想法？",
+        "submit": "提交"
+    },
+    "greeting": "你好，世界"
+}
