@@ -8,9 +8,9 @@ import Footer from '@/components/layout/footer';
 import NavbarComponent from '@/components/layout/navbar';
 import { fontPacifico, fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
+import { getUserLocale } from '@/services/locale';
 import { ClerkProvider } from '@clerk/nextjs';
 import { NextIntlClientProvider } from 'next-intl';
-import { getLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: {
@@ -35,7 +35,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const locale = await getLocale();
+  const locale = await getUserLocale();
 
   return (
     <ClerkProvider>

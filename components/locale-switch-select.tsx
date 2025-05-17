@@ -24,7 +24,7 @@ export default function LocaleSwitcherSelect({
   items,
   label,
 }: Props) {
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
   const [selected, setSelected] = React.useState(
     items.find((item) => item.value === defaultValue) || items[0]
   );
