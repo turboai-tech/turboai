@@ -125,7 +125,7 @@ export default function FooterComponent() {
                 <Logo
                   width={96}
                   height={32}
-                  className="ml-1 hidden md:block"
+                  className="md:block"
                 />
               </div>
             </Link>

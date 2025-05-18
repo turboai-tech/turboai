@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, NavbarItem } from '@heroui/react';
+import { Button } from '@heroui/react';
 import { Icon } from '@iconify/react';
 import { useTheme } from 'next-themes';
 import { FC, useEffect, useState } from 'react';
@@ -27,19 +27,17 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className }) => {
   };
 
   return (
-    <NavbarItem>
-      <Button
-        isIconOnly
-        radius="full"
-        variant="light"
-        onPress={toggleTheme}
-        className={className}>
-        <Icon
-          className="text-default-500"
-          icon={theme === 'dark' ? 'solar:sun-linear' : 'solar:moon-linear'}
-          width={24}
-        />
-      </Button>
-    </NavbarItem>
+    <Button
+      isIconOnly
+      radius="full"
+      variant="light"
+      onPress={toggleTheme}
+      className={className}>
+      <Icon
+        className="text-default-500"
+        icon={theme === 'dark' ? 'solar:sun-linear' : 'solar:moon-linear'}
+        width={24}
+      />
+    </Button>
   );
 };

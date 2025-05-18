@@ -8,7 +8,6 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-  NavbarItem,
 } from '@heroui/react';
 import { Icon } from '@iconify/react';
 import { useLocale } from 'next-intl';
@@ -18,12 +17,14 @@ type Props = {
   defaultValue: string;
   items: Array<{ value: string; label: string }>;
   label: string;
+  className?: string;
 };
 
 export default function LocaleSwitcherSelect({
   defaultValue,
   items,
   label,
+  className,
 }: Props) {
   const [, startTransition] = useTransition();
   const locale = useLocale();
@@ -52,44 +53,40 @@ export default function LocaleSwitcherSelect({
   }
 
   return (
-    <div className="relative">
-      <NavbarItem>
-        <Dropdown>
-          <DropdownTrigger>
-            <Button
-              variant="light"
-              startContent={
-                <Icon
-                  icon={iconMap[selected.value] || 'mdi:translate'}
-                  className="text-base"
-                />
-              }>
-              {selected.label}
-            </Button>
-          </DropdownTrigger>
-          <DropdownMenu
-            aria-label={label}
-            onAction={(key) => {
-              const found = items.find((item) => item.value === key);
-              if (found) onChange(found);
-            }}
-            className="text-left">
-            {items.map((item) => (
-              <DropdownItem
-                className="justify-start"
-                key={item.value}
-                startContent={
-                  <Icon
-                    icon={iconMap[item.value] || 'mdi:translate'}
-                    className="text-base"
-                  />
-                }>
-                {item.label}
-              </DropdownItem>
-            ))}
-          </DropdownMenu>
-        </Dropdown>
-      </NavbarItem>
-    </div>
+    <Dropdown>
+      <DropdownTrigger>
+        <Button
+          variant="light"
+          startContent={
+            <Icon
+              icon={iconMap[selected.value] || 'mdi:translate'}
+              className="text-base"
+            />
+          }>
+          {selected.label}
+        </Button>
+      </DropdownTrigger>
+      <DropdownMenu
+        aria-label={label}
+        onAction={(key) => {
+          const found = items.find((item) => item.value === key);
+          if (found) onChange(found);
+        }}
+        className="text-left">
+        {items.map((item) => (
+          <DropdownItem
+            className="justify-start"
+            key={item.value}
+            startContent={
+              <Icon
+                icon={iconMap[item.value] || 'mdi:translate'}
+                className="text-base"
+              />
+            }>
+            {item.label}
+          </DropdownItem>
+        ))}
+      </DropdownMenu>
+    </Dropdown>
   );
 }

@@ -19,7 +19,6 @@ import {
   NavbarItem,
   NavbarMenu,
   NavbarMenuItem,
-  NavbarMenuToggle,
 } from '@heroui/react';
 import { Icon } from '@iconify/react';
 import { useTranslations } from 'next-intl';
@@ -72,7 +71,7 @@ export default function NavbarComponent(props: NavbarProps) {
           <div className="flex items-center gap-2 flex-wrap justify-center">
             <Link
               href="/"
-              className="flex items-center">
+              className="flex items-center justify-center">
               <span
                 aria-label="rocket"
                 className="hidden md:block"
@@ -120,9 +119,19 @@ export default function NavbarComponent(props: NavbarProps) {
       <Navbar
         {...props}
         style={{ top: `${secondNavbarTop}px` }}
-        className="fixed top-[5vh] min-h-[40px] left-0 right-0 z-40 bg-background/70 backdrop-blur-lg  h-[5vh] flex items-center w-4/5 mx-auto"
-        disableScrollHandler>
-        <NavbarBrand className="max-w-[20%]">
+        classNames={{
+          base: 'fixed top-[5vh] min-h-[40px] left-0 right-0 z-40 bg-background/70 backdrop-blur-lg  h-[5vh] flex items-center w-4/5 mx-auto',
+          wrapper: 'w-full justify-center bg-transparent',
+          item: 'hidden md:flex',
+        }}
+        disableAnimation={false}
+        shouldHideOnScroll={false}
+        isMenuOpen={isMenuOpen}
+        onMenuOpenChange={(open) => {
+          if (open === false) return;
+          setIsMenuOpen(open);
+        }}>
+        <NavbarBrand className="lg:w-[20%] md:w-[30%] sm:w-auto flex h-12 gap-0 rounded-full p-0 justify-start">
           <Link href="/">
             <div className="flex justify-between gap-1">
               <Icon
@@ -132,13 +141,13 @@ export default function NavbarComponent(props: NavbarProps) {
               <Logo
                 width={96}
                 height={32}
-                className="ml-1 hidden md:block"
+                className="md:block"
               />
             </div>
           </Link>
         </NavbarBrand>
         <NavbarContent
-          className="ml-4 hidden h-12 w-full max-w-fit gap-4 !rounded-full bg-content2 px-4 dark:bg-content1 sm:flex"
+          className="ml-4 min-w-[45%] hidden md:flex h-12 w-full max-w-fit gap-4 !rounded-full bg-content2 px-4 dark:bg-content1"
           justify="start">
           <NavbarItem>
             <Link
@@ -178,14 +187,19 @@ export default function NavbarComponent(props: NavbarProps) {
           </NavbarItem>
         </NavbarContent>
         <NavbarContent
-          className="ml-auto flex h-12 auto-max gap-0 rounded-full p-0 lg:bg-content2 lg:px-1 lg:dark:bg-content1"
+          className="auto-max hidden md:flex h-12 auto-max gap-0 rounded-full p-0 lg:bg-content2 lg:px-1 lg:dark:bg-content1"
           justify="end">
-          {/* <div className="hidden sm:inline-flex">
+          <NavbarItem key="locale-switcher">
             <LocaleSwitcher />
-          </div> */}
-          <LocaleSwitcher />
-          <ThemeSwitch />
-          <NavbarItem className="ml-2 !flex gap-0">
+          </NavbarItem>
+          <NavbarItem key="theme-switch">
+            <ThemeSwitch />
+          </NavbarItem>
+        </NavbarContent>
+        <NavbarContent
+          className="auto-max flex h-12 auto-max gap-0 rounded-full p-0"
+          justify="end">
+          <NavbarItem className="flex">
             <SignedOut>
               <SignInButton>
                 <Button
@@ -206,17 +220,22 @@ export default function NavbarComponent(props: NavbarProps) {
               <UserButton />
             </SignedIn>
           </NavbarItem>
+          <Button
+            className="text-default-500 md:hidden p-2 min-w-0 ml-2"
+            variant="light"
+            isIconOnly
+            onPress={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}>
+            <Icon
+              icon={isMenuOpen ? 'lucide:x' : 'lucide:menu'}
+              className="text-primary text-xl"
+            />
+          </Button>
         </NavbarContent>
-
-        <NavbarMenuToggle
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-          className="sm:hidden"
-          onChange={setIsMenuOpen}
-        />
 
         {/* Mobile Menu */}
         <NavbarMenu
-          className="top-[calc(var(--navbar-height)_-_1px)] max-h-[70vh] bg-default-200/50 pt-6 shadow-medium backdrop-blur-md backdrop-saturate-150 dark:bg-default-100/50"
+          className="top-[calc(var(--navbar-height)_-_1px)] max-h-[70vh] bg-default-200/50 pt-6 shadow-medium backdrop-blur-md backdrop-saturate-150 dark:bg-default-100/50 text-left justify-start"
           motionProps={{
             initial: { opacity: 0, y: -20 },
             animate: { opacity: 1, y: 0 },
@@ -226,11 +245,21 @@ export default function NavbarComponent(props: NavbarProps) {
               duration: 0.2,
             },
           }}>
+          <NavbarMenuItem
+            key="locale-switcher"
+            className="text-left justify-start">
+            <LocaleSwitcher className="ml-2" />
+          </NavbarMenuItem>
+          <NavbarMenuItem
+            key="theme-switch"
+            className="text-left justify-start">
+            <ThemeSwitch />
+          </NavbarMenuItem>
           {items.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                className="w-full text-default-500"
-                href="#"
+                className="w-full text-default-500 text-left"
+                href={`/${item}`}
                 size="md">
                 {t(item)}
               </Link>
