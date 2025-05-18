@@ -180,9 +180,10 @@ export default function NavbarComponent(props: NavbarProps) {
         <NavbarContent
           className="ml-auto flex h-12 auto-max gap-0 rounded-full p-0 lg:bg-content2 lg:px-1 lg:dark:bg-content1"
           justify="end">
-          <div className="hidden sm:inline-flex">
+          {/* <div className="hidden sm:inline-flex">
             <LocaleSwitcher />
-          </div>
+          </div> */}
+          <LocaleSwitcher />
           <ThemeSwitch />
           <NavbarItem className="ml-2 !flex gap-0">
             <SignedOut>
