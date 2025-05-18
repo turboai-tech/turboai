@@ -11,6 +11,7 @@ import {
   UserButton,
 } from '@clerk/nextjs';
 import {
+  Button,
   Link,
   Navbar,
   NavbarBrand,
@@ -177,14 +178,28 @@ export default function NavbarComponent(props: NavbarProps) {
           </NavbarItem>
         </NavbarContent>
         <NavbarContent
-          className="ml-auto flex h-12 max-w-[30%] gap-0 rounded-full p-0 lg:bg-content2 lg:px-1 lg:dark:bg-content1"
+          className="ml-auto flex h-12 auto-max gap-0 rounded-full p-0 lg:bg-content2 lg:px-1 lg:dark:bg-content1"
           justify="end">
-          <LocaleSwitcher />
+          <div className="hidden sm:inline-flex">
+            <LocaleSwitcher />
+          </div>
           <ThemeSwitch />
-          <NavbarItem className="ml-2 !flex gap-2">
+          <NavbarItem className="ml-2 !flex gap-0">
             <SignedOut>
-              <SignInButton />
-              <SignUpButton />
+              <SignInButton>
+                <Button
+                  variant="light"
+                  size="sm">
+                  {t('signin')}
+                </Button>
+              </SignInButton>
+              <SignUpButton>
+                <Button
+                  variant="light"
+                  size="sm">
+                  {t('signup')}
+                </Button>
+              </SignUpButton>
             </SignedOut>
             <SignedIn>
               <UserButton />

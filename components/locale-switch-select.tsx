@@ -10,7 +10,7 @@ import {
   DropdownTrigger,
   NavbarItem,
 } from '@heroui/react';
-import { Icon } from '@iconify/react/dist/iconify.js';
+import { Icon } from '@iconify/react';
 import { useLocale } from 'next-intl';
 import React, { useEffect, useTransition } from 'react';
 
