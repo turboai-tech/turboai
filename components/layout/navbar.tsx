@@ -248,7 +248,7 @@ export default function NavbarComponent(props: NavbarProps) {
           <NavbarMenuItem
             key="locale-switcher"
             className="text-left justify-start">
-            <LocaleSwitcher className="ml-2" />
+            <LocaleSwitcher />
           </NavbarMenuItem>
           <NavbarMenuItem
             key="theme-switch"

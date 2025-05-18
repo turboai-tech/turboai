@@ -17,14 +17,12 @@ type Props = {
   defaultValue: string;
   items: Array<{ value: string; label: string }>;
   label: string;
-  className?: string;
 };
 
 export default function LocaleSwitcherSelect({
   defaultValue,
   items,
   label,
-  className,
 }: Props) {
   const [, startTransition] = useTransition();
   const locale = useLocale();
