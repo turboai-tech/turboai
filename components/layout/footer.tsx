@@ -42,18 +42,18 @@ export default function FooterComponent() {
     ],
     social: [
       {
-        name: 'Facebook',
-        href: '#',
+        name: 'Youtube',
+        href: 'https://www.youtube.com/@hello_turboai',
         icon: (props: SocialIconProps) => (
           <Icon
             {...props}
-            icon="fontisto:facebook"
+            icon="fontisto:youtube-play"
           />
         ),
       },
       {
         name: 'Instagram',
-        href: '#',
+        href: 'https://www.instagram.com/hello_turboai',
         icon: (props: SocialIconProps) => (
           <Icon
             {...props}
@@ -62,8 +62,8 @@ export default function FooterComponent() {
         ),
       },
       {
-        name: 'Twitter',
-        href: '#',
+        name: 'X',
+        href: 'https://x.com/hello_turboai',
         icon: (props: SocialIconProps) => (
           <Icon
             {...props}
@@ -73,7 +73,7 @@ export default function FooterComponent() {
       },
       {
         name: 'GitHub',
-        href: '#',
+        href: 'https://github.com/turboai-tech',
         icon: (props: SocialIconProps) => (
           <Icon
             {...props}
