@@ -1,7 +1,8 @@
 import AppMainSection from '@/components/section/app-main-section';
-import { getTranslations } from 'next-intl/server';
+// import { getTranslations } from 'next-intl/server';
+
 export default async function App() {
-  const t = await getTranslations();
+  // const t = await getTranslations();
   return (
     <div className="relative flex h-screen min-h-dvh w-full flex-col overflow-hidden bg-background">
       {/* <div
