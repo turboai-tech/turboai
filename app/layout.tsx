@@ -59,7 +59,7 @@ export default async function RootLayout({
         </head>
         <body
           className={clsx(
-            'min-h-screen bg-background font-sans antialiased dark:bg-neutral-900 dark:text-neutral-100',
+            'min-h-screen bg-background font-sans antialiased',
             fontSans.variable,
             fontPacifico.variable
           )}>
@@ -72,7 +72,7 @@ export default async function RootLayout({
                 disableTransitionOnChange: true,
               }}>
               <NavbarComponent />
-              <main className="container w-4/5 mx-auto flex-grow mt-20">
+              <main className="container w-4/5 mx-auto flex-grow mt-20 relative z-10">
                 {children}
               </main>
               <FooterComponent />

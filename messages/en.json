@@ -5,11 +5,12 @@
         "ja": "Japanese",
         "label": "Language"
     },
-    "values": {
+    "AppMainSection": {
         "title_1": "Make",
         "title_2": "beautiful",
         "title_3": "things happen",
         "subtitle": "Beautiful, fast, secure and powerful",
+        "description": "Turbo ai is dedicated to delivering efficient and innovative AI solutions for enterprises, empowering clients to achieve intelligent transformation and business advancement, and driving the development of industry intelligence.",
         "mission": {
             "title": "Mission",
             "content": "Turbo AI is dedicated to empowering enterprises with cutting-edge AI technologies, creating efficient and innovative intelligent solutions to accelerate business transformation, unleash unlimited potential, and lead the industry's intelligent revolution."
@@ -24,7 +25,7 @@
         "solutions": "Solutions",
         "products": "Products",
         "pricing": "Pricing",
-        "about": "About",
+        "blog": "Blog",
         "signin": "Sign In",
         "signup": "Sign Up",
         "promo": "Join Turbo ai and get the best AI solutions."

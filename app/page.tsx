@@ -1,11 +1,10 @@
-import { subtitle, title } from '@/components/primitives';
+import AppMainSection from '@/components/section/app-main-section';
 import { getTranslations } from 'next-intl/server';
-
 export default async function App() {
   const t = await getTranslations();
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center min-h-[calc(100vh-500px)] px-4 md:px-8">
-      <div
+    <div className="relative flex h-screen min-h-dvh w-full flex-col overflow-hidden bg-background">
+      {/* <div
         className="
           w-full md:flex-[1]
           flex flex-col
@@ -46,7 +45,8 @@ export default async function App() {
             {t('values.mission.content')}
           </div>
         </div>
-      </div>
+      </div> */}
+      <AppMainSection />
     </div>
   );
 }

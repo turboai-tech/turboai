@@ -15,6 +15,10 @@ const config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "hero-section-title": "linear-gradient(91deg, #FFF 32.88%, rgba(255, 255, 255, 0.40) 99.12%)",
+        "hero-section-title-dark": "linear-gradient(91deg, #000 32.88%, rgba(0, 0, 0, 0.40) 99.12%)",
+      },
       fontFamily: {
         sans: [
           'var(--font-sans)'
@@ -60,7 +64,16 @@ const config = {
           'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))'
-        }
+        },
+        'default-foreground': 'var(--default-foreground)',
+        'default-background': 'var(--default-background)',
+        'button-bg': 'var(--button-bg)',
+        'button-text': 'var(--button-text)',
+        'button-border': 'var(--button-border)',
+        'button-hover': 'var(--button-hover)',
+        'button-active': 'var(--button-active)',
+        'button-disabled': 'var(--button-disabled)',
+
       },
       screens: {
         'sm': '640px',
@@ -70,6 +83,10 @@ const config = {
         '2xl': '1536px'
       },
     }
+  },
+  backgroundImage: {
+    "hero-section-title":
+      "linear-gradient(91deg, #FFF 32.88%, rgba(255, 255, 255, 0.40) 99.12%)",
   },
   darkMode: "class",
   plugins: [heroui()],

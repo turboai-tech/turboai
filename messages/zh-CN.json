@@ -5,11 +5,12 @@
         "ja": "日语",
         "label": "语言"
     },
-    "values": {
+    "AppMainSection": {
         "title_1": "让",
         "title_2": "酷炫的",
         "title_3": "事情发生",
         "subtitle": "酷炫、快速、安全、强大",
+        "description": "Turbo ai 专注于为企业提供高效、创新的人工智能解决方案，助力客户实现智能化转型与业务升级，推动行业智能化发展。",
         "mission": {
             "title": "使命",
             "content": "Turbo AI致力于以尖端人工智能技术赋能企业，打造高效、创新的智能化解决方案，助力客户加速业务转型，释放无限潜能，引领行业智能化浪潮。"
@@ -24,7 +25,7 @@
         "solutions": "解决方案",
         "products": "产品",
         "pricing": "定价",
-        "about": "关于我们",
+        "blog": "博客",
         "signin": "登录",
         "signup": "注册",
         "promo": "加入Turbo ai，获得最佳AI行业解决方案。"

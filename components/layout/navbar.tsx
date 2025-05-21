@@ -26,7 +26,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import LocaleSwitcher from '../locale-switch';
 import { ThemeSwitch } from '../theme-switch';
 
-const items = ['overview', 'solutions', 'products', 'pricing', 'about'];
+const items = ['overview', 'solutions', 'products', 'pricing', 'blog'];
 
 export default function NavbarComponent(props: NavbarProps) {
   const t = useTranslations('Navbar');
@@ -106,9 +106,9 @@ export default function NavbarComponent(props: NavbarProps) {
                   <path
                     fill="none"
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.5"
                     d="M4 12h16m0 0l-6-6m6 6l-6 6"></path>
                 </svg>
               </div>
@@ -181,8 +181,8 @@ export default function NavbarComponent(props: NavbarProps) {
           <NavbarItem>
             <Link
               className="flex gap-2 text-inherit"
-              href="/about">
-              {t('about')}
+              href="/blog">
+              {t('blog')}
             </Link>
           </NavbarItem>
         </NavbarContent>
