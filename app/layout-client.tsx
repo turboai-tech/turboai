@@ -15,7 +15,9 @@ export default function RootLayoutClient({
   const isDashboard = pathname.startsWith('/dashboard');
 
   return (
-    <div className={`container ${isDashboard ? 'w-full' : 'mx-auto w-4/5'}`}>
+    <div
+      lang={locale}
+      className={`container ${isDashboard ? 'w-full' : 'mx-auto w-4/5'}`}>
       {!isDashboard && <NavbarComponent />}
       <main className="mx-auto w-full">{children}</main>
       {!isDashboard && <FooterComponent />}

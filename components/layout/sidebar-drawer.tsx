@@ -1,8 +1,7 @@
 'use client';
 import type { ModalProps } from '@heroui/react';
 
-import { TRANSITION_EASINGS } from '@heroui/framer-utils';
-import { cn, Drawer, DrawerBody, DrawerContent } from '@heroui/react';
+import { cn } from '@heroui/react';
 import React from 'react';
 
 const SidebarDrawer = React.forwardRef<
@@ -12,52 +11,51 @@ const SidebarDrawer = React.forwardRef<
     sidebarPlacement?: 'left' | 'right';
   }
 >(
-  (
+  ({
+    children,
+    className,
+    // onOpenChange,
+    // isOpen,
+    // sidebarWidth = 288,
+    // classNames = {},
+    // sidebarPlacement = 'left',
+    // motionProps: drawerMotionProps,
+    // ...props
+  }) =>
+    // ref
     {
-      children,
-      className,
-      onOpenChange,
-      isOpen,
-      sidebarWidth = 288,
-      classNames = {},
-      sidebarPlacement = 'left',
-      motionProps: drawerMotionProps,
-      ...props
-    },
-    ref
-  ) => {
-    const motionProps = React.useMemo(() => {
-      if (!!drawerMotionProps && typeof drawerMotionProps === 'object') {
-        return drawerMotionProps;
-      }
+      // const motionProps = React.useMemo(() => {
+      //   if (!!drawerMotionProps && typeof drawerMotionProps === 'object') {
+      //     return drawerMotionProps;
+      //   }
 
-      return {
-        variants: {
-          enter: {
-            x: 0,
-            transition: {
-              x: {
-                duration: 0.3,
-                ease: TRANSITION_EASINGS.easeOut,
-              },
-            },
-          },
-          exit: {
-            x: sidebarPlacement == 'left' ? -sidebarWidth : sidebarWidth,
-            transition: {
-              x: {
-                duration: 0.2,
-                ease: TRANSITION_EASINGS.easeOut,
-              },
-            },
-          },
-        },
-      };
-    }, [sidebarWidth, sidebarPlacement, drawerMotionProps]);
+      //   return {
+      //     variants: {
+      //       enter: {
+      //         x: 0,
+      //         transition: {
+      //           x: {
+      //             duration: 0.3,
+      //             ease: TRANSITION_EASINGS.easeOut,
+      //           },
+      //         },
+      //       },
+      //       exit: {
+      //         x: sidebarPlacement == 'left' ? -sidebarWidth : sidebarWidth,
+      //         transition: {
+      //           x: {
+      //             duration: 0.2,
+      //             ease: TRANSITION_EASINGS.easeOut,
+      //           },
+      //         },
+      //       },
+      //     },
+      //   };
+      // }, [sidebarWidth, sidebarPlacement, drawerMotionProps]);
 
-    return (
-      <>
-        <Drawer
+      return (
+        <>
+          {/* <Drawer
           ref={ref}
           {...props}
           classNames={{
@@ -84,25 +82,26 @@ const SidebarDrawer = React.forwardRef<
           motionProps={motionProps}
           radius="none"
           scrollBehavior="inside"
-          style={{
-            // @ts-ignore
-            '--sidebar-width': `${sidebarWidth}px`,
-          }}
+          style={
+            {
+              '--sidebar-width': `${sidebarWidth}px`,
+            } as React.CSSProperties
+          }
           onOpenChange={onOpenChange}>
           <DrawerContent>
             <DrawerBody>{children}</DrawerBody>
           </DrawerContent>
-        </Drawer>
-        <div
-          className={cn(
-            'hidden h-full max-w-[var(--sidebar-width)] overflow-x-hidden overflow-y-scroll sm:flex',
-            className
-          )}>
-          {children}
-        </div>
-      </>
-    );
-  }
+        </Drawer> */}
+          <div
+            className={cn(
+              'hidden h-full max-w-[var(--sidebar-width)] overflow-x-hidden overflow-y-scroll sm:flex',
+              className
+            )}>
+            {children}
+          </div>
+        </>
+      );
+    }
 );
 
 SidebarDrawer.displayName = 'SidebarDrawer';

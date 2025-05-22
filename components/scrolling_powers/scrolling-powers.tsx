@@ -82,7 +82,7 @@ const ScrollingBanner = React.forwardRef<HTMLDivElement, ScrollingBannerProps>(
           className
         )}
         style={{
-          // @ts-ignore
+          // @ts-expect-error React.cloneElement type mismatch: children may not be ReactElement
           '--gap': gap,
           '--duration': `${duration}s`,
           ...style,
@@ -97,12 +97,12 @@ const ScrollingBanner = React.forwardRef<HTMLDivElement, ScrollingBannerProps>(
             'hover:[animation-play-state:paused]': shouldPauseOnHover,
           })}>
           {React.Children.map(children, (child) =>
-            React.cloneElement(child as any)
+            React.isValidElement(child) ? React.cloneElement(child) : child
           )}
           {/* 添加重复内容以实现无缝滚动 */}
-          {/* {React.Children.map(children, (child) =>
-            React.cloneElement(child as any)
-          )} */}
+          {React.Children.map(children, (child) =>
+            React.isValidElement(child) ? React.cloneElement(child) : child
+          )}
         </div>
       </ScrollShadow>
     );

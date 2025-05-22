@@ -137,7 +137,7 @@ export default function Component() {
           <SidebarDrawer
             className="xl:block"
             isOpen={isProfileSidebarOpen}
-            sidebarPlacement="right"
+            sidebarPlacement="left"
             sidebarWidth={320}
             onOpenChange={onProfileSidebarOpenChange}>
             <MessagingChatProfile />

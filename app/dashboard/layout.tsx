@@ -3,7 +3,6 @@ import { Metadata, Viewport } from 'next';
 import '../globals.css';
 
 import { siteConfig } from '@/config/site';
-import { getUserLocale } from '@/services/locale';
 import App from './page';
 
 export const metadata: Metadata = {
@@ -24,12 +23,8 @@ export const viewport: Viewport = {
   ],
 };
 
-export default async function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const locale = await getUserLocale();
+export default async function DashboardLayout() {
+  // const locale = await getUserLocale();
 
   return (
     <div className="dashboard-layout w-screen h-screen p-0 flex items-start justify-center">
