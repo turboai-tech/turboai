@@ -74,8 +74,26 @@ body::before {
 
 /* 让 Tailwind 一定生成这些类 */
 .animate-scrolling-banner {
-  animation: scrolling-banner 10s linear infinite;
+  animation: scrolling-banner 30s linear infinite;
 }
 .animate-scrolling-banner-vertical {
-  animation: scrolling-banner-vertical 10s linear infinite;
+  animation: scrolling-banner-vertical 30s linear infinite;
+}
+
+@keyframes scrolling-banner {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - var(--gap) / 2));
+  }
+}
+
+@keyframes scrolling-banner-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-50% - var(--gap) / 2));
+  }
 }

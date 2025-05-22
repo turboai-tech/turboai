@@ -48,7 +48,7 @@ const ScrollingBanner = React.forwardRef<HTMLDivElement, ScrollingBannerProps>(
       className,
       isReverse,
       isVertical = false,
-      gap = '1rem',
+      gap = '2rem',
       showShadow = true,
       shouldPauseOnHover = true,
       duration = 40,
@@ -99,6 +99,10 @@ const ScrollingBanner = React.forwardRef<HTMLDivElement, ScrollingBannerProps>(
           {React.Children.map(children, (child) =>
             React.cloneElement(child as any)
           )}
+          {/* 添加重复内容以实现无缝滚动 */}
+          {/* {React.Children.map(children, (child) =>
+            React.cloneElement(child as any)
+          )} */}
         </div>
       </ScrollShadow>
     );
