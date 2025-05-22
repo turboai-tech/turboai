@@ -39,7 +39,7 @@ const TeamMemberCard = React.forwardRef<HTMLDivElement, TeamMemberCardProps>(
         {social?.twitter && (
           <Link
             isExternal
-            href={`https://x.com/${social.x}`}>
+            href={`https://x.com/${social.twitter}`}>
             <Icon
               className="text-default-400"
               icon="bi:twitter"

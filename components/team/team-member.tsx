@@ -28,7 +28,7 @@ export default function TeamMemberComponent() {
       social: {
         twitter: 'ting_x',
         linkedin: 'ting-x',
-        // github: 'tingx',
+        github: '',
       },
     },
   ];
