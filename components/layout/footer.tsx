@@ -112,82 +112,80 @@ export default function FooterComponent() {
   );
 
   return (
-    <div className="flex w-full mx-auto flex-col bg-background">
-      <footer className="flex mx-auto flex-col bg-background">
-        <div className="max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
-          <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-            <div className="space-y-8 md:pr-8">
-              <Link href="/">
-                <div className="flex justify-between gap-1">
-                  <Icon
-                    icon="lucide:layers"
-                    className="text-primary text-2xl"
+    <footer className="flex w-full mx-auto flex-col bg-background">
+      <div className="pb-8 pt-16 sm:pt-24 lg:pt-32">
+        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+          <div className="space-y-8 md:pr-8">
+            <Link href="/">
+              <div className="flex justify-between gap-1">
+                <Icon
+                  icon="lucide:layers"
+                  className="text-primary text-2xl"
+                />
+                <Logo
+                  width={96}
+                  height={32}
+                  className="md:block"
+                />
+              </div>
+            </Link>
+            <p className="text-small text-default-500">
+              {t('value_description')}
+            </p>
+            <div className="flex space-x-6">
+              {footerNavigation.social.map((item) => (
+                <Link
+                  key={item.name}
+                  isExternal
+                  className="text-default-400"
+                  href={item.href}>
+                  <span className="sr-only">{item.name}</span>
+                  <item.icon
+                    aria-hidden="true"
+                    className="w-6"
                   />
-                  <Logo
-                    width={96}
-                    height={32}
-                    className="md:block"
-                  />
-                </div>
-              </Link>
-              <p className="text-small text-default-500">
-                {t('value_description')}
-              </p>
-              <div className="flex space-x-6">
-                {footerNavigation.social.map((item) => (
-                  <Link
-                    key={item.name}
-                    isExternal
-                    className="text-default-400"
-                    href={item.href}>
-                    <span className="sr-only">{item.name}</span>
-                    <item.icon
-                      aria-hidden="true"
-                      className="w-6"
-                    />
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-              <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  {renderList({
-                    title: t('services'),
-                    items: footerNavigation.services,
-                  })}
-                </div>
-                <div className="mt-10 md:mt-0">
-                  {renderList({
-                    title: t('support'),
-                    items: footerNavigation.supportOptions,
-                  })}
-                </div>
-              </div>
-              <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
-                  {renderList({
-                    title: t('about'),
-                    items: footerNavigation.aboutUs,
-                  })}
-                </div>
-                <div className="mt-10 md:mt-0">
-                  {renderList({
-                    title: t('legal'),
-                    items: footerNavigation.legal,
-                  })}
-                </div>
-              </div>
+                </Link>
+              ))}
             </div>
           </div>
-          <Divider className="mt-16 sm:mt-20 lg:mt-24" />
-          <div className="flex flex-wrap justify-between gap-2 pt-8">
-            <p className="text-small text-default-400">
-              Copyright &copy; {currentYear}, {t('all_rights_reserved')}.
-            </p>
+          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                {renderList({
+                  title: t('services'),
+                  items: footerNavigation.services,
+                })}
+              </div>
+              <div className="mt-10 md:mt-0">
+                {renderList({
+                  title: t('support'),
+                  items: footerNavigation.supportOptions,
+                })}
+              </div>
+            </div>
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                {renderList({
+                  title: t('about'),
+                  items: footerNavigation.aboutUs,
+                })}
+              </div>
+              <div className="mt-10 md:mt-0">
+                {renderList({
+                  title: t('legal'),
+                  items: footerNavigation.legal,
+                })}
+              </div>
+            </div>
           </div>
         </div>
-      </footer>
-    </div>
+        <Divider className="mt-16 sm:mt-20 lg:mt-24" />
+        <div className="flex flex-wrap justify-between gap-2 pt-8">
+          <p className="text-small text-default-400">
+            Copyright &copy; {currentYear}, {t('all_rights_reserved')}.
+          </p>
+        </div>
+      </div>
+    </footer>
   );
 }

@@ -52,7 +52,7 @@ export default function LocaleSwitcherSelect({
 
   return (
     <Dropdown>
-      <DropdownTrigger>
+      <DropdownTrigger className="px-0">
         <Button
           variant="light"
           startContent={
@@ -73,7 +73,7 @@ export default function LocaleSwitcherSelect({
         className="text-left">
         {items.map((item) => (
           <DropdownItem
-            className="justify-start"
+            className="justify-start px-0"
             key={item.value}
             startContent={
               <Icon

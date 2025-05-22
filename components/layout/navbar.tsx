@@ -61,13 +61,13 @@ export default function NavbarComponent(props: NavbarProps) {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="mx-auto w-4/5">
       <Navbar
         ref={firstNavbarRef}
-        maxWidth="xl"
+        maxWidth="full"
         isBlurred
-        className="fixed top-0 left-0 right-0 z-40 bg-background backdrop-blur-lg h-auto min-h-[40px] flex items-center backdrop-saturate-250 text-sm">
-        <NavbarContent className="w-full flex flex-col sm:flex-row gap-2 justify-center">
+        className="fixed w-full top-0 left-0 right-0 z-40 bg-background/70 backdrop-blur-lg h-auto min-h-[40px] flex items-center backdrop-saturate-250 text-sm">
+        <NavbarContent className="mx-auto flex flex-col sm:flex-row gap-2 justify-center">
           <div className="flex items-center gap-2 flex-wrap justify-center">
             <Link
               href="/"
@@ -117,13 +117,16 @@ export default function NavbarComponent(props: NavbarProps) {
         </NavbarContent>
       </Navbar>
       <Navbar
+        maxWidth="full"
         {...props}
         style={{ top: `${secondNavbarTop}px` }}
         classNames={{
-          base: 'fixed top-[5vh] min-h-[40px] left-0 right-0 z-40 bg-background/70 backdrop-blur-lg  h-[5vh] flex items-center w-4/5 mx-auto',
-          wrapper: 'w-full justify-center bg-transparent',
+          base: 'fixed left-0 right-0 z-40 bg-background/70 backdrop-blur-lg h-auto min-h-[40px] flex items-center backdrop-saturate-250 text-base !px-0',
+          wrapper: 'bg-transparent !px-0',
           item: 'hidden md:flex',
+          menu: 'mx-auto',
         }}
+        className="w-4/5 mx-auto !px-0"
         disableAnimation={false}
         shouldHideOnScroll={false}
         isMenuOpen={isMenuOpen}
@@ -131,24 +134,24 @@ export default function NavbarComponent(props: NavbarProps) {
           if (open === false) return;
           setIsMenuOpen(open);
         }}>
-        <NavbarBrand className="lg:w-[20%] md:w-[30%] sm:w-auto flex h-12 gap-0 rounded-full p-0 justify-start">
-          <Link href="/">
-            <div className="flex justify-between gap-1">
+        <NavbarBrand className="flex h-12 gap-0 rounded-full p-0 justify-start">
+          <Link
+            className="w-full items-center"
+            href="/">
+            <div className="flex items-center justify-between gap-1">
               <Icon
                 icon="lucide:layers"
-                className="text-primary text-2xl"
+                className="text-primary text-2xl h-8"
               />
               <Logo
                 width={96}
                 height={32}
-                className="md:block"
+                className="md:block items-center h-8"
               />
             </div>
           </Link>
         </NavbarBrand>
-        <NavbarContent
-          className="ml-4 min-w-[45%] hidden md:flex h-12 w-full max-w-fit gap-4 !rounded-full bg-content2 px-4 dark:bg-content1"
-          justify="start">
+        <NavbarContent className="ml-4 min-w-[45%] hidden md:flex h-12 w-full max-w-fit gap-4 !rounded-full bg-content2 px-4 dark:bg-content1 justify-start">
           <NavbarItem>
             <Link
               className="flex gap-2 text-inherit"
@@ -235,7 +238,7 @@ export default function NavbarComponent(props: NavbarProps) {
 
         {/* Mobile Menu */}
         <NavbarMenu
-          className="top-[calc(var(--navbar-height)_-_1px)] max-h-[70vh] bg-default-200/50 pt-6 shadow-medium backdrop-blur-md backdrop-saturate-150 dark:bg-default-100/50 text-left justify-start"
+          className="mx-auto top-[calc(var(--navbar-height)_-_1px)] max-h-[70vh] bg-default-200/50 p-10 px-8 ml-8 shadow-medium backdrop-blur-md backdrop-saturate-150 dark:bg-default-100/50 text-left justify-start"
           motionProps={{
             initial: { opacity: 0, y: -20 },
             animate: { opacity: 1, y: 0 },
