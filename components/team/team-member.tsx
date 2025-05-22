@@ -1,77 +1,64 @@
 'use client';
 
-import type { TeamMember } from './team-member-card';
-
 import { Button, Spacer } from '@heroui/react';
-
+import { useTranslations } from 'next-intl';
+import type { TeamMember } from './team-member-card';
 import TeamMemberCard from './team-member-card';
 
-const teamMembers: TeamMember[] = [
-  {
-    name: 'John Doe',
-    avatar: 'https://i.pravatar.cc/150?u=a04258114e29026708c',
-    role: 'CEO',
-    bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
-    social: {
-      twitter: '@john-doe',
-      linkedin: 'john-doe',
-      github: '@john-doe',
-    },
-  },
-  {
-    name: 'Jane Doe',
-    avatar: 'https://i.pravatar.cc/150?u=a04258ab4e29066708c',
-    role: 'CTO',
-    bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
-    social: {
-      twitter: '@jane-doe',
-      linkedin: 'jane-doe',
-      github: '@jane-doe',
-    },
-  },
-  {
-    name: 'Robert Doe',
-    avatar: 'https://i.pravatar.cc/150?u=a04258114e29066708c',
-    role: 'Principal Designer',
-    bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.',
-    social: {
-      twitter: '@robert-doe',
-      linkedin: 'robert-doe',
-      github: '@robert-doe',
-    },
-  },
-];
-
 export default function TeamMemberComponent() {
+  const t = useTranslations('team');
+
+  const teamMembers: TeamMember[] = [
+    {
+      name: t('team_member_shaoxiao.name'),
+      role: t('team_member_shaoxiao.role'),
+      bio: t('team_member_shaoxiao.bio'),
+      avatar: 'https://i.pravatar.cc/150?u=a04258114e29026708c',
+      social: {
+        twitter: 'shaoxiao_hello',
+        linkedin: 'shaoxiaoxu',
+        github: 'xushaoxiao',
+      },
+    },
+    {
+      name: t('team_member_ting.name'),
+      role: t('team_member_ting.role'),
+      bio: t('team_member_ting.bio'),
+      avatar: 'https://i.pravatar.cc/150?u=a04258ab4e29066708c',
+      social: {
+        twitter: 'ting_x',
+        linkedin: 'ting-x',
+        // github: 'tingx',
+      },
+    },
+  ];
+
   return (
-    <section className="flex max-w-full flex-col items-center py-24">
-      <div className="flex max-w-xl flex-col text-center">
+    <section className="flex flex-col items-center py-24">
+      <div className="flex flex-col text-center">
         <h2 className="font-medium text-secondary text-purple-500">
-          We&apos;re hiring!
+          {t('subtitle')}
         </h2>
-        <h1 className="text-4xl font-medium tracking-tight">Meet our team.</h1>
+        <h1 className="text-2xl font-medium tracking-tight">{t('title')}</h1>
         <Spacer y={4} />
-        <h2 className="text-large text-gray-500">
-          Our philosophy is to build a great team and then empower them to do
-          great things.
-        </h2>
+        <h2 className="text-large text-gray-500">{t('description')}</h2>
         <Spacer y={4} />
         <div className="flex w-full justify-center gap-6">
           <Button
             variant="ghost"
             radius="full"
             className="border-1 border-default-100">
-            About us
+            {t('button')}
           </Button>
           <Button
             color="secondary"
             radius="full"
-            className="border-1 border-default-100 bg-gradient-to-tr from-purple-500 via-pink-400 to-pink-200 text-white">
-            Open positions
+            className="border-1 border-default-100 bg-gradient-to-tr from-purple-500 to-purple-400 text-white">
+            {t('open_positions')}
           </Button>
         </div>
       </div>
-      <div className="mt-12 grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 flex w-3/5 flex-wrap gap-2 justify-center">
         {teamMembers.map((member, index) => (
           <TeamMemberCard
             key={index}

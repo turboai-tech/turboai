@@ -24,7 +24,7 @@ const TeamMemberCard = React.forwardRef<HTMLDivElement, TeamMemberCardProps>(
     <div
       ref={ref}
       className={cn(
-        'flex flex-col items-center rounded-large bg-content1 px-4 py-6 text-center shadow-small dark:bg-gray-400',
+        'flex flex-col items-center rounded-large text-center shadow-small dark:bg-gray-800 max-w-[25%] mx-auto',
         className
       )}
       {...props}>
@@ -39,7 +39,7 @@ const TeamMemberCard = React.forwardRef<HTMLDivElement, TeamMemberCardProps>(
         {social?.twitter && (
           <Link
             isExternal
-            href="#">
+            href={`https://x.com/${social.x}`}>
             <Icon
               className="text-default-400"
               icon="bi:twitter"
@@ -50,7 +50,7 @@ const TeamMemberCard = React.forwardRef<HTMLDivElement, TeamMemberCardProps>(
         {social?.linkedin && (
           <Link
             isExternal
-            href="#">
+            href={`https://www.linkedin.com/in/${social.linkedin}`}>
             <Icon
               className="text-default-400"
               icon="bi:linkedin"
@@ -61,7 +61,7 @@ const TeamMemberCard = React.forwardRef<HTMLDivElement, TeamMemberCardProps>(
         {social?.github && (
           <Link
             isExternal
-            href="#">
+            href={`https://github.com/${social.github}`}>
             <Icon
               className="text-default-400"
               icon="bi:github"

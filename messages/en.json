@@ -75,5 +75,22 @@
         "feedback_placeholder": "Ideas or suggestions to improve our product",
         "submit": "Submit"
     },
+    "team": {
+        "title": "Meet our team",
+        "subtitle": "We're hiring!",
+        "description": "Our philosophy is to build a great AI engineering team and then empower them to do great things.",
+        "button": "About us",
+        "open_positions": "Open positions",
+        "team_member_shaoxiao": {
+            "name": "Shaoxiao Xu",
+            "role": "Co-Founder",
+            "bio": "AI Software Engineer, ex-Tesla, ex-MooreThreads, ex-BorderxLab."
+        },
+        "team_member_ting": {
+            "name": "Ting",
+            "role": "Co-Founder",
+            "bio": "AI Product Manager, ex-Google, ex-Tesla."
+        }
+    },
     "greeting": "Hello, world"
 }
