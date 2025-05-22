@@ -81,6 +81,16 @@ export default function FooterComponent() {
           />
         ),
       },
+      {
+        name: 'LinkedIn',
+        href: 'https://www.linkedin.com/company/turboai-tech/?viewAsMember=true',
+        icon: (props: SocialIconProps) => (
+          <Icon
+            {...props}
+            icon="fontisto:linkedin"
+          />
+        ),
+      },
     ],
   };
 

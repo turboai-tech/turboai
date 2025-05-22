@@ -6,6 +6,7 @@ import { AnimatePresence, LazyMotion, domAnimation, m } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { subtitle, title } from '../primitives';
+import PowersComponent from '../scrolling_powers/powers';
 import TeamMemberComponent from '../team/team-member';
 import AppScreenshotSkewed from './app-screenshot-skewed';
 
@@ -174,6 +175,7 @@ export default function AppMainSections() {
           </m.div>
         </AnimatePresence>
       </LazyMotion>
+
       <LazyMotion features={domAnimation}>
         <AnimatePresence mode="wait">
           <m.div
@@ -183,6 +185,7 @@ export default function AppMainSections() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, type: 'spring' }}
             viewport={{ once: true, amount: 0.3 }}>
+            <PowersComponent />
             <TeamMemberComponent />
           </m.div>
         </AnimatePresence>

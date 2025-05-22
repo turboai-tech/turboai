@@ -71,3 +71,11 @@ body::before {
 .dark body::before {
   opacity: 0.1;
 }
+
+/* 让 Tailwind 一定生成这些类 */
+.animate-scrolling-banner {
+  animation: scrolling-banner 10s linear infinite;
+}
+.animate-scrolling-banner-vertical {
+  animation: scrolling-banner-vertical 10s linear infinite;
+}

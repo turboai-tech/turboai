@@ -4,13 +4,12 @@ import { Metadata, Viewport } from 'next';
 import { Providers } from '@/app/providers';
 import './globals.css';
 
-import FooterComponent from '@/components/layout/footer';
-import NavbarComponent from '@/components/layout/navbar';
 import { fontPacifico, fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
 import { getUserLocale } from '@/services/locale';
 import { ClerkProvider } from '@clerk/nextjs';
 import { NextIntlClientProvider } from 'next-intl';
+import RootLayoutClient from './layout-client';
 
 export const metadata: Metadata = {
   title: {
@@ -71,11 +70,7 @@ export default async function RootLayout({
                 enableSystem: true,
                 disableTransitionOnChange: true,
               }}>
-              <div className="container w-4/5 mx-auto">
-                <NavbarComponent />
-                <main className="w-full mx-auto">{children}</main>
-                <FooterComponent />
-              </div>
+              <RootLayoutClient locale={locale}>{children}</RootLayoutClient>
             </Providers>
           </NextIntlClientProvider>
         </body>
