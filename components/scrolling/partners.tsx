@@ -77,7 +77,7 @@ const cloud_computing_logos = [
 export default function PartnersComponent() {
   const t = useTranslations('technologies');
   return (
-    <div className="w-full flex flex-col gap-4">
+    <div className="w-full flex flex-col gap-4 mt-12">
       <section className="mx-auto w-full px-4 py-8 flex flex-col gap-4">
         <span className="text-xl font-bold text-center items-center justify-center">
           {t('cloud_computing_title')}

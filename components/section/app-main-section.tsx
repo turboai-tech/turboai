@@ -5,6 +5,7 @@ import { AnimatePresence, LazyMotion, domAnimation, m } from 'framer-motion';
 
 import { useTranslations } from 'next-intl';
 import { useLayoutEffect, useRef, useState } from 'react';
+import Faq from '../layout/faq';
 import { subtitle, title } from '../primitives';
 import PartnersComponent from '../scrolling/partners';
 import PowersComponent from '../scrolling/powers';
@@ -81,7 +82,7 @@ export default function AppMainSections() {
               auto: { width: 'auto' },
               kick: { width: 'auto' },
             }}>
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               <m.div
                 key="hero-section-title"
                 animate={{ filter: 'blur(0px)', opacity: 1, x: 0 }}
@@ -189,6 +190,7 @@ export default function AppMainSections() {
             <PartnersComponent />
             <PowersComponent />
             <TeamMemberComponent />
+            <Faq />
           </m.div>
         </AnimatePresence>
       </LazyMotion>

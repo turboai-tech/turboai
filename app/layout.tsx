@@ -4,6 +4,7 @@ import { Metadata, Viewport } from 'next';
 import { Providers } from '@/app/providers';
 import './globals.css';
 
+import Cookies from '@/components/layout/cookies';
 import { fontPacifico, fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
 import { getUserLocale } from '@/services/locale';
@@ -71,6 +72,7 @@ export default async function RootLayout({
                 disableTransitionOnChange: true,
               }}>
               <RootLayoutClient locale={locale}>{children}</RootLayoutClient>
+              <Cookies />
             </Providers>
           </NextIntlClientProvider>
         </body>

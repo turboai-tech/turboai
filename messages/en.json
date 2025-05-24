@@ -137,5 +137,27 @@
             "bio": "AI Product Manager, ex-Google, ex-Tesla."
         }
     },
-    "greeting": "Hello, world"
+    "cookies": {
+        "intro_text": "We use cookies on our website to give you the most relevant experience by remembering your preferences and repeat visits. By clicking",
+        "consent_text": ", you consent to the use of ALL the cookies. However, you may visit",
+        "controlled_consent_text": " to provide a controlled consent. For more information, please read our",
+        "cookie_policy": "Cookie Policy",
+        "sentense_end_symbol": ".",
+        "accept_all": "Accept All",
+        "cookie_settings": "Cookie Settings"
+    },
+    "Faq": {
+        "title": "Frequently Asked Questions",
+        "short_title": "FAQs",
+        "question_1": "What is Turboai?",
+        "answer_1": "Turboai is a company dedicated to the research and application of AI technology, committed to providing efficient and innovative AI solutions for enterprises.",
+        "question_2": "What is the mission of Turboai?",
+        "answer_2": "Turboai is committed to empowering enterprises with cutting-edge AI technologies, creating efficient and innovative intelligent solutions to accelerate business transformation, unleash unlimited potential, and lead the industry's intelligent revolution.",
+        "question_3": "What is the vision of Turboai?",
+        "answer_3": "To become a global leader in AI, driving every industry to achieve intelligent transformation at Turbo speed, creating a world defined by innovation, efficiency, and wisdom.",
+        "question_4": "What is the team advantage of Turboai?",
+        "answer_4": "The core members of the team have rich AI technology and product experience, and can provide efficient and innovative AI solutions for enterprises.",
+        "question_5": "What is the core technology of Turboai?",
+        "answer_5": "All our AI products are independently developed by us and have complete intellectual property rights. In addition, we have a strong AI engineering team that can provide efficient and innovative AI solutions for enterprises."
+    }
 }

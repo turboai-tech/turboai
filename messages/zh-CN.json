@@ -117,7 +117,8 @@
         "VolcEngine": "火山引擎",
         "DeepSeek": "DeepSeek",
         "Qwen": "千问",
-        "Llama": "Llama"
+        "Llama": "Llama",
+        "VertexAI": "VertexAI"
     },
     "team": {
         "title": "认识我们的团队",
@@ -136,5 +137,27 @@
             "bio": "AI产品经理，前谷歌产品经理，前特斯拉产品经理"
         }
     },
-    "greeting": "你好，世界"
+    "cookies": {
+        "intro_text": "我们使用cookies来记住您的偏好并提供最相关的体验。点击",
+        "consent_text": "，您同意使用所有cookies。但是，您可以访问",
+        "controlled_consent_text": "来提供受控同意。更多信息请阅读我们的",
+        "cookie_policy": "Cookie 政策",
+        "sentense_end_symbol": "。",
+        "accept_all": "接受所有",
+        "cookie_settings": "Cookie 设置"
+    },
+    "Faq": {
+        "title": "常见问题",
+        "short_title": "常见问题",
+        "question_1": "Turboai是什么？",
+        "answer_1": "Turboai是一家专注于AI技术研究和应用的公司，致力于为企业提供高效、创新的AI解决方案。",
+        "question_2": "Turboai的使命是什么？",
+        "answer_2": "Turboai致力于以尖端人工智能技术赋能企业，打造高效、创新的智能化解决方案，助力客户加速业务转型，释放无限潜能，引领行业智能化浪潮。",
+        "question_3": "Turboai的愿景是什么？",
+        "answer_3": "成为全球AI领域的先锋，驱动每一个行业以Turbo速度迈向智能化未来，创造一个由创新、效率与智慧定义的世界。",
+        "question_4": "Turboai的团队优势是什么？",
+        "answer_4": "团队核心成员拥有丰富的AI技术和产品经验，能够为企业提供高效、创新的AI解决方案。",
+        "question_5": "Turboai的核心技术是什么？",
+        "answer_5": "我们所有的AI产品均由我们自主研发，并拥有完全的知识产权。其次我们拥有强大的AI工程团队，能够为企业提供高效、创新的AI解决方案。"
+    }
 }

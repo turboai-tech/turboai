@@ -25,7 +25,6 @@ import { useTranslations } from 'next-intl';
 import React, { useEffect, useRef, useState } from 'react';
 import LocaleSwitcher from '../locale-switch';
 import { ThemeSwitch } from '../theme-switch';
-import Banner from './banner';
 
 const items = ['overview', 'solutions', 'products', 'pricing', 'blog'];
 
@@ -63,7 +62,6 @@ export default function NavbarComponent(props: NavbarProps) {
 
   return (
     <div className="mx-auto w-4/5">
-      <Banner />
       <Navbar
         ref={firstNavbarRef}
         maxWidth="full"

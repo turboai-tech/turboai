@@ -117,7 +117,8 @@
         "VolcEngine": "VolcEngine",
         "DeepSeek": "DeepSeek",
         "Qwen": "Qwen",
-        "Llama": "Llama"
+        "Llama": "Llama",
+        "VertexAI": "VertexAI"
     },
     "team": {
         "title": "私たちのチームを紹介します",
@@ -136,5 +137,27 @@
             "bio": "AIプロダクトマネージャー、前グーグル、前テスラ"
         }
     },
-    "greeting": "こんにちは、世界"
+    "cookies": {
+        "intro_text": "クッキーを使用して、お客様の好みを記憶し、繰り返し訪問した場合に最も関連性の高い体験を提供します。",
+        "consent_text": "をクリックすると、すべてのクッキーの使用に同意します。ただし、",
+        "controlled_consent_text": "で制御された同意を提供することもできます。詳細については、",
+        "cookie_policy": "Cookie ポリシー",
+        "sentense_end_symbol": "。",
+        "accept_all": "すべて受け入れる",
+        "cookie_settings": "Cookie 設定"
+    },
+    "Faq": {
+        "title": "よくある質問",
+        "short_title": "よくある質問",
+        "question_1": "Turboaiは何ですか？",
+        "answer_1": "Turboaiは、AI技術の研究と応用を専門にする企業で、企業に効率的で革新的なAIソリューションを提供します。",
+        "question_2": "Turboaiの使命は何ですか？",
+        "answer_2": "Turboaiは、最先端のAI技術を活用して企業を支援し、効率的で革新的な知的ソリューションを提供し、ビジネスの変革を加速し、無限の可能性を解放し、業界の知的革命をリードします。",
+        "question_3": "Turboaiの願景は何ですか？",
+        "answer_3": "AIの世界をリードすることを目指し、すべての業界をTurboスピードで知的変革へと導き、革新、効率、知性で定義される世界を創造します。",
+        "question_4": "Turboaiのチームの優位性は何ですか？",
+        "answer_4": "チームの核心メンバーは、豊富なAI技術と製品の経験を持ち、企業に効率的で革新的なAIソリューションを提供します。",
+        "question_5": "Turboaiのコアテクノロジーは何ですか？",
+        "answer_5": "すべてのAI製品は、私たちが自主的に開発し、完全な知的財産権を持っています。さらに、私たちは強力なAIエンジニアリングチームを持っており、企業に効率的で革新的なAIソリューションを提供します。"
+    }
 }
