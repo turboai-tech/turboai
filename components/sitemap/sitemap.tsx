@@ -3,10 +3,18 @@
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export default function Sitemap() {
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const isDarkMode = theme === 'dark';
+  console.log('isDarkMode:', isDarkMode, 'mounted:', mounted);
 
   const t = useTranslations('sitemap');
 
@@ -15,18 +23,27 @@ export default function Sitemap() {
       <span className="text-2xl font-bold text-center items-center justify-center text-brand mb-8">
         {t('sitemap_title')}
       </span>
-      <Image
-        src={isDarkMode ? 'dottedMap-dark.svg' : 'dottedMap.svg'}
-        alt="dottedMap"
-        width={100}
-        height={100}
-        className="w-full"
-        style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-        }}
-      />
+      {mounted ? (
+        <Image
+          src={isDarkMode ? 'dottedMap-dark.svg' : 'dottedMap.svg'}
+          width={100}
+          height={100}
+          alt="dottedMap"
+          className="w-full"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+          }}
+        />
+      ) : (
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+          }}
+        />
+      )}
       <div
         className="absolute z-10"
         aria-expanded="false"
