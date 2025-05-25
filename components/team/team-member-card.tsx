@@ -1,6 +1,6 @@
 'use client';
 
-import { cn, Link } from '@heroui/react';
+import { Avatar, cn, Link } from '@heroui/react';
 import { Icon } from '@iconify/react';
 import React from 'react';
 
@@ -24,19 +24,19 @@ const TeamMemberCard = React.forwardRef<HTMLDivElement, TeamMemberCardProps>(
     <div
       ref={ref}
       className={cn(
-        'flex flex-col items-center rounded-large bg-content1 px-4 py-6 text-center shadow-small max-w-[25%] mx-auto !opacity-100',
+        'flex flex-col items-center rounded-large bg-content1 px-4 py-6 text-center shadow-small max-w-[25%] mx-auto opacity-100',
         className
       )}
       {...props}>
       <div
         className={cn(
-          'relative mt-[-50px] mb-4 h-24 w-24 rounded-full overflow-hidden shadow-xl',
+          'relative mt-[-50px] mb-2 h-20 w-20 rounded-full overflow-hidden shadow-xl',
           'border-2 border-purple-300 dark:border-purple-200',
-          'bg-gray-200 dark:bg-gray-600',
           'animate-voice-glow',
           'animate-pulse-border' // 如果选择 pulse-border 动画
         )}>
-        <img
+        <Avatar
+          radius="full"
           src={avatar}
           alt={name || 'Team member'}
           style={{

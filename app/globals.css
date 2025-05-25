@@ -36,8 +36,11 @@
     --heroui-background: 23 23 23;
     --heroui-foreground: 255 255 255;
     --cookie-button-bg: 23 23 23;
-    --opacity: 0.1;
   }
+}
+
+.opacity-0 {
+  opacity: 100;
 }
 
 @theme inline {
