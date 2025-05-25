@@ -86,11 +86,6 @@ const logos = [
     name: 'VLLM',
   },
   {
-    key: 'vercel',
-    src: '/logos/vercel.svg',
-    name: 'Vercel',
-  },
-  {
     key: 'supabase',
     src: '/logos/supabase.svg',
     name: 'Supabase',

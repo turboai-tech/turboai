@@ -10,7 +10,7 @@ export default function Faq() {
   const t = useTranslations('Faq');
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-0 py-12 sm:py-20 md:px-4 lg:px-8 lg:py-24">
+    <section className="mx-auto w-full max-w-6xl px-0 py-12 sm:py-16 md:px-4 lg:px-8 lg:py-20">
       <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-6">
         <h2 className="px-2 text-2xl leading-7">
           <span className="inline-block md:hidden">{t('short_title')}</span>

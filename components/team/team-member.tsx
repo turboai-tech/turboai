@@ -13,7 +13,7 @@ export default function TeamMemberComponent() {
       name: t('team_member_shaoxiao.name'),
       role: t('team_member_shaoxiao.role'),
       bio: t('team_member_shaoxiao.bio'),
-      avatar: 'https://i.pravatar.cc/150?u=a04258114e29026708c',
+      avatar: '/avatars/member_shaoxiao.jpg',
       social: {
         twitter: 'shaoxiao_hello',
         linkedin: 'shaoxiaoxu',
@@ -24,10 +24,10 @@ export default function TeamMemberComponent() {
       name: t('team_member_ting.name'),
       role: t('team_member_ting.role'),
       bio: t('team_member_ting.bio'),
-      avatar: 'https://i.pravatar.cc/150?u=a04258ab4e29066708c',
+      avatar: '/avatars/member_ting.jpg',
       social: {
-        twitter: 'ting_x',
-        linkedin: 'ting-x',
+        twitter: '',
+        linkedin: '',
         github: '',
       },
     },
@@ -58,7 +58,7 @@ export default function TeamMemberComponent() {
           </Button>
         </div>
       </div>
-      <div className="mt-12 flex w-3/5 flex-wrap gap-2 justify-center">
+      <div className="mt-20 flex w-3/5 flex-wrap gap-2 justify-center">
         {teamMembers.map((member, index) => (
           <TeamMemberCard
             key={index}

@@ -30,7 +30,7 @@ const config = {
       keyframes: {
         appear: {
           from: {
-            opacity: '0'
+            opacity: '0.5'
           },
           to: {
             opacity: '1'
@@ -52,12 +52,33 @@ const config = {
           from: { transform: "translateY(0)" },
           to: { transform: "translateY(calc(-50% - var(--gap)/2))" },
         },
+        'pulse-border': { // 与 CSS 中的 keyframes 名称一致
+          '0%': {
+            boxShadow: '0 0 0 0 rgba(168, 85, 247, 0.7)', // purple-500
+          },
+          '70%': {
+            boxShadow: '0 0 0 10px rgba(168, 85, 247, 0)',
+          },
+          '100%': {
+            boxShadow: '0 0 0 0 rgba(168, 85, 247, 0)',
+          },
+        },
+        'voice-glow': { // 注册 voice-glow 动画
+          '0%, 100%': {
+            boxShadow: '0 0 5px 2px rgba(192, 132, 252, 0.5), 0 0 7px 3px rgba(168, 85, 247, 0.3)',
+          },
+          '50%': {
+            boxShadow: '0 0 10px 4px rgba(192, 132, 252, 0.7), 0 0 15px 6px rgba(168, 85, 247, 0.5)',
+          },
+        }
       },
       animation: {
         appear: 'appear 1s ease-in-out',
         slide: 'slide 750ms ease-in-out',
         "scrolling-banner": "scrolling-banner var(--duration) linear infinite",
         "scrolling-banner-vertical": "scrolling-banner-vertical var(--duration) linear infinite",
+        'pulse-border': 'pulse-border 2s infinite', // 定义动画的名称、时长、循环方式
+        'voice-glow': 'voice-glow 2.5s ease-in-out infinite',
       },
       borderRadius: {
         lg: 'var(--radius)',

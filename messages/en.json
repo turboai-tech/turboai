@@ -127,14 +127,14 @@
         "button": "About us",
         "open_positions": "Open positions",
         "team_member_shaoxiao": {
-            "name": "Shaoxiao Xu",
+            "name": "Shaoxiao",
             "role": "Co-Founder",
-            "bio": "AI Software Engineer, ex-Tesla, ex-MooreThreads, ex-BorderxLab."
+            "bio": "AI Software Engineer, ex-Tesla."
         },
         "team_member_ting": {
             "name": "Ting",
             "role": "Co-Founder",
-            "bio": "AI Product Manager, ex-Google, ex-Tesla."
+            "bio": "AI Product Manager, ex-Tesla."
         }
     },
     "cookies": {

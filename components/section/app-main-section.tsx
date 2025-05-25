@@ -1,15 +1,12 @@
 'use client';
+
 import { Button } from '@heroui/react';
 import { Icon } from '@iconify/react';
 import { AnimatePresence, LazyMotion, domAnimation, m } from 'framer-motion';
 
 import { useTranslations } from 'next-intl';
 import { useLayoutEffect, useRef, useState } from 'react';
-import Faq from '../layout/faq';
 import { subtitle, title } from '../primitives';
-import PartnersComponent from '../scrolling/partners';
-import PowersComponent from '../scrolling/powers';
-import TeamMemberComponent from '../team/team-member';
 import AppScreenshotSkewed from './app-screenshot-skewed';
 
 export default function AppMainSections() {
@@ -51,7 +48,7 @@ export default function AppMainSections() {
   }, []);
 
   return (
-    <div className="relative flex min-h-dvh w-full overflow-hidden bg-background container mx-auto mt-[180px] flex-col items-start px-0">
+    <div className="relative flex min-h-dvh w-full overflow-hidden bg-background container mx-auto mt-[180px] flex-col items-start px-0 lg:mb-0 md:-mb-30 -mb-60">
       <section
         ref={sectionRef}
         className="z-20 flex flex-col items-start justify-center gap-[18px] sm:gap-6">
@@ -174,23 +171,6 @@ export default function AppMainSections() {
               type: 'spring',
             }}>
             <AppScreenshotSkewed className="w-full" />
-          </m.div>
-        </AnimatePresence>
-      </LazyMotion>
-
-      <LazyMotion features={domAnimation}>
-        <AnimatePresence mode="wait">
-          <m.div
-            key="team-member"
-            className="w-full"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, type: 'spring' }}
-            viewport={{ once: true, amount: 0.3 }}>
-            <PartnersComponent />
-            <PowersComponent />
-            <TeamMemberComponent />
-            <Faq />
           </m.div>
         </AnimatePresence>
       </LazyMotion>

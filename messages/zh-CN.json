@@ -127,14 +127,14 @@
         "button": "关于我们",
         "open_positions": "开放职位",
         "team_member_shaoxiao": {
-            "name": "徐绍校",
+            "name": "Shaoxiao",
             "role": "联合创始人",
-            "bio": "AI软件工程师，前特斯拉工程师，前摩尔线程工程师，前BorderxLab工程师"
+            "bio": "AI软件工程师，前特斯拉工程师"
         },
         "team_member_ting": {
-            "name": "马攀婷",
+            "name": "Ting",
             "role": "联合创始人",
-            "bio": "AI产品经理，前谷歌产品经理，前特斯拉产品经理"
+            "bio": "AI产品经理，前特斯拉产品经理"
         }
     },
     "cookies": {

@@ -127,14 +127,14 @@
         "button": "私たちについて",
         "open_positions": "開放中のポジション",
         "team_member_shaoxiao": {
-            "name": "Shaoxiao Xu",
+            "name": "Shaoxiao",
             "role": "共同創業者",
-            "bio": "AIソフトウェアエンジニア、前テスラ、前モアスレッシュレッシュ、前ボーダークスラブ"
+            "bio": "AIソフトウェアエンジニア、前テスラ"
         },
         "team_member_ting": {
             "name": "Ting",
             "role": "共同創業者",
-            "bio": "AIプロダクトマネージャー、前グーグル、前テスラ"
+            "bio": "AIプロダクトマネージャー、前テスラ"
         }
     },
     "cookies": {

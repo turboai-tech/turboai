@@ -1,6 +1,6 @@
 'use client';
 
-import { Avatar, cn, Link } from '@heroui/react';
+import { cn, Link } from '@heroui/react';
 import { Icon } from '@iconify/react';
 import React from 'react';
 
@@ -24,14 +24,29 @@ const TeamMemberCard = React.forwardRef<HTMLDivElement, TeamMemberCardProps>(
     <div
       ref={ref}
       className={cn(
-        'flex flex-col items-center rounded-large text-center shadow-small dark:bg-gray-800 max-w-[25%] mx-auto',
+        'flex flex-col items-center rounded-large bg-content1 px-4 py-6 text-center shadow-small max-w-[25%] mx-auto !opacity-100',
         className
       )}
       {...props}>
-      <Avatar
-        className="h-20 w-20"
-        src={avatar}
-      />
+      <div
+        className={cn(
+          'relative mt-[-50px] mb-4 h-24 w-24 rounded-full overflow-hidden shadow-xl',
+          'border-2 border-purple-300 dark:border-purple-200',
+          'bg-gray-200 dark:bg-gray-600',
+          'animate-voice-glow',
+          'animate-pulse-border' // 如果选择 pulse-border 动画
+        )}>
+        <img
+          src={avatar}
+          alt={name || 'Team member'}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+          }}
+        />
+      </div>
+
       <h3 className="mt-2 font-medium">{name || children}</h3>
       <span className="text-small text-default-500">{role}</span>
       <p className="mb-4 mt-2 text-default-600">{bio}</p>
@@ -39,7 +54,7 @@ const TeamMemberCard = React.forwardRef<HTMLDivElement, TeamMemberCardProps>(
         {social?.twitter && (
           <Link
             isExternal
-            href={`https://x.com/${social.twitter}`}>
+            href="#">
             <Icon
               className="text-default-400"
               icon="bi:twitter"
@@ -50,7 +65,7 @@ const TeamMemberCard = React.forwardRef<HTMLDivElement, TeamMemberCardProps>(
         {social?.linkedin && (
           <Link
             isExternal
-            href={`https://www.linkedin.com/in/${social.linkedin}`}>
+            href="#">
             <Icon
               className="text-default-400"
               icon="bi:linkedin"
@@ -61,7 +76,7 @@ const TeamMemberCard = React.forwardRef<HTMLDivElement, TeamMemberCardProps>(
         {social?.github && (
           <Link
             isExternal
-            href={`https://github.com/${social.github}`}>
+            href="#">
             <Icon
               className="text-default-400"
               icon="bi:github"
