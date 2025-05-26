@@ -171,6 +171,30 @@ export default function Sitemap() {
                   height: '3.58333px',
                 }}></div>
             </div>
+            <div
+              className="absolute z-10"
+              aria-expanded="false"
+              aria-haspopup="dialog"
+              style={{
+                left: '89.1667%',
+                top: '37.7778%',
+                transform: 'translate(-1.79167px, -1.79167px)',
+              }}>
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: 'var(--icon-brand)',
+                  width: '3.58333px',
+                  height: '3.58333px',
+                }}></div>
+              <div
+                className="rounded-full absolute top-0 left-0 animate-ping-3"
+                style={{
+                  backgroundColor: 'var(--icon-brand)',
+                  width: '3.58333px',
+                  height: '3.58333px',
+                }}></div>
+            </div>
           </div>
         </div>
       </div>
