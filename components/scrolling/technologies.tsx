@@ -137,7 +137,7 @@ const logos = [
   },
 ];
 
-export default function PowersComponent() {
+export default function TechnologiesComponent() {
   const t = useTranslations('technologies');
   return (
     <section className="mx-auto w-full px-4 py-8 flex flex-col gap-4">
