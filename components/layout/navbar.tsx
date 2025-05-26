@@ -155,7 +155,7 @@ export default function NavbarComponent(props: NavbarProps) {
           <NavbarItem>
             <Link
               className="flex gap-2 text-inherit"
-              href="/overview">
+              href="/">
               {t('overview')}
             </Link>
           </NavbarItem>

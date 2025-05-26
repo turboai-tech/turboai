@@ -19,9 +19,9 @@ export default function Sitemap() {
 
   return (
     <div className="w-full relative mx-auto px-4 py-8 flex flex-col gap-4">
-      <span className="text-2xl font-bold text-center items-center justify-center text-brand">
-        {t('sitemap_title')}
-      </span>
+      <h2 className="text-center px-2 text-2xl leading-7">
+        <span className="hidden md:inline-block">{t('sitemap_title')}</span>
+      </h2>
       <div className="w-full flex justify-center flex-col items-center mt-[40px]">
         <div className="flex w-full max-w-[1440px]">
           <div className="w-full aspect-[2/1] relative">

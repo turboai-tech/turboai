@@ -141,7 +141,7 @@ export default function PowersComponent() {
   const t = useTranslations('technologies');
   return (
     <section className="mx-auto w-full px-4 py-8 flex flex-col gap-4">
-      <span className="text-xl font-bold text-center items-center justify-center">
+      <span className="text-xl text-center items-center justify-center">
         {t('powers_title')}
       </span>
       <ScrollingBanner
