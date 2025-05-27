@@ -140,30 +140,32 @@ const logos = [
 export default function TechnologiesComponent() {
   const t = useTranslations('technologies');
   return (
-    <section className="mx-auto w-full px-4 py-8 flex flex-col gap-4">
-      <span className="text-xl text-center items-center justify-center">
-        {t('powers_title')}
-      </span>
-      <ScrollingBanner
-        shouldPauseOnHover
-        gap="40px"
-        duration={10}>
-        {logos.map(({ key, src, name }) => (
-          <div
-            key={key}
-            className="flex items-center gap-2 py-2 px-4 rounded shadow min-w-fit whitespace-nowrap">
-            <div className="h-10 w-10 flex items-center justify-center flex-shrink-0">
-              <Image
-                src={src}
-                alt={`${key}_logo`}
-                width={41}
-                height={41}
-              />
+    <div className="w-full flex flex-col gap-4 mt-12 mx-auto">
+      <section className="mx-auto w-full px-4 py-8 flex flex-col gap-4">
+        <span className="text-xl text-center items-center justify-center">
+          {t('powers_title')}
+        </span>
+        <ScrollingBanner
+          shouldPauseOnHover
+          gap="40px"
+          duration={10}>
+          {logos.map(({ key, src, name }) => (
+            <div
+              key={key}
+              className="flex items-center gap-2 py-2 px-4 rounded shadow min-w-fit whitespace-nowrap">
+              <div className="h-10 w-10 flex items-center justify-center flex-shrink-0">
+                <Image
+                  src={src}
+                  alt={`${key}_logo`}
+                  width={41}
+                  height={41}
+                />
+              </div>
+              <span className="font-medium text-sm">{t(name)}</span>
             </div>
-            <span className="font-medium text-sm">{t(name)}</span>
-          </div>
-        ))}
-      </ScrollingBanner>
-    </section>
+          ))}
+        </ScrollingBanner>
+      </section>
+    </div>
   );
 }

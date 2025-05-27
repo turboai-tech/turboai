@@ -24,14 +24,15 @@
         }
     },
     "Navbar": {
-        "overview": "概览",
+        "overview": "首页概览",
         "solutions": "解决方案",
-        "products": "产品",
-        "pricing": "定价",
-        "blog": "博客",
+        "products": "产品中心",
+        "pricing": "定价策略",
+        "blog": "博客与新闻",
         "signin": "登录",
         "signup": "注册",
-        "promo": "加入Turbo ai，获得最佳AI行业解决方案。"
+        "banner_title": "加入Turbo ai，获得最佳AI行业解决方案。",
+        "banner_button": "深入探索"
     },
     "Footer": {
         "value_description": "Turbo ai 专注于为企业提供高效、创新的人工智能解决方案，助力客户实现智能化转型与业务升级，推动行业智能化发展。",
@@ -162,5 +163,21 @@
     },
     "sitemap": {
         "sitemap_title": "我们的位置"
+    },
+    "pricing": {
+        "title": "定价策略",
+        "subtitle": "获取我们AI解决方案的无限访问权限",
+        "description": "我们提供多种定价选项，以满足您的需求。",
+        "question": "您是否在寻找合适的计划？",
+        "question_access": "联系我们的销售团队",
+        "tab_1_title": "SaaS",
+        "tab_1_description": "节省25%",
+        "tab_2_title": "企业定制",
+        "tab_2_description": "",
+        "card_1_title": "推荐",
+        "card_1_description": "适合初创企业和中小企业尝试。",
+        "card_1_price": "联系我们",
+        "card_1_features": "AI ChatBot, AI行业数据标注, TTS, 视频混剪",
+        "card_1_button_text": "立即开始"
     }
 }

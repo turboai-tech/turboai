@@ -15,6 +15,7 @@ import {
   Tabs,
 } from '@heroui/react';
 import { Icon } from '@iconify/react';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
 import { frequencies, tiers } from './pricing-tiers';
@@ -23,6 +24,8 @@ import { FrequencyEnum } from './pricing-types';
 import '@/app/globals.css';
 
 export default function PricingComponent() {
+  const t = useTranslations('pricing');
+
   const [selectedFrequency, setSelectedFrequency] = React.useState(
     frequencies[0]
   );
@@ -51,16 +54,14 @@ export default function PricingComponent() {
             />
           </div>
           <div className="flex max-w-xl flex-col text-center">
-            <h2 className="font-medium leading-7 text-secondary text-purple-400">
-              Pricing
+            <h2 className="font-medium leading-7 text-secondary">
+              {t('title')}
             </h2>
-            <h1 className="text-4xl font-medium tracking-tight">
-              Get unlimited access.
+            <h1 className="text-2xl font-medium tracking-tight">
+              {t('subtitle')}
             </h1>
             <Spacer y={4} />
-            <h2 className="text-large text-default-500">
-              Discover the ideal plan, beginning at under $2 per week.
-            </h2>
+            <h2 className="text-large text-default-500">{t('description')}</h2>
           </div>
           <Spacer y={8} />
           <Tabs
@@ -77,25 +78,25 @@ export default function PricingComponent() {
               className="pr-0.5"
               title={
                 <div className="flex items-center gap-2">
-                  <p>Pay Yearly</p>
+                  <p>{t('tab_1_title')}</p>
                   <Chip
                     color="secondary"
                     variant="flat">
-                    Save 25%
+                    {t('tab_1_description')}
                   </Chip>
                 </div>
               }
             />
             <Tab
               key={FrequencyEnum.Quarterly}
-              title="Pay Quarterly"
+              title={t('tab_2_title')}
             />
           </Tabs>
           <Spacer y={12} />
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="flex gap-4 justify-center">
             {tiers.map((tier) => (
               <Card
-                key={tier.key}
+                key={t(tier.title)}
                 isBlurred
                 className={cn('bg-background/60 p-3 dark:bg-default-100/50', {
                   '!border-small border-secondary/50': tier.mostPopular,
@@ -110,17 +111,17 @@ export default function PricingComponent() {
                   </Chip>
                 ) : null}
                 <CardHeader className="flex flex-col items-start gap-2 pb-6">
-                  <h2 className="text-large font-medium">{tier.title}</h2>
+                  <h2 className="text-large font-medium">{t(tier.title)}</h2>
                   <p className="text-medium text-default-500">
-                    {tier.description}
+                    {tier.description ? t(tier.description) : null}
                   </p>
                 </CardHeader>
                 <Divider />
                 <CardBody className="gap-8">
                   <p className="flex items-baseline gap-1 pt-2">
-                    <span className="inline bg-gradient-to-br from-foreground to-foreground-600 bg-clip-text text-4xl font-semibold leading-7 tracking-tight text-transparent">
+                    <span className="inline bg-gradient-to-br from-foreground to-foreground-600 bg-clip-text text-3xl font-semibold leading-7 tracking-tight text-transparent">
                       {typeof tier.price === 'string'
-                        ? tier.price
+                        ? t(tier.price)
                         : tier.price[selectedFrequency.key]}
                     </span>
                     {typeof tier.price !== 'string' ? (
@@ -132,18 +133,33 @@ export default function PricingComponent() {
                     ) : null}
                   </p>
                   <ul className="flex flex-col gap-2">
-                    {tier.features?.map((feature: string) => (
-                      <li
-                        key={feature}
-                        className="flex items-center gap-2">
-                        <Icon
-                          className="text-secondary"
-                          icon="ci:check"
-                          width={24}
-                        />
-                        <p className="text-default-500">{feature}</p>
-                      </li>
-                    ))}
+                    {typeof tier.features === 'string'
+                      ? t(tier.features)
+                          .split(',')
+                          .map((feature: string) => (
+                            <li
+                              key={feature}
+                              className="flex items-center gap-2">
+                              <Icon
+                                className="text-secondary"
+                                icon="ci:check"
+                                width={24}
+                              />
+                              <p className="text-default-500">{feature}</p>
+                            </li>
+                          ))
+                      : tier.features?.map((feature: string) => (
+                          <li
+                            key={feature}
+                            className="flex items-center gap-2">
+                            <Icon
+                              className="text-secondary"
+                              icon="ci:check"
+                              width={24}
+                            />
+                            <p className="text-default-500">{feature}</p>
+                          </li>
+                        ))}
                   </ul>
                 </CardBody>
                 <CardFooter>
@@ -153,7 +169,7 @@ export default function PricingComponent() {
                     color="secondary"
                     href={tier.href}
                     variant={tier.buttonVariant}>
-                    {tier.buttonText}
+                    {t(tier.buttonText)}
                   </Button>
                 </CardFooter>
               </Card>
@@ -162,12 +178,12 @@ export default function PricingComponent() {
           <Spacer y={12} />
           <div className="flex py-2">
             <p className="text-default-400">
-              Are you an open source developer?&nbsp;
+              {t('question')} &nbsp;
               <Link
                 color="foreground"
                 href="#"
                 underline="always">
-                Get a discount
+                {t('question_access')}
               </Link>
             </p>
           </div>

@@ -31,7 +31,7 @@ export type Tier = {
   description?: string;
   mostPopular?: boolean;
   featured?: boolean;
-  features?: string[];
+  features?: string[] | string;
   buttonText: string;
   buttonColor?: ButtonProps["color"];
   buttonVariant: ButtonProps["variant"];

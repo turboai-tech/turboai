@@ -27,38 +27,26 @@ export default function TeamMemberComponent() {
       avatar: '/avatars/member_ting.jpg',
       social: {
         twitter: '',
-        linkedin: '',
+        linkedin: 'ting',
         github: '',
       },
     },
   ];
 
   return (
-    <section className="flex flex-col items-center py-24">
-      <div className="flex flex-col text-center">
-        <h2 className="font-medium text-secondary text-purple-500">
-          {t('subtitle')}
-        </h2>
-        <h1 className="text-2xl font-medium tracking-tight">{t('title')}</h1>
+    <section className="flex max-w-4xl flex-col items-center py-24 mx-auto">
+      <div className="flex max-w-xl flex-col text-center">
+        <h2 className="font-medium text-secondary">{t('subtitle')}</h2>
+        <h1 className="text-3xl font-medium tracking-tight">{t('title')}</h1>
         <Spacer y={4} />
-        <h2 className="text-large text-gray-500">{t('description')}</h2>
+        <h2 className="text-large text-default-500">{t('description')}</h2>
         <Spacer y={4} />
-        <div className="flex w-full justify-center gap-6">
-          <Button
-            variant="ghost"
-            radius="full"
-            className="border-1 border-default-100">
-            {t('button')}
-          </Button>
-          <Button
-            color="secondary"
-            radius="full"
-            className="border-1 border-default-100 bg-gradient-to-tr from-purple-500 to-purple-400 text-white">
-            {t('open_positions')}
-          </Button>
+        <div className="flex w-full justify-center gap-2">
+          <Button variant="ghost">{t('button')}</Button>
+          <Button color="secondary">{t('open_positions')}</Button>
         </div>
       </div>
-      <div className="mt-20 flex w-3/5 flex-wrap gap-2 justify-center">
+      <div className="mt-12 flex w-full gap-8 flex-wrap justify-center items-center mx-auto">
         {teamMembers.map((member, index) => (
           <TeamMemberCard
             key={index}

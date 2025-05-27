@@ -122,7 +122,7 @@ export default function FooterComponent() {
   );
 
   return (
-    <footer className="flex w-full mx-auto flex-col bg-background">
+    <footer className="flex w-4/5 mx-auto flex-col bg-background">
       <div className="pb-8 pt-16 sm:pt-24 lg:pt-32">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 md:pr-8">

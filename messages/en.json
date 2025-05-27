@@ -28,10 +28,11 @@
         "solutions": "Solutions",
         "products": "Products",
         "pricing": "Pricing",
-        "blog": "Blog",
+        "blog": "Blog & News",
         "signin": "Sign In",
         "signup": "Sign Up",
-        "promo": "Join Turbo ai and get the best AI solutions."
+        "banner_title": "Join Turbo ai and get the best AI solutions.",
+        "banner_button": "Explore"
     },
     "Footer": {
         "value_description": "Turbo ai is dedicated to delivering efficient and innovative AI solutions for enterprises, empowering clients to achieve intelligent transformation and business advancement, and driving the development of industry intelligence.",
@@ -162,5 +163,21 @@
     },
     "sitemap": {
         "sitemap_title": "Where we are"
+    },
+    "pricing": {
+        "title": "Pricing",
+        "subtitle": "Get unlimited access to our AI solutions",
+        "description": "We offer a range of pricing options to suit your needs.",
+        "question": "Are you having trouble finding the right plan?",
+        "question_access": "Contact our sales team",
+        "tab_1_title": "SaaS",
+        "tab_1_description": "Save 25%",
+        "tab_2_title": "Custom for Enterprise",
+        "tab_2_description": "",
+        "card_1_title": "Recommended",
+        "card_1_description": "For startups and small businesses that want to try out.",
+        "card_1_price": "Contact us",
+        "card_1_features": "AI ChatBot, AI Data Labing, TTS, Video Mixing",
+        "card_1_button_text": "Get Started"
     }
 }

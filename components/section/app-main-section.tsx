@@ -8,17 +8,17 @@ import { useTranslations } from 'next-intl';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { subtitle, title } from '../primitives';
 import AppScreenshotSkewed from './app-screenshot-skewed';
+import { FadeInImage } from './fade-in-image';
 
 export default function AppMainSections() {
   const t = useTranslations('AppMainSection');
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [dynamicMargin, setDynamicMargin] = useState(0);
+  const [dynamicMargin, setDynamicMargin] = useState(-200);
 
   useLayoutEffect(() => {
     function updateMargin(node: HTMLDivElement | null) {
       if (node) {
-        // 这里可以调整倍数
-        const margin = -node.offsetHeight * 0.75;
+        const margin = -node.offsetHeight * 0.6;
         setDynamicMargin(margin);
       }
     }
@@ -26,10 +26,10 @@ export default function AppMainSections() {
     const currentSection = sectionRef.current;
     updateMargin(currentSection);
 
-    // 监听窗口大小变化
+    // listen to window size change
     window.addEventListener('resize', () => updateMargin(currentSection));
 
-    // 监听 section 内容变化
+    // listen to section content change
     let resizeObserver: ResizeObserver | null = null;
     if (currentSection) {
       resizeObserver = new window.ResizeObserver(() =>
@@ -48,12 +48,12 @@ export default function AppMainSections() {
   }, []);
 
   return (
-    <div className="relative flex min-h-dvh w-full overflow-hidden bg-background container mx-auto mt-[180px] flex-col items-start px-0 lg:mb-0 md:-mb-30 -mb-60">
+    <main className="relative container mx-auto mt-[80px] flex max-w-[1024px] flex-col items-start px-8">
       <section
         ref={sectionRef}
         className="z-20 flex flex-col items-start justify-center gap-[18px] sm:gap-6">
         <Button
-          className="h-9 overflow-hidden border-1 border-default-100 bg-default-50 px-[18px] py-2 text-small font-normal leading-5 text-default-500"
+          className="h-9 overflow-hidden border-1 border-default-100 dark:bg-default-50 bg-default-300 px-[18px] py-2 text-small font-normal leading-5 text-default-500"
           endContent={
             <Icon
               className="flex-none outline-none [&>path]:stroke-[2]"
@@ -79,11 +79,11 @@ export default function AppMainSections() {
               auto: { width: 'auto' },
               kick: { width: 'auto' },
             }}>
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
               <m.div
                 key="hero-section-title"
                 animate={{ filter: 'blur(0px)', opacity: 1, x: 0 }}
-                className="text-start  font-bold leading-[1.2] tracking-tighter sm:text-[2px]"
+                className="text-start text-[clamp(40px,10vw,44px)] font-bold leading-[1.2] tracking-tighter sm:text-[64px]"
                 initial={{ filter: 'blur(16px)', opacity: 0, x: 15 + 1 * 2 }}
                 transition={{
                   bounce: 0,
@@ -91,14 +91,14 @@ export default function AppMainSections() {
                   duration: 0.8 + 0.1 * 8,
                   type: 'spring',
                 }}>
-                <div className="bg-default-foreground text-small text-background">
+                <div className="bg-hero-section-title bg-clip-text text-transparent">
                   <span className={title()}>{t('title_1')}&nbsp;</span>
                   <span className={title({ color: 'violet' })}>
                     {t('title_2')}&nbsp;
                   </span>
                   <span className={title()}>{t('title_3')}</span>
                 </div>
-                <div className="bg-default-foreground text-small text-background">
+                <div className="bg-hero-section-title bg-clip-text text-transparent">
                   <span className={subtitle()}>{t('subtitle')}</span>
                 </div>
               </m.div>
@@ -130,12 +130,12 @@ export default function AppMainSections() {
                 }}>
                 <Button
                   color="success"
-                  className="bg-gradient-to-tr from-purple-500 via-violet-500 to-pink-400 text-white shadow-lg h-10 w-[163px] px-[16px] py-[10px] leading-5 font-medium text-small"
+                  className="bg-gradient-to-tr from-[#fd7bf8] to-[#b249f8] text-default-900 shadow-lg h-10 w-[163px] px-[16px] py-[10px] leading-5 font-medium text-small"
                   radius="full">
                   {t('button_get_demo')}
                 </Button>
                 <Button
-                  className="h-10 w-[163px] border-1 border-default-100 px-[16px] py-[10px] text-small font-medium leading-5"
+                  className="h-10 w-[163px] border-1 border-default-300 px-[16px] py-[10px] text-small font-medium leading-5"
                   endContent={
                     <span className="pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-default-100">
                       <Icon
@@ -159,9 +159,10 @@ export default function AppMainSections() {
           <m.div
             key="hero-section-app-screenshot"
             animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
-            className="w-full"
+            className="w-full 2xl:mt-[100px]"
             style={{
               marginTop: dynamicMargin,
+              marginBottom: 40,
             }}
             initial={{ filter: 'blur(16px)', opacity: 0, y: 300 }}
             transition={{
@@ -174,6 +175,24 @@ export default function AppMainSections() {
           </m.div>
         </AnimatePresence>
       </LazyMotion>
-    </div>
+      <div className="pointer-events-none absolute inset-0 top-[-25%] z-10 scale-150 select-none sm:scale-125">
+        {/**
+         * If using in a nextjs project, use next/image instead of <img> in <FadeInImage>.
+         * Also pass the following additional props to <FadeInImage>.
+         *
+         * ```tsx
+         * <FadeInImage
+         *   fill
+         *   priority
+         *   // existing code...
+         * />
+         * ```
+         */}
+        <FadeInImage
+          alt="Gradient background"
+          src="bg-gradient.png"
+        />
+      </div>
+    </main>
   );
 }

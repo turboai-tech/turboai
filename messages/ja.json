@@ -24,14 +24,15 @@
         }
     },
     "Navbar": {
-        "overview": "概要",
+        "overview": "ホーム概要",
         "solutions": "ソリューション",
-        "products": "製品",
-        "pricing": "価格",
-        "blog": "ブログ",
+        "products": "製品センター",
+        "pricing": "価格戦略",
+        "blog": "ブログとニュース",
         "signin": "ログイン",
         "signup": "登録",
-        "promo": "Turbo ai に参加して、最高のAIソリューションを手に入れましょう。"
+        "banner_title": "Turbo ai に参加して、最高のAIソリューションを手に入れましょう。",
+        "banner_button": "詳細を見る"
     },
     "Footer": {
         "value_description": "Turbo ai は、企業向けに効率的で革新的なAIソリューションを提供し、お客様のインテリジェントな変革とビジネスの成長を支援し、業界のスマート化を推進します。",
@@ -162,5 +163,21 @@
     },
     "sitemap": {
         "sitemap_title": "私たちの場所"
+    },
+    "pricing": {
+        "title": "価格戦略",
+        "subtitle": "無制限のアクセスを提供する",
+        "description": "私たちは様々な価格オプションを提供し、お客様のニーズに合わせます。",
+        "question": "適切なプランを見つけるのに苦労していますか？",
+        "question_access": "販売チームに連絡してください",
+        "tab_1_title": "SaaS",
+        "tab_1_description": "25%オフ",
+        "tab_2_title": "エンタープライズ向けカスタム",
+        "tab_2_description": "",
+        "card_1_title": "おすすめ",
+        "card_1_description": "スタートアップや中小企業が試すためのプランです。",
+        "card_1_price": "お問い合わせ",
+        "card_1_features": "AI ChatBot, AI データラベリング, TTS, ビデオミックス",
+        "card_1_button_text": "今すぐ始める"
     }
 }

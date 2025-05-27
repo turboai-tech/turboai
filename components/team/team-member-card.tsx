@@ -24,29 +24,14 @@ const TeamMemberCard = React.forwardRef<HTMLDivElement, TeamMemberCardProps>(
     <div
       ref={ref}
       className={cn(
-        'flex flex-col items-center rounded-large bg-content1 px-4 py-6 text-center shadow-small max-w-[25%] mx-auto opacity-100',
+        'flex flex-col items-center rounded-large bg-content1 px-4 py-6 text-center shadow-small',
         className
       )}
       {...props}>
-      <div
-        className={cn(
-          'relative mt-[-50px] mb-2 h-20 w-20 rounded-full overflow-hidden shadow-xl',
-          'border-2 border-purple-300 dark:border-purple-200',
-          'animate-voice-glow',
-          'animate-pulse-border' // 如果选择 pulse-border 动画
-        )}>
-        <Avatar
-          radius="full"
-          src={avatar}
-          alt={name || 'Team member'}
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-          }}
-        />
-      </div>
-
+      <Avatar
+        className="h-20 w-20"
+        src={avatar}
+      />
       <h3 className="mt-2 font-medium">{name || children}</h3>
       <span className="text-small text-default-500">{role}</span>
       <p className="mb-4 mt-2 text-default-600">{bio}</p>

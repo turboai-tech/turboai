@@ -61,7 +61,7 @@ const AppScreenshotSkewed = ({ ...props }: ComponentProps<'svg'>) => (
               transform="matrix(0.965926 -0.258819 0.707107 0.707107 483.351 239.844)"
               x="125"
               y="16">
-              heroui.pro
+              turbo-tech.ai
             </text>
             <g clipPath="url(#clip3_3051_12573)">
               <path
