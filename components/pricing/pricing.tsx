@@ -57,11 +57,11 @@ export default function PricingComponent() {
             <h2 className="font-medium leading-7 text-secondary">
               {t('title')}
             </h2>
-            <h1 className="text-2xl font-medium tracking-tight">
+            <h1 className="text-xl font-medium tracking-tight">
               {t('subtitle')}
             </h1>
             <Spacer y={4} />
-            <h2 className="text-large text-default-500">{t('description')}</h2>
+            <h2 className="text-base text-default-500">{t('description')}</h2>
           </div>
           <Spacer y={8} />
           <Tabs

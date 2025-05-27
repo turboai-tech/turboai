@@ -8,7 +8,6 @@ import { useTranslations } from 'next-intl';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { subtitle, title } from '../primitives';
 import AppScreenshotSkewed from './app-screenshot-skewed';
-import { FadeInImage } from './fade-in-image';
 
 export default function AppMainSections() {
   const t = useTranslations('AppMainSection');
@@ -79,7 +78,7 @@ export default function AppMainSections() {
               auto: { width: 'auto' },
               kick: { width: 'auto' },
             }}>
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="sync">
               <m.div
                 key="hero-section-title"
                 animate={{ filter: 'blur(0px)', opacity: 1, x: 0 }}
@@ -155,7 +154,7 @@ export default function AppMainSections() {
         </LazyMotion>
       </section>
       <LazyMotion features={domAnimation}>
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="sync">
           <m.div
             key="hero-section-app-screenshot"
             animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
@@ -175,24 +174,14 @@ export default function AppMainSections() {
           </m.div>
         </AnimatePresence>
       </LazyMotion>
-      <div className="pointer-events-none absolute inset-0 top-[-25%] z-10 scale-150 select-none sm:scale-125">
-        {/**
-         * If using in a nextjs project, use next/image instead of <img> in <FadeInImage>.
-         * Also pass the following additional props to <FadeInImage>.
-         *
-         * ```tsx
-         * <FadeInImage
-         *   fill
-         *   priority
-         *   // existing code...
-         * />
-         * ```
-         */}
+      {/* <div className="pointer-events-none absolute inset-0 top-[-25%] z-10 scale-150 select-none sm:scale-125">
         <FadeInImage
+          fill
+          priority
           alt="Gradient background"
-          src="bg-gradient.png"
+          src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/backgrounds/bg-gradient.png"
         />
-      </div>
+      </div> */}
     </main>
   );
 }

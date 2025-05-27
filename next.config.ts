@@ -11,7 +11,9 @@ const nextConfig: NextConfig = {
             },
         ];
     },
-    
+    images: {
+        remotePatterns: [new URL('https://nextuipro.nyc3.cdn.digitaloceanspaces.com/**')],
+    },
 };
  
 const withNextIntl = createNextIntlPlugin();

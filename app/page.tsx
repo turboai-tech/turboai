@@ -8,7 +8,7 @@ import TeamMemberComponent from '@/components/team/team-member';
 
 export default function App() {
   return (
-    <div>
+    <>
       <AppMainSections />
       <PartnersComponent />
       <TechnologiesComponent />
@@ -16,6 +16,6 @@ export default function App() {
       <TeamMemberComponent />
       <Faq />
       <Sitemap />
-    </div>
+    </>
   );
 }

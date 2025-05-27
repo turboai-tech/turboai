@@ -59,7 +59,7 @@ export default async function RootLayout({
         </head>
         <body
           className={clsx(
-            'min-h-screen bg-background font-sans antialiased overflow-auto',
+            'min-h-screen bg-background font-sans antialiased overflow-y-auto',
             fontSans.variable,
             fontPacifico.variable
           )}>

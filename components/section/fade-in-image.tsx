@@ -3,14 +3,16 @@
 /* eslint-disable jsx-a11y/alt-text */
 
 import { LazyMotion, domAnimation, m, useAnimation } from 'framer-motion';
-import { useEffect, useState, type ImgHTMLAttributes } from 'react';
+import type { ImageProps } from 'next/image';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 const animationVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 };
 
-export const FadeInImage = (props: ImgHTMLAttributes<HTMLImageElement>) => {
+export const FadeInImage = (props: ImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const animationControls = useAnimation();
 
@@ -47,7 +49,7 @@ export const FadeInImage = (props: ImgHTMLAttributes<HTMLImageElement>) => {
          * ```
          */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           {...props}
           onLoad={() => setIsLoaded(true)}
         />
