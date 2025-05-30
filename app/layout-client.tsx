@@ -19,9 +19,14 @@ export default function RootLayoutClient({
     <div
       lang={locale}
       className="items-center justify-center">
-      <BannerComponent />
+      {!isDashboard && <BannerComponent />}
       {!isDashboard && <NavbarComponent />}
-      <main className="mx-auto w-4/5">{children}</main>
+      {isDashboard ? (
+        <main className="mx-auto w-full">{children}</main>
+      ) : (
+        <main className="mx-auto w-4/5">{children}</main>
+      )}
+
       {!isDashboard && <FooterComponent />}
     </div>
   );

@@ -3,48 +3,23 @@
 import {
   Avatar,
   Button,
-  cn,
+  Input,
+  Link,
+  ScrollShadow,
   Spacer,
-  Tooltip,
   useDisclosure,
 } from '@heroui/react';
 import { Icon } from '@iconify/react';
-import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';
 import React from 'react';
-import { useMediaQuery } from 'usehooks-ts';
 
-import { AcmeIcon } from '@/components/layout/logo';
-import Sidebar from '@/components/layout/sidebar';
-import SidebarDrawer from '@/components/layout/sidebar-drawer';
-import MessagingChatHeader from './messaging-chat-header';
-import MessagingChatInbox from './messaging-chat-inbox';
-import MessagingChatProfile from './messaging-chat-profile';
-import MessagingChatWindow from './messaging-chat-window';
-import messagingSidebarItems from './messaging-sidebar-items';
+import SidebarDrawer from '@/components/sidebar/sidebar-drawer';
+import { sectionItemsWithTeams } from '@/components/sidebar/sidebar-items';
 
-const variants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 20 : -20,
-    opacity: 0,
-  }),
-  center: {
-    zIndex: 1,
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => ({
-    zIndex: 0,
-    x: direction < 0 ? 20 : -20,
-    opacity: 0,
-  }),
-};
+import { Logo } from '@/components/icons';
+import Sidebar from '@/components/sidebar/sidebar';
+import { ThemeSwitch } from '@/components/theme-switch';
 
 /**
- *  This example requires installing the `usehooks-ts` package:
- * `npm install usehooks-ts`
- *
- * import {useMediaQuery} from "usehooks-ts";
- *
  * 💡 TIP: You can use the usePathname hook from Next.js App Router to get the current pathname
  * and use it as the active key for the Sidebar component.
  *
@@ -54,294 +29,163 @@ const variants = {
  * const pathname = usePathname();
  * const currentPath = pathname.split("/")?.[1]
  *
- * <MessagingSidebar defaultSelectedKey="chat" selectedKeys={[currentPath]} />
+ * <Sidebar defaultSelectedKey="home" selectedKeys={[currentPath]} />
  * ```
  */
-export default function Component() {
-  const [[page, direction], setPage] = React.useState([0, 0]);
+export default function Component({
+  children,
+  header,
+  title = 'Overview',
+}: {
+  children?: React.ReactNode;
+  header?: React.ReactNode;
+  title?: string;
+}) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [isCollapsed, setIsCollapsed] = React.useState(false);
-  const {
-    isOpen: isProfileSidebarOpen,
-    onOpenChange: onProfileSidebarOpenChange,
-  } = useDisclosure();
 
-  const isCompact = useMediaQuery('(max-width: 1024px)');
-  const isMobile = useMediaQuery('(max-width: 768px)');
-
-  const onToggle = React.useCallback(() => {
-    setIsCollapsed((prev) => !prev);
-  }, []);
-
-  const paginate = React.useCallback(
-    (newDirection: number) => {
-      setPage((prev) => {
-        if (!isCompact) return prev;
-
-        const currentPage = prev[0];
-
-        if (currentPage < 0 || currentPage > 2) return [currentPage, prev[1]];
-
-        return [currentPage + newDirection, newDirection];
-      });
-    },
-    [isCompact]
-  );
-
-  const content = React.useMemo(() => {
-    let component = (
-      <MessagingChatInbox
-        page={page}
-        paginate={paginate}
-      />
-    );
-
-    if (isCompact) {
-      switch (page) {
-        case 1:
-          component = <MessagingChatWindow paginate={paginate} />;
-          break;
-        case 2:
-          component = <MessagingChatProfile paginate={paginate} />;
-          break;
-      }
-
-      return (
-        <LazyMotion features={domAnimation}>
-          <m.div
-            key={page}
-            animate="center"
-            className="col-span-12"
-            custom={direction}
-            exit="exit"
-            initial="enter"
-            transition={{
-              x: { type: 'spring', stiffness: 300, damping: 30 },
-              opacity: { duration: 0.2 },
-            }}
-            variants={variants}>
-            {component}
-          </m.div>
-        </LazyMotion>
-      );
-    }
-
-    return (
-      <>
-        <MessagingChatInbox className="lg:col-span-6 xl:col-span-4" />
-        <MessagingChatWindow
-          className="lg:col-span-6 xl:col-span-5"
-          toggleMessagingProfileSidebar={onProfileSidebarOpenChange}
-        />
-        <div className="hidden xl:col-span-3 xl:block">
-          <SidebarDrawer
-            className="xl:block"
-            isOpen={isProfileSidebarOpen}
-            sidebarPlacement="left"
-            sidebarWidth={320}
-            onOpenChange={onProfileSidebarOpenChange}>
-            <MessagingChatProfile />
-          </SidebarDrawer>
-        </div>
-      </>
-    );
-  }, [
-    isCompact,
-    page,
-    paginate,
-    direction,
-    isProfileSidebarOpen,
-    onProfileSidebarOpenChange,
-  ]);
-
-  return (
-    <div className="flex h-dvh w-full gap-x-3">
-      <SidebarDrawer
-        className={cn('min-w-[288px] rounded-lg', {
-          'min-w-[76px]': isCollapsed,
-        })}
-        hideCloseButton={true}
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}>
-        <div
-          className={cn(
-            'will-change relative flex h-full w-72 flex-col bg-default-100 p-6 transition-width',
-            {
-              'w-[83px] items-center px-[6px] py-6': isCollapsed,
-            }
-          )}>
-          <div
-            className={cn('flex items-center gap-3 pl-2', {
-              'justify-center gap-0 pl-0': isCollapsed,
-            })}>
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground">
-              <AcmeIcon className="text-background" />
-            </div>
-            <span
-              className={cn(
-                'w-full text-small font-bold uppercase opacity-100',
-                {
-                  'w-0 opacity-0': isCollapsed,
-                }
-              )}>
-              Acme
-            </span>
-            <div className={cn('flex-end flex', { hidden: isCollapsed })}>
+  const content = (
+    <div className="relative flex h-full w-72 flex-1 flex-col bg-gradient-to-b from-default-50 via-danger-80 to-primary-50 p-6">
+      <div className="flex items-center gap-2 px-2">
+        <div className="flex h-8 w-fit items-center justify-center rounded-full border-small border-foreground/20">
+          <Link
+            className="w-full items-center text-foreground"
+            href="/">
+            <div className="flex items-center justify-between gap-1">
               <Icon
-                className="cursor-pointer dark:text-primary-foreground/60 [&>g]:stroke-[1px]"
-                icon="solar:round-alt-arrow-left-line-duotone"
-                width={24}
-                onClick={isMobile ? onOpenChange : onToggle}
+                icon="lucide:layers"
+                className="text-primary text-2xl h-8"
+              />
+              <Logo
+                width={96}
+                height={32}
+                className="md:block items-center h-8"
               />
             </div>
+          </Link>
+        </div>
+      </div>
+
+      <Spacer y={8} />
+
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-3 px-2">
+          <Avatar
+            size="sm"
+            src="https://i.pravatar.cc/150?u=a04258114e29028708c"
+          />
+          <div className="flex flex-col">
+            <p className="text-small text-foreground">Jane Doe</p>
+            <p className="text-tiny text-default-500">Product Designer</p>
           </div>
-          <Spacer y={6} />
-          <div className="flex items-center gap-3 px-3">
-            <Avatar
-              isBordered
-              size="sm"
-              src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/avatars/e1b8ec120710c09589a12c0004f85825.jpg"
+        </div>
+        <Input
+          fullWidth
+          aria-label="search"
+          classNames={{
+            base: 'px-1',
+            inputWrapper:
+              'bg-default-400/20 data-[hover=true]:bg-default-500/30 group-data-[focus=true]:bg-default-500/20',
+            input:
+              'placeholder:text-default-600 group-data-[has-value=true]:text-foreground',
+          }}
+          labelPlacement="outside"
+          placeholder="Search..."
+          startContent={
+            <Icon
+              className="text-default-600 [&>g]:stroke-[2px]"
+              icon="solar:magnifer-linear"
+              width={18}
             />
-            <div
-              className={cn('flex max-w-full flex-col', {
-                hidden: isCollapsed,
-              })}>
-              <p className="text-small font-medium text-foreground">
-                Kate Moore
-              </p>
-              <p className="text-tiny font-medium text-default-400">
-                Customer Support
-              </p>
-            </div>
-          </div>
+          }
+        />
+      </div>
 
-          <Spacer y={6} />
+      <ScrollShadow className="-mr-6 h-full max-h-full py-6 pr-6">
+        <Sidebar
+          defaultSelectedKey="home"
+          iconClassName="text-default-600 group-data-[selected=true]:text-foreground"
+          itemClasses={{
+            base: 'data-[selected=true]:bg-default-400/20 data-[hover=true]:bg-default-400/10',
+            title:
+              'text-default-600 group-data-[selected=true]:text-foreground',
+          }}
+          items={sectionItemsWithTeams}
+          sectionClasses={{
+            heading: 'text-default-600 font-medium',
+          }}
+          variant="flat"
+        />
+      </ScrollShadow>
 
-          <Sidebar
-            defaultSelectedKey="chat"
-            iconClassName="group-data-[selected=true]:text-default-50"
-            isCompact={isCollapsed}
-            itemClasses={{
-              base: 'px-3 rounded-large data-[selected=true]:!bg-foreground',
-              title: 'group-data-[selected=true]:text-default-50',
-            }}
-            items={messagingSidebarItems}
-          />
+      <Spacer y={8} />
 
-          <Spacer y={8} />
+      <div className="mt-auto flex flex-col">
+        <Button
+          fullWidth
+          className="justify-start text-default-600 data-[hover=true]:text-black"
+          startContent={
+            <Icon
+              className="text-default-600"
+              icon="solar:info-circle-line-duotone"
+              width={24}
+            />
+          }
+          variant="light">
+          Help & Information
+        </Button>
+        <Button
+          className="justify-start text-default-600 data-[hover=true]:text-black"
+          startContent={
+            <Icon
+              className="rotate-180 text-default-600"
+              icon="solar:minus-circle-line-duotone"
+              width={24}
+            />
+          }
+          variant="light">
+          Log Out
+        </Button>
+      </div>
+    </div>
+  );
 
-          <div
-            className={cn('mt-auto flex flex-col', {
-              'items-center': isCollapsed,
-            })}>
-            {isCollapsed && (
-              <Button
-                isIconOnly
-                className="flex h-10 w-10 text-default-600"
-                size="sm"
-                variant="light"
-                onPress={() => paginate && paginate(page - 1)}>
-                <Icon
-                  className="cursor-pointer dark:text-primary-foreground/60 [&>g]:stroke-[1px]"
-                  height={24}
-                  icon="solar:round-alt-arrow-right-line-duotone"
-                  width={24}
-                  onClick={onToggle}
-                />
-              </Button>
-            )}
-            <Tooltip
-              content="Support"
-              isDisabled={!isCollapsed}
-              placement="right">
-              <Button
-                fullWidth
-                className={cn(
-                  'justify-start truncate text-default-600 data-[hover=true]:text-foreground',
-                  {
-                    'justify-center': isCollapsed,
-                  }
-                )}
-                isIconOnly={isCollapsed}
-                startContent={
-                  isCollapsed ? null : (
-                    <Icon
-                      className="flex-none text-default-600"
-                      icon="solar:info-circle-line-duotone"
-                      width={24}
-                    />
-                  )
-                }
-                variant="light">
-                {isCollapsed ? (
-                  <Icon
-                    className="text-default-500"
-                    icon="solar:info-circle-line-duotone"
-                    width={24}
-                  />
-                ) : (
-                  'Support'
-                )}
-              </Button>
-            </Tooltip>
-            <Tooltip
-              content="Log Out"
-              isDisabled={!isCollapsed}
-              placement="right">
-              <Button
-                className={cn(
-                  'justify-start text-default-500 data-[hover=true]:text-foreground',
-                  {
-                    'justify-center': isCollapsed,
-                  }
-                )}
-                isIconOnly={isCollapsed}
-                startContent={
-                  isCollapsed ? null : (
-                    <Icon
-                      className="flex-none rotate-180 text-default-500"
-                      icon="solar:minus-circle-line-duotone"
-                      width={24}
-                    />
-                  )
-                }
-                variant="light">
-                {isCollapsed ? (
-                  <Icon
-                    className="rotate-180 text-default-500"
-                    icon="solar:minus-circle-line-duotone"
-                    width={24}
-                  />
-                ) : (
-                  'Log Out'
-                )}
-              </Button>
-            </Tooltip>
-          </div>
-        </div>
+  return (
+    <div className="flex h-screen w-full">
+      <SidebarDrawer
+        className="flex-none"
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}>
+        {content}
       </SidebarDrawer>
-
-      <main className="w-full">
-        <div className="grid grid-cols-12 gap-0 overflow-y-hidden p-0 pb-2 sm:rounded-large sm:border-small sm:border-default-200">
-          <MessagingChatHeader
-            aria-hidden={!isMobile}
-            className="col-span-12 sm:hidden"
-            page={page}
-            paginate={paginate}
-            onOpen={onOpen}
-          />
-          {isCompact ? (
-            <AnimatePresence
-              custom={direction}
-              initial={false}
-              mode="wait">
-              {content}
-            </AnimatePresence>
-          ) : (
-            content
-          )}
-        </div>
-      </main>
+      <div className="flex w-full flex-col gap-y-4 p-4 sm:max-w-[calc(100%_-_288px)]">
+        <header className="flex h-16 min-h-16 items-center justify-between gap-2 overflow-x-scroll rounded-medium border-small border-divider px-4 py-2">
+          <div className="flex max-w-full items-center gap-2">
+            <Button
+              isIconOnly
+              className="flex sm:hidden"
+              size="sm"
+              variant="light"
+              onPress={onOpen}>
+              <Icon
+                className="text-default-500"
+                height={24}
+                icon="solar:hamburger-menu-outline"
+                width={24}
+              />
+            </Button>
+            <ThemeSwitch />
+            <h2 className="truncate text-medium font-medium text-default-700">
+              {title}
+            </h2>
+          </div>
+          {header}
+        </header>
+        <main className="flex h-full">
+          <div className="flex h-full w-full flex-col gap-4 rounded-medium border-small border-divider p-6">
+            {children}
+          </div>
+        </main>
+      </div>
     </div>
   );
 }

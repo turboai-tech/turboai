@@ -1,4 +1,4 @@
-import type {MessagingChatMessageProps} from "./data";
+import type { MessagingChatMessageProps } from "./data";
 
 const messagingChatConversations: MessagingChatMessageProps[] = [
   {
