@@ -32,16 +32,24 @@ import { ThemeSwitch } from '@/components/theme-switch';
  * <Sidebar defaultSelectedKey="home" selectedKeys={[currentPath]} />
  * ```
  */
-export default function Component({
-  children,
-  header,
-  title = 'Overview',
-}: {
-  children?: React.ReactNode;
-  header?: React.ReactNode;
-  title?: string;
-}) {
+export default function DashboardPage() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  const title = 'Overview';
+  const pageSpecificHeader: React.ReactNode = null; // Placeholder for header content
+  const pageSpecificChildren: React.ReactNode = // Placeholder for main page content
+    (
+      <div className="text-center">
+        <h3 className="text-xl font-semibold">Welcome to the Dashboard</h3>
+        <p className="text-default-500">
+          This is where your main dashboard content will go.
+        </p>
+        <p className="text-default-500">
+          You can customize this area by editing the `pageSpecificChildren`
+          variable in `app/dashboard/page.tsx`.
+        </p>
+      </div>
+    );
 
   const content = (
     <div className="relative flex h-full w-72 flex-1 flex-col bg-gradient-to-b from-default-50 via-danger-80 to-primary-50 p-6">
@@ -178,11 +186,11 @@ export default function Component({
               {title}
             </h2>
           </div>
-          {header}
+          {pageSpecificHeader}
         </header>
         <main className="flex h-full">
           <div className="flex h-full w-full flex-col gap-4 rounded-medium border-small border-divider p-6">
-            {children}
+            {pageSpecificChildren}
           </div>
         </main>
       </div>

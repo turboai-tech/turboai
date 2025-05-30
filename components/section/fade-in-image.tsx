@@ -48,7 +48,6 @@ export const FadeInImage = (props: ImageProps) => {
          * }
          * ```
          */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <Image
           {...props}
           onLoad={() => setIsLoaded(true)}

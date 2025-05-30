@@ -86,7 +86,7 @@ const SidebarDrawer = React.forwardRef<
           radius="none"
           scrollBehavior="inside"
           style={{
-            // @ts-ignore
+            // @ts-expect-error - sidebarWidth is a number
             '--sidebar-width': `${sidebarWidth}px`,
           }}
           onOpenChange={onOpenChange}>
