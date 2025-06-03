@@ -39,7 +39,7 @@ export default function PricingComponent() {
   return (
     <div
       id="pricing-container"
-      className="relative flex min-h-dvh flex-col bg-background bg-radial">
+      className="relative flex h-fit flex-col bg-background bg-radial">
       <div className="flex items-center justify-center p-4">
         <div className="relative flex max-w-4xl flex-col items-center py-24">
           <div

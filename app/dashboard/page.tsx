@@ -16,6 +16,7 @@ import SidebarDrawer from '@/components/sidebar/sidebar-drawer';
 import { sectionItemsWithTeams } from '@/components/sidebar/sidebar-items';
 
 import { Logo } from '@/components/icons';
+import LocaleSwitcher from '@/components/locale-switch';
 import Sidebar from '@/components/sidebar/sidebar';
 import { ThemeSwitch } from '@/components/theme-switch';
 
@@ -128,6 +129,9 @@ export default function DashboardPage() {
       <Spacer y={8} />
 
       <div className="mt-auto flex flex-col">
+        <div className="flex items-start justify-start gap-2 px-3">
+          <LocaleSwitcher />
+        </div>
         <Button
           fullWidth
           className="justify-start text-default-600 data-[hover=true]:text-black"

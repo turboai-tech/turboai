@@ -24,7 +24,7 @@ export default function RootLayoutClient({
       {isDashboard ? (
         <main className="mx-auto w-full">{children}</main>
       ) : (
-        <main className="mx-auto w-4/5">{children}</main>
+        <main className="mx-auto min-w-4/5">{children}</main>
       )}
 
       {!isDashboard && <FooterComponent />}
