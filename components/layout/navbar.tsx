@@ -38,6 +38,7 @@ export default function NavbarComponent(props: NavbarProps) {
     <Navbar
       {...props}
       isBordered
+      isBlurred
       classNames={{
         base: cn('mx-auto border-default-100', {
           'bg-default-200/50 dark:bg-default-100/50': isMenuOpen,
@@ -95,7 +96,7 @@ export default function NavbarComponent(props: NavbarProps) {
         <NavbarItem>
           <Link
             className="flex gap-2 text-inherit"
-            href="/pricing">
+            href="/#pricing-container">
             {t('pricing')}
           </Link>
         </NavbarItem>

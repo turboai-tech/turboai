@@ -73,6 +73,7 @@ export default async function RootLayout({
               }}>
               <RootLayoutClient locale={locale}>{children}</RootLayoutClient>
               <Cookies />
+              <div className="pointer-events-none absolute inset-0 top-[-25%] z-10 scale-150 select-none sm:scale-125"></div>
             </Providers>
           </NextIntlClientProvider>
         </body>

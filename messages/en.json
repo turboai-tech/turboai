@@ -59,7 +59,7 @@
         "ecommerce_solutions": "E-commerce Solutions",
         "market_research": "Market Research",
         "all_rights_reserved": "All Rights Reserved",
-        "powered_by": "Powered by Turbo ai",
+        "powered_by": "Powered by",
         "privacy_policy": "Privacy Policy",
         "terms_of_service": "Terms of Service",
         "cookie_settings": "Cookie Settings",
@@ -67,7 +67,8 @@
         "cookie_consent": "Cookie Consent",
         "cookie_preferences": "Cookie Preferences",
         "values": "Values",
-        "contact": "Contact"
+        "contact": "Contact",
+        "company_name": "Turbo AI Technology (Shanghai) Co., Ltd."
     },
     "NotFound": {
         "title": "404 - Page Not Found",

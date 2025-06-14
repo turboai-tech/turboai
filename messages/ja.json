@@ -59,7 +59,7 @@
         "ecommerce_solutions": "Eコマースソリューション",
         "market_research": "市場調査",
         "all_rights_reserved": "すべての権利は保留されています",
-        "powered_by": "Turbo・aiによって提供されています",
+        "powered_by": "技術サポート",
         "privacy_policy": "プライバシーポリシー",
         "terms_of_service": "サービス条件",
         "cookie_settings": "Cookie設定",
@@ -67,7 +67,8 @@
         "cookie_consent": "Cookie同意",
         "cookie_preferences": "Cookie設定",
         "values": "価値観",
-        "contact": "お問い合わせ"
+        "contact": "お問い合わせ",
+        "company_name": "ターボ知能技術（上海）有限会社"
     },
     "NotFound": {
         "title": "404 - ページが見つかりません",

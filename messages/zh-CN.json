@@ -59,7 +59,7 @@
         "ecommerce_solutions": "电子商务解决方案",
         "market_research": "市场研究",
         "all_rights_reserved": "所有权利保留",
-        "powered_by": "由 Turbo · ai 提供支持",
+        "powered_by": "技术支持",
         "privacy_policy": "隐私政策",
         "terms_of_service": "服务条款",
         "cookie_settings": "Cookie 设置",
@@ -67,7 +67,8 @@
         "cookie_consent": "Cookie 同意",
         "cookie_preferences": "Cookie 偏好",
         "values": "价值观",
-        "contact": "联系我们"
+        "contact": "联系我们",
+        "company_name": "特铱铂智能科技（上海）有限公司"
     },
     "NotFound": {
         "title": "404 - 页面不存在",

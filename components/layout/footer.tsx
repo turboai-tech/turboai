@@ -194,6 +194,9 @@ export default function FooterComponent() {
           <p className="text-small text-default-400">
             Copyright &copy; {currentYear}, {t('all_rights_reserved')}.
           </p>
+          <p className="text-small text-default-400">
+            {t('powered_by')} {t('company_name')}
+          </p>
         </div>
       </div>
     </footer>

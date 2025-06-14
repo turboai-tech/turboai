@@ -52,7 +52,7 @@ export default function LocaleSwitcherSelect({
 
   return (
     <Dropdown>
-      <DropdownTrigger className="px-0">
+      <DropdownTrigger className="px-2">
         <Button
           variant="light"
           startContent={
