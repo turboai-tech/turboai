@@ -2,3 +2,8 @@ ignoredBuiltDependencies:
   - '@clerk/shared'
   - '@heroui/shared-utils'
   - '@tailwindcss/oxide'
+
+onlyBuiltDependencies:
+  - '@prisma/client'
+  - '@prisma/engines'
+  - prisma

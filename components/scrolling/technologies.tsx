@@ -145,21 +145,14 @@ export default function TechnologiesComponent() {
         <span className="text-xl text-center items-center justify-center">
           {t('powers_title')}
         </span>
-        <ScrollingBanner
-          shouldPauseOnHover
-          gap="40px"
-          duration={10}>
+        <ScrollingBanner shouldPauseOnHover gap="40px" duration={50}>
           {logos.map(({ key, src, name }) => (
             <div
               key={key}
-              className="flex items-center gap-2 py-2 px-4 rounded shadow min-w-fit whitespace-nowrap">
+              className="flex items-center gap-2 py-2 px-4 rounded shadow min-w-fit whitespace-nowrap"
+            >
               <div className="h-10 w-10 flex items-center justify-center flex-shrink-0">
-                <Image
-                  src={src}
-                  alt={`${key}_logo`}
-                  width={41}
-                  height={41}
-                />
+                <Image src={src} alt={`${key}_logo`} width={41} height={41} />
               </div>
               <span className="font-medium text-sm">{t(name)}</span>
             </div>

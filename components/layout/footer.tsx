@@ -30,7 +30,7 @@ export default function FooterComponent() {
     aboutUs: [
       { name: t('our_story'), href: '#' },
       { name: t('latest_news'), href: '#' },
-      { name: t('career_opportunities'), href: '#' },
+      { name: t('career_opportunities'), href: '#team-container' },
       { name: t('media_enquiries'), href: '#' },
       { name: t('collaborations'), href: '#' },
     ],
@@ -45,50 +45,35 @@ export default function FooterComponent() {
         name: 'Youtube',
         href: 'https://www.youtube.com/@hello_turboai',
         icon: (props: SocialIconProps) => (
-          <Icon
-            {...props}
-            icon="fontisto:youtube-play"
-          />
+          <Icon {...props} icon="fontisto:youtube-play" />
         ),
       },
       {
         name: 'Instagram',
         href: 'https://www.instagram.com/hello_turboai',
         icon: (props: SocialIconProps) => (
-          <Icon
-            {...props}
-            icon="fontisto:instagram"
-          />
+          <Icon {...props} icon="fontisto:instagram" />
         ),
       },
       {
         name: 'X',
         href: 'https://x.com/hello_turboai',
         icon: (props: SocialIconProps) => (
-          <Icon
-            {...props}
-            icon="fontisto:twitter"
-          />
+          <Icon {...props} icon="fontisto:twitter" />
         ),
       },
       {
         name: 'GitHub',
         href: 'https://github.com/turboai-tech',
         icon: (props: SocialIconProps) => (
-          <Icon
-            {...props}
-            icon="fontisto:github"
-          />
+          <Icon {...props} icon="fontisto:github" />
         ),
       },
       {
         name: 'LinkedIn',
         href: 'https://www.linkedin.com/company/turboai-tech/?viewAsMember=true',
         icon: (props: SocialIconProps) => (
-          <Icon
-            {...props}
-            icon="fontisto:linkedin"
-          />
+          <Icon {...props} icon="fontisto:linkedin" />
         ),
       },
     ],
@@ -107,10 +92,7 @@ export default function FooterComponent() {
         <ul className="mt-6 space-y-4">
           {items.map((item) => (
             <li key={item.name}>
-              <Link
-                className="text-default-400"
-                href={item.href}
-                size="sm">
+              <Link className="text-default-400" href={item.href} size="sm">
                 {item.name}
               </Link>
             </li>
@@ -118,7 +100,7 @@ export default function FooterComponent() {
         </ul>
       </div>
     ),
-    []
+    [],
   );
 
   return (
@@ -128,15 +110,8 @@ export default function FooterComponent() {
           <div className="space-y-8 md:pr-8">
             <Link href="/">
               <div className="flex justify-between gap-1">
-                <Icon
-                  icon="lucide:layers"
-                  className="text-primary text-2xl"
-                />
-                <Logo
-                  width={96}
-                  height={32}
-                  className="md:block"
-                />
+                <Icon icon="lucide:layers" className="text-primary text-2xl" />
+                <Logo width={96} height={32} className="md:block" />
               </div>
             </Link>
             <p className="text-small text-default-500">
@@ -148,12 +123,10 @@ export default function FooterComponent() {
                   key={item.name}
                   isExternal
                   className="text-default-400"
-                  href={item.href}>
+                  href={item.href}
+                >
                   <span className="sr-only">{item.name}</span>
-                  <item.icon
-                    aria-hidden="true"
-                    className="w-6"
-                  />
+                  <item.icon aria-hidden="true" className="w-6" />
                 </Link>
               ))}
             </div>

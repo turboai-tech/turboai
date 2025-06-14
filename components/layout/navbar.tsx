@@ -4,14 +4,6 @@ import type { NavbarProps } from '@heroui/react';
 
 import { Logo } from '@/components/icons';
 import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from '@clerk/nextjs';
-import {
-  Button,
   cn,
   Link,
   Navbar,
@@ -48,18 +40,14 @@ export default function NavbarComponent(props: NavbarProps) {
       }}
       height="60px"
       isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}>
+      onMenuOpenChange={setIsMenuOpen}
+    >
       <NavbarMenuToggle className="text-default-400 md:hidden" />
 
       <NavbarBrand>
-        <Link
-          className="w-full items-center"
-          href="/">
+        <Link className="w-full items-center" href="/">
           <div className="flex items-center justify-between gap-1">
-            <Icon
-              icon="lucide:layers"
-              className="text-primary text-2xl h-8"
-            />
+            <Icon icon="lucide:layers" className="text-primary text-2xl h-8" />
             <Logo
               width={96}
               height={32}
@@ -70,11 +58,10 @@ export default function NavbarComponent(props: NavbarProps) {
       </NavbarBrand>
       <NavbarContent
         className="hidden h-11 gap-4 rounded-full border-small border-default-200/20 bg-background/60 px-4 shadow-medium backdrop-blur-md backdrop-saturate-150 dark:bg-default-100/50 md:flex"
-        justify="center">
+        justify="center"
+      >
         <NavbarItem>
-          <Link
-            className="flex gap-2 text-inherit"
-            href="/">
+          <Link className="flex gap-2 text-inherit" href="/">
             {t('overview')}
           </Link>
         </NavbarItem>
@@ -82,35 +69,28 @@ export default function NavbarComponent(props: NavbarProps) {
           <Link
             aria-current="page"
             className="flex gap-2 text-inherit"
-            href="/solutions">
+            href="/solutions"
+          >
             {t('solutions')}
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link
-            className="flex gap-2 text-inherit"
-            href="/products">
+          <Link className="flex gap-2 text-inherit" href="/products">
             {t('products')}
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link
-            className="flex gap-2 text-inherit"
-            href="/#pricing-container">
+          <Link className="flex gap-2 text-inherit" href="/#pricing-container">
             {t('pricing')}
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link
-            className="flex gap-2 text-inherit"
-            href="/blog">
+          <Link className="flex gap-2 text-inherit" href="/blog">
             {t('blog')}
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent
-        className="md:flex"
-        justify="end">
+      <NavbarContent className="md:flex" justify="end">
         <NavbarItem key="locale-switcher">
           <LocaleSwitcher />
         </NavbarItem>
@@ -120,7 +100,7 @@ export default function NavbarComponent(props: NavbarProps) {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="flex">
-          <SignedOut>
+          {/* <SignedOut>
             <SignInButton>
               <Button
                 variant="light"
@@ -138,7 +118,7 @@ export default function NavbarComponent(props: NavbarProps) {
           </SignedOut>
           <SignedIn>
             <UserButton />
-          </SignedIn>
+          </SignedIn> */}
         </NavbarItem>
       </NavbarContent>
 
@@ -153,15 +133,15 @@ export default function NavbarComponent(props: NavbarProps) {
             ease: 'easeInOut',
             duration: 0.2,
           },
-        }}>
+        }}
+      >
         <NavbarMenuItem
           key="locale-switcher"
-          className="text-left justify-start">
+          className="text-left justify-start"
+        >
           <LocaleSwitcher />
         </NavbarMenuItem>
-        <NavbarMenuItem
-          key="theme-switch"
-          className="text-left justify-start">
+        <NavbarMenuItem key="theme-switch" className="text-left justify-start">
           <ThemeSwitch />
         </NavbarMenuItem>
         {items.map((item, index) => (
@@ -169,7 +149,8 @@ export default function NavbarComponent(props: NavbarProps) {
             <Link
               className="w-full text-default-500"
               href={`/${item}`}
-              size="md">
+              size="md"
+            >
               {t(item)}
             </Link>
           </NavbarMenuItem>

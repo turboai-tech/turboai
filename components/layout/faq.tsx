@@ -10,7 +10,7 @@ export default function Faq() {
   const t = useTranslations('Faq');
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-0 py-12 sm:py-16 md:px-4 lg:px-8 lg:py-20">
+    <section className="mx-auto w-full max-w-6xl px-0 py-8 sm:py-12 md:px-4 lg:px-8 lg:py-12">
       <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-6">
         <h2 className="px-2 text-2xl leading-7">
           <span className="inline-block md:hidden">{t('short_title')}</span>
@@ -29,17 +29,14 @@ export default function Faq() {
           }}
           items={faqs}
           selectionMode="multiple"
-          variant="splitted">
+          variant="splitted"
+        >
           {faqs.map((item, i) => (
             <AccordionItem
               key={i}
-              indicator={
-                <Icon
-                  icon="solar:alt-arrow-down-linear"
-                  width={24}
-                />
-              }
-              title={t(item.title)}>
+              indicator={<Icon icon="solar:alt-arrow-down-linear" width={24} />}
+              title={t(item.title)}
+            >
               {t(item.content)}
             </AccordionItem>
           ))}
