@@ -181,5 +181,10 @@
         "card_1_price": "Contact us",
         "card_1_features": "AI ChatBot, AI Data Labing, TTS, Video Mixing",
         "card_1_button_text": "Get Started"
+    },
+    "customers": {
+        "customers_title": "Successful Customers",
+        "buyerx": "BuyerX",
+        "buyerx_location": "Tokyo, Japan"
     }
 }

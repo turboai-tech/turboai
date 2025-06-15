@@ -1,7 +1,8 @@
+'use client';
+
 import Faq from '@/components/layout/faq';
 import PricingComponent from '@/components/pricing/pricing';
-import PartnersComponent from '@/components/scrolling/partners';
-import TechnologiesComponent from '@/components/scrolling/technologies';
+import CollaborationsComponent from '@/components/scrolling/collaborations';
 import AppMainSections from '@/components/section/app-main-section';
 import Sitemap from '@/components/sitemap/sitemap';
 import TeamMemberComponent from '@/components/team/team-member';
@@ -10,8 +11,7 @@ export default function App() {
   return (
     <>
       <AppMainSections />
-      <PartnersComponent />
-      <TechnologiesComponent />
+      <CollaborationsComponent />
       <PricingComponent />
       <TeamMemberComponent />
       <Faq />

@@ -181,5 +181,10 @@
         "card_1_price": "联系我们",
         "card_1_features": "AI ChatBot, AI行业数据标注, TTS, 视频混剪",
         "card_1_button_text": "立即开始"
+    },
+    "customers": {
+        "customers_title": "成功客户",
+        "buyerx": "BuyerX",
+        "buyerx_location": "东京, 日本"
     }
 }

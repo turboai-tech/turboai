@@ -13,9 +13,13 @@ const nextConfig: NextConfig = {
         ];
     },
     images: {
-        remotePatterns: [new URL('https://nextuipro.nyc3.cdn.digitaloceanspaces.com/**')],
+        remotePatterns: [
+            new URL('https://nextuipro.nyc3.cdn.digitaloceanspaces.com/**'),
+            new URL('https://buyerx.ai/assets/**'),
+        ],
     },
+    experimental: {},
 };
- 
+
 const withNextIntl = createNextIntlPlugin();
 export default withNextIntl(nextConfig);

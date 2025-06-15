@@ -181,5 +181,10 @@
         "card_1_price": "お問い合わせ",
         "card_1_features": "AI ChatBot, AI データラベリング, TTS, ビデオミックス",
         "card_1_button_text": "今すぐ始める"
+    },
+    "customers": {
+        "customers_title": "成功顧客",
+        "buyerx": "BuyerX",
+        "buyerx_location": "東京, 日本"
     }
 }

@@ -22,7 +22,7 @@ export default function FooterComponent() {
       { name: t('market_research'), href: '#' },
     ],
     supportOptions: [
-      { name: t('pricing_plans'), href: '#' },
+      { name: t('pricing_plans'), href: '#pricing-container' },
       { name: t('user_guides'), href: '#' },
       { name: t('tutorials'), href: '#' },
       { name: t('service_status'), href: '#' },
@@ -32,7 +32,7 @@ export default function FooterComponent() {
       { name: t('latest_news'), href: '#' },
       { name: t('career_opportunities'), href: '#team-container' },
       { name: t('media_enquiries'), href: '#' },
-      { name: t('collaborations'), href: '#' },
+      { name: t('collaborations'), href: '#collaborations-container' },
     ],
     legal: [
       { name: t('claim'), href: '#' },
