@@ -28,17 +28,16 @@ export default function FooterComponent() {
       { name: t('service_status'), href: '#' },
     ],
     aboutUs: [
-      { name: t('our_story'), href: '#' },
-      { name: t('latest_news'), href: '#' },
-      { name: t('career_opportunities'), href: '#team-container' },
-      { name: t('media_enquiries'), href: '#' },
-      { name: t('collaborations'), href: '#collaborations-container' },
+      { name: t('our_story'), href: '/about/story' },
+      { name: t('latest_news'), href: '/about/news' },
+      { name: t('career_opportunities'), href: '/about/career' },
+      { name: t('collaborations'), href: '/#collaborations-container' },
     ],
     legal: [
-      { name: t('claim'), href: '/claim' },
-      { name: t('privacy'), href: '/privacy' },
-      { name: t('terms'), href: '/terms' },
-      { name: t('user_agreement'), href: '/user-agreement' },
+      { name: t('claim'), href: '/legal/claim' },
+      { name: t('privacy'), href: '/legal/privacy' },
+      { name: t('terms'), href: '/legal/terms' },
+      { name: t('user_agreement'), href: '/legal/user-agreement' },
     ],
     social: [
       {
