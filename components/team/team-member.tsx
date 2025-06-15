@@ -2,6 +2,7 @@
 
 import { Button, Spacer } from '@heroui/react';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import ScrollingBanner from '../scrolling/scrolling-powers';
 import type { TeamMember } from './team-member-card';
 import TeamMemberCard from './team-member-card';
@@ -81,8 +82,12 @@ export default function TeamMemberComponent() {
         <h2 className="text-large text-default-500">{t('description')}</h2>
         <Spacer y={4} />
         <div className="flex w-full justify-center gap-2">
-          <Button variant="ghost">{t('button')}</Button>
-          <Button color="secondary">{t('open_positions')}</Button>
+          <Button variant="ghost" as={Link} href="/about/story">
+            {t('button')}
+          </Button>
+          <Button color="secondary" as={Link} href="/about/career">
+            {t('open_positions')}
+          </Button>
         </div>
       </div>
       <div className="mt-12 flex w-full gap-8 flex-wrap justify-center items-center mx-auto">
