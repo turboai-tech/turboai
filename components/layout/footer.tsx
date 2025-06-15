@@ -35,10 +35,10 @@ export default function FooterComponent() {
       { name: t('collaborations'), href: '#collaborations-container' },
     ],
     legal: [
-      { name: t('claim'), href: '#' },
-      { name: t('privacy'), href: '#' },
-      { name: t('terms'), href: '#' },
-      { name: t('user_agreement'), href: '#' },
+      { name: t('claim'), href: '/claim' },
+      { name: t('privacy'), href: '/privacy' },
+      { name: t('terms'), href: '/terms' },
+      { name: t('user_agreement'), href: '/user-agreement' },
     ],
     social: [
       {
