@@ -97,13 +97,15 @@ export default function NavbarComponent(props: NavbarProps) {
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent className="flex" justify="end">
+      <NavbarContent className="flex" justify="center">
         <NavbarItem key="locale-switcher">
           <LocaleSwitcher />
         </NavbarItem>
         <NavbarItem key="theme-switch">
           <ThemeSwitch />
         </NavbarItem>
+      </NavbarContent>
+      <NavbarContent justify="end">
         <NavbarItem className="flex">
           <SignedOut>
             <SignInButton>
@@ -122,7 +124,6 @@ export default function NavbarComponent(props: NavbarProps) {
           </SignedIn>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent justify="end"></NavbarContent>
 
       {/* Mobile Menu */}
       <NavbarMenu
