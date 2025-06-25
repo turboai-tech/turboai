@@ -16,18 +16,17 @@ export default function RootLayoutClient({
   const isDashboard = pathname.startsWith('/dashboard');
 
   return (
-    <div
-      lang={locale}
-      className="items-center justify-center">
-      {!isDashboard && <BannerComponent />}
-      {!isDashboard && <NavbarComponent />}
+    <div lang={locale} className="items-center justify-center">
       {isDashboard ? (
         <main className="mx-auto w-full">{children}</main>
       ) : (
-        <main className="mx-auto min-w-4/5">{children}</main>
+        <>
+          <BannerComponent />
+          <NavbarComponent />
+          <main className="mx-auto w-4/5">{children}</main>
+          <FooterComponent />
+        </>
       )}
-
-      {!isDashboard && <FooterComponent />}
     </div>
   );
 }

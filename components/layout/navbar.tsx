@@ -1,8 +1,15 @@
 'use client';
 
-import type { NavbarProps } from '@heroui/react';
+import { Button, type NavbarProps } from '@heroui/react';
 
 import { Logo } from '@/components/icons';
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from '@clerk/nextjs';
 import {
   cn,
   Link,
@@ -35,7 +42,7 @@ export default function NavbarComponent(props: NavbarProps) {
         base: cn('mx-auto border-default-100', {
           'bg-default-200/50 dark:bg-default-100/50': isMenuOpen,
         }),
-        wrapper: 'w-full justify-center bg-transparent',
+        wrapper: 'w-4/5 justify-center bg-transparent',
         item: 'hidden md:flex',
       }}
       height="60px"
@@ -90,37 +97,32 @@ export default function NavbarComponent(props: NavbarProps) {
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent className="md:flex" justify="end">
+      <NavbarContent className="flex" justify="end">
         <NavbarItem key="locale-switcher">
           <LocaleSwitcher />
         </NavbarItem>
         <NavbarItem key="theme-switch">
           <ThemeSwitch />
         </NavbarItem>
-      </NavbarContent>
-      <NavbarContent justify="end">
         <NavbarItem className="flex">
-          {/* <SignedOut>
+          <SignedOut>
             <SignInButton>
-              <Button
-                variant="light"
-                size="md">
+              <Button variant="light" size="md">
                 <span className="text-base">{t('signin')}</span>
               </Button>
             </SignInButton>
             <SignUpButton>
-              <Button
-                variant="light"
-                size="md">
+              <Button variant="light" size="md">
                 <span className="text-base">{t('signup')}</span>
               </Button>
             </SignUpButton>
           </SignedOut>
           <SignedIn>
             <UserButton />
-          </SignedIn> */}
+          </SignedIn>
         </NavbarItem>
       </NavbarContent>
+      <NavbarContent justify="end"></NavbarContent>
 
       {/* Mobile Menu */}
       <NavbarMenu

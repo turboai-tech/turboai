@@ -61,7 +61,7 @@ export default async function RootLayout({
           <Providers
             themeProps={{
               attribute: 'class',
-              defaultTheme: 'dark',
+              defaultTheme: 'system',
               enableSystem: true,
               disableTransitionOnChange: true,
             }}
