@@ -1,22 +1,18 @@
-'use client';
+'use client'
 
-import { Logo } from '@/components/icons';
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from '@clerk/nextjs';
-import ButtonLink from '@/components/button-link';
-import { Button, cn } from '@heroui/react';
-import { Icon } from '@iconify/react';
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import LocaleSwitcher from '../locale-switch';
-import { ThemeSwitch } from '../theme-switch';
+import { Logo } from '@/components/icons'
+import AuthGate from '@/components/auth/auth-gate'
+import UserMenu from '@/components/auth/user-menu'
+import ButtonLink from '@/components/button-link'
+import { cn } from '@heroui/react'
+import { Icon } from '@iconify/react'
+import { useTranslations } from 'next-intl'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import DesignThemeSelector from './design-theme-selector'
+import LocaleSwitcher from '../locale-switch'
+import ThemeToggle from './theme-toggle'
 
 const navItems = [
   { key: 'overview', href: '/' },
@@ -24,28 +20,28 @@ const navItems = [
   { key: 'products', href: '/products' },
   { key: 'pricing', href: '/#pricing-container' },
   { key: 'blog', href: '/about/news' },
-] as const;
+] as const
 
 export default function NavbarComponent({ className }: { className?: string }) {
-  const t = useTranslations('Navbar');
-  const pathname = usePathname();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const t = useTranslations('Navbar')
+  const pathname = usePathname()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const isActive = (href: string) =>
-    href === '/' ? pathname === '/' : pathname.startsWith(href.split('#')[0]);
+    href === '/' ? pathname === '/' : pathname.startsWith(href.split('#')[0])
 
-  const closeMenu = () => setIsMenuOpen(false);
-
-  useEffect(() => {
-    closeMenu();
-  }, [pathname]);
+  const closeMenu = () => setIsMenuOpen(false)
 
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    closeMenu()
+  }, [pathname])
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : ''
     return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isMenuOpen]);
+      document.body.style.overflow = ''
+    }
+  }, [isMenuOpen])
 
   return (
     <header
@@ -54,21 +50,21 @@ export default function NavbarComponent({ className }: { className?: string }) {
         isMenuOpen ? 'bg-default/40' : 'bg-background/70',
         className,
       )}>
-      <div className="mx-auto flex h-[60px] w-4/5 items-center gap-6">
-        <Link className="flex shrink-0 items-center gap-1" href="/">
-          <Icon className="h-8 text-2xl text-accent" icon="lucide:layers" />
-          <Logo className="h-8 items-center" height={32} width={96} />
+      <div className="mx-auto grid h-14 w-[min(90%,80rem)] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-2 sm:gap-4">
+        <Link className="flex h-9 shrink-0 items-center gap-1" href="/">
+          <Icon className="text-2xl text-accent" icon="lucide:layers" />
+          <Logo className="hidden h-8 sm:block" height={32} width={96} />
         </Link>
 
         <nav
           aria-label="Primary"
-          className="hidden h-11 shrink-0 items-center gap-4 rounded-full border border-default/20 bg-background/60 px-4 shadow-md backdrop-blur-md backdrop-saturate-150 dark:bg-default/40 xl:flex">
+          className="hidden h-9 min-w-0 items-center justify-self-center gap-3 overflow-x-auto rounded-full border border-default/20 bg-background/60 px-3 whitespace-nowrap shadow-md backdrop-blur-md backdrop-saturate-150 dark:bg-default/40 xl:flex">
           {navItems.map(({ key, href }) => (
             <Link
               key={key}
               aria-current={isActive(href) ? 'page' : undefined}
               className={cn(
-                'text-sm text-muted transition-colors hover:text-foreground',
+                'shrink-0 text-sm text-muted transition-colors hover:text-foreground',
                 isActive(href) && 'text-foreground',
               )}
               href={href}>
@@ -77,45 +73,41 @@ export default function NavbarComponent({ className }: { className?: string }) {
           ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-3">
-          <div className="hidden sm:block">
+        <div className="flex h-9 shrink-0 flex-nowrap items-center justify-end gap-1.5">
+          <div className="hidden h-9 flex-nowrap items-center gap-1.5 lg:flex">
+            <DesignThemeSelector compact />
             <LocaleSwitcher />
-          </div>
-          <div className="hidden sm:block">
-            <ThemeSwitch label={t('theme')} />
+            <ThemeToggle className="h-9 shrink-0" />
           </div>
 
-          <SignedOut>
-            <SignInButton>
-              <Button className="hidden sm:inline-flex" size="sm" variant="ghost">
-                {t('signin')}
-              </Button>
-            </SignInButton>
-            <SignUpButton>
-              <Button
-                className="hidden 2xl:inline-flex"
-                size="sm"
-                variant="ghost">
-                {t('signup')}
-              </Button>
-            </SignUpButton>
-          </SignedOut>
+          {!isMenuOpen ? (
+            <AuthGate
+              signedOut={
+                <ButtonLink
+                  className="hidden h-9 shrink-0 sm:inline-flex"
+                  href="/login"
+                  size="sm"
+                  variant="ghost">
+                  {t('signin')}
+                </ButtonLink>
+              }
+              signedIn={<UserMenu />}
+            />
+          ) : null}
 
-          <ButtonLink
-            className="hidden h-9 rounded-full bg-gradient-to-tr from-[#fd7bf8] to-[#b249f8] px-4 text-sm font-medium text-foreground sm:inline-flex"
-            href="/#pricing-container"
-            size="sm">
-            {t('cta')}
-          </ButtonLink>
-
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+          {!isMenuOpen ? (
+            <ButtonLink
+              className="hidden h-9 shrink-0 rounded-full cta-gradient px-4 text-sm font-medium whitespace-nowrap md:inline-flex"
+              href="/#pricing-container"
+              size="sm">
+              {t('cta')}
+            </ButtonLink>
+          ) : null}
 
           <button
             aria-expanded={isMenuOpen}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-            className="inline-flex h-6 w-6 items-center justify-center text-muted xl:hidden"
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center text-muted xl:hidden"
             type="button"
             onClick={() => setIsMenuOpen((open) => !open)}>
             <Icon
@@ -140,35 +132,43 @@ export default function NavbarComponent({ className }: { className?: string }) {
             ))}
 
             <ButtonLink
-              className="mt-2 rounded-full bg-gradient-to-tr from-[#fd7bf8] to-[#b249f8] font-medium text-foreground"
+              className="mt-2 rounded-full cta-gradient font-medium"
               fullWidth
               href="/#pricing-container"
               onClick={closeMenu}>
               {t('cta')}
             </ButtonLink>
 
-            <SignedOut>
-              <div className="flex gap-2">
-                <SignInButton>
-                  <Button fullWidth variant="outline">
+            <AuthGate
+              signedOut={
+                <div className="flex flex-col gap-2">
+                  <ButtonLink
+                    fullWidth
+                    href="/login"
+                    variant="outline"
+                    onClick={closeMenu}>
                     {t('signin')}
-                  </Button>
-                </SignInButton>
-                <SignUpButton>
-                  <Button fullWidth variant="outline">
+                  </ButtonLink>
+                  <ButtonLink
+                    fullWidth
+                    href="/signup"
+                    variant="outline"
+                    onClick={closeMenu}>
                     {t('signup')}
-                  </Button>
-                </SignUpButton>
-              </div>
-            </SignedOut>
+                  </ButtonLink>
+                </div>
+              }
+              signedIn={<UserMenu />}
+            />
 
-            <div className="pt-2">
+            <div className="flex flex-nowrap items-center gap-2 pt-2">
+              <DesignThemeSelector compact />
               <LocaleSwitcher />
+              <ThemeToggle className="h-9 shrink-0" />
             </div>
-            <ThemeSwitch showLabel label={t('theme')} />
           </nav>
         </div>
       ) : null}
     </header>
-  );
+  )
 }

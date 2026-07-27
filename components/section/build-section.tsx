@@ -27,7 +27,7 @@ export default function BuildSection({
     <section
       id="build-container"
       className={`mx-auto flex w-full flex-col gap-10 ${
-        showHeading ? 'py-20' : 'pb-20'
+        showHeading ? 'pt-10 pb-16 sm:py-20' : 'pb-16 sm:pb-20'
       }`}>
       {showHeading ? (
         <SectionHeading

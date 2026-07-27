@@ -1,87 +1,92 @@
-'use client';
+'use client'
 
-import { Locale } from '@/i18n/config';
-import { setUserLocale } from '@/services/locale';
-import { Button, Dropdown, Label } from '@heroui/react';
-import { Icon } from '@iconify/react';
-import { useLocale } from 'next-intl';
-import React, { useEffect, useTransition } from 'react';
+import { Locale } from '@/i18n/config'
+import { setUserLocale } from '@/services/locale'
+import { Button, Dropdown, Label } from '@heroui/react'
+import { Icon } from '@iconify/react'
+import { useLocale } from 'next-intl'
+import React, { useEffect, useTransition } from 'react'
 
 type Props = {
-  defaultValue: string;
-  items: Array<{ value: string; label: string }>;
-  label: string;
-};
+  defaultValue: string
+  items: Array<{ value: string; label: string }>
+  label: string
+}
 
+/**
+ * HeroUI docs pattern: pass a Button as the Dropdown child (MenuTrigger),
+ * never nest Button inside Dropdown.Trigger.
+ */
 export default function LocaleSwitcherSelect({
   defaultValue,
   items,
   label,
 }: Props) {
-  const [, startTransition] = useTransition();
-  const locale = useLocale();
+  const [, startTransition] = useTransition()
+  const locale = useLocale()
   const [selected, setSelected] = React.useState(
     items.find((item) => item.value === defaultValue) || items[0],
-  );
+  )
 
-  // Keep the dropdown in sync when the active locale changes; the setSelected
-  // call inside onChange handles the optimistic update while switching.
-  // Next 16's react-hooks/set-state-in-effect flags this — removing it would
-  // mean deriving state during render instead, losing the optimistic update.
-  // That's a behavioural change out of scope for this upgrade.
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setSelected(items.find((item) => item.value === locale) || items[0]);
-  }, [locale, items]);
+    setSelected(items.find((item) => item.value === locale) || items[0])
+  }, [locale, items])
 
   const iconMap: Record<string, string> = {
     en: 'twemoji:flag-united-states',
     'zh-CN': 'twemoji:flag-china',
     ja: 'twemoji:flag-japan',
-  };
+  }
 
-  function onChange(item: { value: string; label: string }) {
-    setSelected(item);
-    const locale = item.value as Locale;
+  function onChange(value: string) {
+    const next = items.find((item) => item.value === value)
+    if (!next) return
+    setSelected(next)
     startTransition(() => {
-      setUserLocale(locale);
-    });
+      setUserLocale(value as Locale)
+    })
   }
 
   return (
     <Dropdown>
-      <Dropdown.Trigger className="px-0">
-        <Button variant="ghost">
-          <Icon
-            className="text-base"
-            icon={iconMap[selected.value] || 'mdi:translate'}
-          />
-          {selected.label}
-        </Button>
-      </Dropdown.Trigger>
+      <Button
+        isIconOnly
+        aria-label={label}
+        className="h-9 w-9 shrink-0"
+        size="sm"
+        variant="tertiary">
+        <Icon className="size-4 text-muted" icon="lucide:languages" />
+      </Button>
       <Dropdown.Popover>
         <Dropdown.Menu
-          aria-label={label}
-          className="text-left"
-          onAction={(key) => {
-            const found = items.find((item) => item.value === key);
-            if (found) onChange(found);
+          selectedKeys={new Set([selected.value])}
+          selectionMode="single"
+          onSelectionChange={(keys) => {
+            if (keys === 'all') return
+            const next = keys.values().next().value
+            if (typeof next === 'string' && next !== selected.value) {
+              onChange(next)
+            }
           }}>
-          {items.map((item) => (
-            <Dropdown.Item
-              key={item.value}
-              className="justify-start gap-2 px-2"
-              id={item.value}
-              textValue={item.label}>
-              <Icon
-                className="text-base"
-                icon={iconMap[item.value] || 'mdi:translate'}
-              />
-              <Label>{item.label}</Label>
-            </Dropdown.Item>
-          ))}
+          <Dropdown.Section>
+            {items.map((item) => (
+              <Dropdown.Item
+                key={item.value}
+                className="gap-2"
+                id={item.value}
+                textValue={item.label}>
+                <Dropdown.ItemIndicator />
+                <Icon
+                  className="size-4 shrink-0"
+                  icon={iconMap[item.value] || 'mdi:translate'}
+                />
+                <Label>{item.label}</Label>
+              </Dropdown.Item>
+            ))}
+          </Dropdown.Section>
         </Dropdown.Menu>
       </Dropdown.Popover>
     </Dropdown>
-  );
+  )
 }

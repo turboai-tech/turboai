@@ -52,7 +52,7 @@ export default function ProcessSection() {
           </p>
         </div>
         <ButtonLink
-          className="relative h-11 shrink-0 rounded-full bg-gradient-to-tr from-[#fd7bf8] to-[#b249f8] px-6 text-sm font-medium text-foreground shadow-lg"
+          className="relative h-11 shrink-0 rounded-full cta-gradient px-6 text-sm font-medium shadow-lg"
           href="/#pricing-container">
           {t('cta_button')}
           <Icon icon="solar:arrow-right-linear" width={16} />

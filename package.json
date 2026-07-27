@@ -15,7 +15,6 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.23.0",
     "@formatjs/intl-localematcher": "^0.6.1",
     "@heroicons/react": "^2.2.0",
     "@heroui/react": "^3.2.2",
@@ -23,6 +22,8 @@
     "@playwright/test": "^1.53.1",
     "@prisma/client": "^6.10.1",
     "@prisma/extension-accelerate": "^2.0.1",
+    "@supabase/ssr": "^0.12.3",
+    "@supabase/supabase-js": "^2.110.8",
     "@tailwindcss/postcss": "^4.3.3",
     "@tanstack/react-query": "^5.81.2",
     "@trpc/client": "^11.4.2",

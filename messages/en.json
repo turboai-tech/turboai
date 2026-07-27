@@ -76,6 +76,32 @@
         "banner_title": "We are taking on new builds this quarter.",
         "banner_button": "Start a build"
     },
+    "ThemeSelector": {
+        "theme": "Theme",
+        "design_theme": "Design theme",
+        "vibrant_palette": "Vibrant palette",
+        "vibrant_palette_description": "More saturated, less contrast."
+    },
+    "Auth": {
+        "sign_in_title": "Sign in",
+        "sign_in_description": "Access your Turbo AI workspace.",
+        "sign_up_title": "Create an account",
+        "sign_up_description": "Start building with Turbo AI.",
+        "email": "Email",
+        "password": "Password",
+        "sign_in": "Sign in",
+        "sign_up": "Sign up",
+        "signing_in": "Signing in…",
+        "signing_up": "Creating account…",
+        "sign_out": "Sign out",
+        "dashboard": "Dashboard",
+        "account": "Account",
+        "no_account": "No account yet?",
+        "have_account": "Already have an account?",
+        "check_email": "Check your email to confirm your account before signing in.",
+        "error_callback": "Could not complete sign-in. Please try again.",
+        "back_home": "Back to home"
+    },
     "Footer": {
         "value_description": "A frontier AI build-and-delivery company for global businesses. We take ideas from a sentence to a shipped product.",
         "cta_title": "Let's build something",
@@ -227,7 +253,7 @@
         "team_member_david": {
             "name": "David",
             "role": "Co-founder",
-            "bio": "AI forwarding engineer, formerly of the Tesla algorithm team."
+            "bio": "Forward deployed engineer, formerly of the Tesla algorithm team."
         },
         "team_member_ting": {
             "name": "Ting",

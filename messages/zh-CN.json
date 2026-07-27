@@ -76,6 +76,32 @@
         "banner_title": "本季度我们还能接新项目。",
         "banner_button": "开启项目"
     },
+    "ThemeSelector": {
+        "theme": "主题",
+        "design_theme": "设计主题",
+        "vibrant_palette": "鲜艳色板",
+        "vibrant_palette_description": "更饱和，对比略低。"
+    },
+    "Auth": {
+        "sign_in_title": "登录",
+        "sign_in_description": "进入你的 Turbo AI 工作区。",
+        "sign_up_title": "创建账号",
+        "sign_up_description": "开始和 Turbo AI 一起构建。",
+        "email": "邮箱",
+        "password": "密码",
+        "sign_in": "登录",
+        "sign_up": "注册",
+        "signing_in": "登录中…",
+        "signing_up": "创建中…",
+        "sign_out": "退出登录",
+        "dashboard": "控制台",
+        "account": "账号",
+        "no_account": "还没有账号？",
+        "have_account": "已经有账号？",
+        "check_email": "请查收邮件完成确认后再登录。",
+        "error_callback": "无法完成登录，请重试。",
+        "back_home": "返回首页"
+    },
     "Footer": {
         "value_description": "一家面向全球业务交付的 AI 构建企业，始终站在技术前沿。我们把想法从一句话，做成真正上线的产品。",
         "cta_title": "一起做点什么吧",
@@ -227,7 +253,7 @@
         "team_member_david": {
             "name": "David",
             "role": "联合创始人",
-            "bio": "AI Forwarding Engineer，前特斯拉算法团队成员。"
+            "bio": "Forward Deployed Engineer，前特斯拉算法团队成员。"
         },
         "team_member_ting": {
             "name": "Ting",

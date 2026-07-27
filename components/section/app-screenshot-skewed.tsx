@@ -3,9 +3,9 @@ import type { ComponentProps } from 'react';
 const AppScreenshotSkewed = ({ ...props }: ComponentProps<'svg'>) => (
   <svg
     fill="none"
-    height="737"
-    viewBox="0 0 1280 737"
-    width="1280"
+    height="540"
+    viewBox="40 70 1200 540"
+    width="1200"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     {...props}>
@@ -379,7 +379,7 @@ const AppScreenshotSkewed = ({ ...props }: ComponentProps<'svg'>) => (
         patternContentUnits="objectBoundingBox"
         width="1">
         <use
-          transform="scale(0.000251383 0.000393546)"
+          transform="scale(0.000783085 0.00122549)"
           xlinkHref="#image0_3051_12573"
         />
       </pattern>
@@ -493,10 +493,10 @@ const AppScreenshotSkewed = ({ ...props }: ComponentProps<'svg'>) => (
         />
       </clipPath>
       <image
-        height="2500"
+        height="816"
         id="image0_3051_12573"
-        width="3978"
-        xlinkHref="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/marketing/hero-section-with-bottom-app-screenshot.png"
+        width="1277"
+        xlinkHref="/bg_example.jpeg"
       />
     </defs>
   </svg>

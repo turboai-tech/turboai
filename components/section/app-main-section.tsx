@@ -25,14 +25,14 @@ export default function AppMainSections() {
   const t = useTranslations('AppMainSection');
 
   return (
-    <section className="relative flex flex-col items-start pt-20">
+    <section className="relative flex flex-col items-start pt-12 sm:pt-20">
       <div
         aria-hidden
-        className="bg-grid mask-fade-out pointer-events-none absolute inset-x-[-50vw] top-[-120px] h-[720px] select-none"
+        className="bg-grid mask-fade-out pointer-events-none absolute inset-x-[-50vw] top-[-80px] h-[520px] select-none sm:top-[-120px] sm:h-[720px]"
       />
 
       <LazyMotion features={domAnimation}>
-        <section className="z-20 flex flex-col items-start justify-center gap-6">
+        <section className="z-20 flex flex-col items-start justify-center gap-5 sm:gap-6">
           <m.div {...riseIn(0)}>
             <span className="label-mono inline-flex items-center gap-2 rounded-full border-1 border-default/40 bg-background/60 px-3 py-1.5 backdrop-blur-md">
               <span className="relative flex h-1.5 w-1.5">
@@ -45,9 +45,9 @@ export default function AppMainSections() {
 
           <m.h1
             {...riseIn(1)}
-            className="text-start text-[clamp(44px,10vw,52px)] font-bold leading-[1.05] tracking-tighter sm:text-[76px]">
+            className="text-start text-[clamp(40px,9vw,52px)] font-bold leading-[1.05] tracking-tighter sm:text-[76px]">
             <span className="text-foreground">{t('title_1')}&nbsp;</span>
-            <span className="bg-gradient-to-br from-[#FF1CF7] to-[#b249f8] bg-clip-text text-transparent">
+            <span className="text-cta-gradient">
               {t('title_2')}&nbsp;
             </span>
             <span className="text-foreground">{t('title_3')}</span>
@@ -55,7 +55,7 @@ export default function AppMainSections() {
 
           <m.p
             {...riseIn(2)}
-            className="text-start text-xl font-medium tracking-tight text-foreground/90 sm:text-2xl">
+            className="text-start text-lg font-medium tracking-tight text-foreground/90 sm:text-2xl">
             {t('subtitle')}
           </m.p>
 
@@ -69,7 +69,7 @@ export default function AppMainSections() {
             {...riseIn(4)}
             className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
             <ButtonLink
-              className="h-11 rounded-full bg-gradient-to-tr from-[#fd7bf8] to-[#b249f8] px-6 text-sm font-medium text-foreground shadow-lg"
+              className="h-11 rounded-full cta-gradient px-6 text-sm font-medium shadow-lg"
               href="/#pricing-container">
               {t('cta_primary')}
             </ButtonLink>
@@ -88,7 +88,7 @@ export default function AppMainSections() {
 
           <m.dl
             {...riseIn(5)}
-            className="mt-4 grid w-full grid-cols-1 gap-px overflow-hidden rounded-lg border-1 border-default/40 bg-default/50 sm:grid-cols-3">
+            className="mt-2 grid w-full grid-cols-1 gap-px overflow-hidden rounded-lg border-1 border-default/40 bg-default/50 sm:mt-4 sm:grid-cols-3">
             {stats.map((index) => (
               <div
                 key={index}
@@ -107,15 +107,18 @@ export default function AppMainSections() {
         <m.div
           key="hero-section-app-screenshot"
           animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
-          className="mb-10 mt-14 w-full"
-          initial={{ filter: 'blur(16px)', opacity: 0, y: 120 }}
+          className="mt-1 w-full sm:mt-4 sm:mb-6"
+          initial={{ filter: 'blur(16px)', opacity: 0, y: 24 }}
           transition={{
             bounce: 0,
             delay: 0.1,
-            duration: 1.6,
+            duration: 1.2,
             type: 'spring',
           }}>
-          <AppScreenshotSkewed className="w-full" />
+          {/* Skewed SVG has a large empty triangle; clip and scale on mobile. */}
+          <div className="relative -mx-2 h-[200px] overflow-hidden sm:mx-0 sm:h-auto sm:overflow-visible">
+            <AppScreenshotSkewed className="absolute left-1/2 top-1/2 w-[155%] max-w-none -translate-x-[46%] -translate-y-[48%] sm:relative sm:left-0 sm:top-0 sm:w-full sm:max-w-full sm:translate-x-0 sm:translate-y-0" />
+          </div>
         </m.div>
       </LazyMotion>
     </section>

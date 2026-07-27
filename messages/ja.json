@@ -76,6 +76,32 @@
         "banner_title": "今期も新規案件を受け付けています。",
         "banner_button": "プロジェクトを始める"
     },
+    "ThemeSelector": {
+        "theme": "テーマ",
+        "design_theme": "デザインテーマ",
+        "vibrant_palette": "ビビッドパレット",
+        "vibrant_palette_description": "彩度が高め、コントラストはやや低め。"
+    },
+    "Auth": {
+        "sign_in_title": "ログイン",
+        "sign_in_description": "Turbo AI ワークスペースにアクセスします。",
+        "sign_up_title": "アカウント作成",
+        "sign_up_description": "Turbo AI と一緒に構築を始めましょう。",
+        "email": "メール",
+        "password": "パスワード",
+        "sign_in": "ログイン",
+        "sign_up": "登録",
+        "signing_in": "ログイン中…",
+        "signing_up": "作成中…",
+        "sign_out": "ログアウト",
+        "dashboard": "ダッシュボード",
+        "account": "アカウント",
+        "no_account": "アカウントをお持ちでないですか？",
+        "have_account": "すでにアカウントをお持ちですか？",
+        "check_email": "確認メールを確認してからログインしてください。",
+        "error_callback": "ログインを完了できませんでした。もう一度お試しください。",
+        "back_home": "ホームに戻る"
+    },
     "Footer": {
         "value_description": "グローバルな業務デリバリーを担う、最前線の AI 構築企業。一言のアイデアを、本番で動くプロダクトに変えます。",
         "cta_title": "一緒に何か始めませんか",
@@ -227,7 +253,7 @@
         "team_member_david": {
             "name": "David",
             "role": "共同創業者",
-            "bio": "AI Forwarding Engineer、元テスラアルゴリズムチーム。"
+            "bio": "Forward Deployed Engineer、元テスラアルゴリズムチーム。"
         },
         "team_member_ting": {
             "name": "Ting",

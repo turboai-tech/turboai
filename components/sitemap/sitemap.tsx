@@ -1,251 +1,84 @@
-'use client';
+'use client'
 
-import { useTranslations } from 'next-intl';
-import { useTheme } from 'next-themes';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl'
+import { useTheme } from 'next-themes'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
+
+const mapPins = [
+  { left: '16.1111%', top: '29.4444%' },
+  { left: '15.8333%', top: '27.2222%' },
+  { left: '78.6111%', top: '57.2222%' },
+  { left: '83.7777%', top: '41.2222%' },
+  { left: '81.6666%', top: '46.7777%' },
+  { left: '89.1667%', top: '37.7778%' },
+  { left: '49.6669%', top: '25.4444%' },
+] as const
+
+function MapPin({ left, top }: { left: string; top: string }) {
+  return (
+    <div
+      className="absolute z-10"
+      style={{
+        left,
+        top,
+        transform: 'translate(-1.79167px, -1.79167px)',
+      }}>
+      <div
+        className="rounded-full bg-accent shadow-[0_0_12px_4px_color-mix(in_oklab,var(--accent)_45%,transparent)]"
+        style={{ width: '3.58333px', height: '3.58333px' }}
+      />
+      <div
+        className="absolute top-0 left-0 animate-ping-3 rounded-full bg-accent"
+        style={{ width: '3.58333px', height: '3.58333px' }}
+      />
+    </div>
+  )
+}
 
 export default function Sitemap() {
-  const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
-  // 防止水合不匹配：主题决定 logo 用哪张图，服务端读不到主题。
-  // Next 16 新增的 react-hooks/set-state-in-effect 对这个 SSR 模式属误伤。
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true);
-  }, []);
+    setMounted(true)
+  }, [])
 
-  const isDarkMode = theme === 'dark';
-
-  const t = useTranslations('sitemap');
+  const isDarkMode = resolvedTheme === 'dark'
+  const t = useTranslations('sitemap')
 
   return (
-    <div className="w-full relative mx-auto px-4 py-8 flex flex-col gap-4">
-      <h2 className="text-center px-2 text-2xl leading-7">
+    <div className="relative mx-auto flex w-full flex-col gap-4 px-4 py-8">
+      <h2 className="px-2 text-center text-2xl leading-7">
         <span className="hidden md:inline-block">{t('sitemap_title')}</span>
       </h2>
-      <div className="w-full flex justify-center flex-col items-center mt-[40px]">
+      <div className="mt-[40px] flex w-full flex-col items-center justify-center">
         <div className="flex w-full max-w-[1440px]">
-          <div className="w-full aspect-[2/1] relative">
+          <div className="relative aspect-[2/1] w-full">
             {mounted ? (
               <Image
-                src={isDarkMode ? 'dottedMap-dark.svg' : 'dottedMap.svg'}
-                width={100}
-                height={100}
                 alt="dottedMap"
-                className="w-full h-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none"
+                className="pointer-events-none h-full w-full select-none [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)]"
                 draggable={false}
+                height={100}
+                src={isDarkMode ? 'dottedMap-dark.svg' : 'dottedMap.svg'}
                 style={{
                   width: '100%',
                   height: '100%',
                   objectFit: 'contain',
                 }}
+                width={100}
               />
             ) : (
-              <div
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                }}
-              />
+              <div className="h-full w-full" />
             )}
-            <div
-              className="absolute z-10"
-              aria-expanded="false"
-              aria-haspopup="dialog"
-              style={{
-                left: '16.1111%',
-                top: '29.4444%',
-                transform: 'translate(-1.79167px, -1.79167px)',
-              }}
-            >
-              <div
-                className="w-4 h-4 rounded-full"
-                style={{
-                  backgroundColor: 'var(--icon-brand)',
-                  width: '3.58333px',
-                  height: '3.58333px',
-                }}
-              ></div>
-              <div
-                className="rounded-full absolute top-0 left-0 animate-ping-3"
-                style={{
-                  backgroundColor: 'var(--icon-brand)',
-                  width: '3.58333px',
-                  height: '3.58333px',
-                }}
-              ></div>
-            </div>
-            <div
-              className="absolute z-10"
-              aria-expanded="false"
-              aria-haspopup="dialog"
-              style={{
-                left: '15.8333%',
-                top: '27.2222%',
-                transform: 'translate(-1.79167px, -1.79167px)',
-              }}
-            >
-              <div
-                className="w-4 h-4 rounded-full"
-                style={{
-                  backgroundColor: 'var(--icon-brand)',
-                  width: '3.58333px',
-                  height: '3.58333px',
-                }}
-              ></div>
-              <div
-                className="rounded-full absolute top-0 left-0 animate-ping-3"
-                style={{
-                  backgroundColor: 'var(--icon-brand)',
-                  width: '3.58333px',
-                  height: '3.58333px',
-                }}
-              ></div>
-            </div>
-            <div
-              className="absolute z-10"
-              aria-expanded="true"
-              aria-haspopup="dialog"
-              style={{
-                left: '78.6111%',
-                top: '57.2222%',
-                transform: 'translate(-1.79167px, -1.79167px)',
-              }}
-              aria-controls=":rv:"
-            >
-              <div
-                className="w-4 h-4 rounded-full"
-                style={{
-                  backgroundColor: 'var(--icon-brand)',
-                  width: '3.58333px',
-                  height: '3.58333px',
-                }}
-              ></div>
-              <div
-                className="rounded-full absolute top-0 left-0 animate-ping-3"
-                style={{
-                  backgroundColor: 'var(--icon-brand)',
-                  width: '3.58333px',
-                  height: '3.58333px',
-                }}
-              ></div>
-            </div>
-            <div
-              className="absolute z-10"
-              aria-expanded="true"
-              aria-haspopup="dialog"
-              style={{
-                left: '83.7777%',
-                top: '41.2222%',
-                transform: 'translate(-1.79167px, -1.79167px)',
-              }}
-              aria-controls=":rv:"
-            >
-              <div
-                className="w-4 h-4 rounded-full"
-                style={{
-                  backgroundColor: 'var(--icon-brand)',
-                  width: '3.58333px',
-                  height: '3.58333px',
-                }}
-              ></div>
-              <div
-                className="rounded-full absolute top-0 left-0 animate-ping-3"
-                style={{
-                  backgroundColor: 'var(--icon-brand)',
-                  width: '3.58333px',
-                  height: '3.58333px',
-                }}
-              ></div>
-            </div>
-            <div
-              className="absolute z-10"
-              aria-expanded="true"
-              aria-haspopup="dialog"
-              style={{
-                left: '81.6666%',
-                top: '46.7777%',
-                transform: 'translate(-1.79167px, -1.79167px)',
-              }}
-              aria-controls=":rv:"
-            >
-              <div
-                className="w-4 h-4 rounded-full"
-                style={{
-                  backgroundColor: 'var(--icon-brand)',
-                  width: '3.58333px',
-                  height: '3.58333px',
-                }}
-              ></div>
-              <div
-                className="rounded-full absolute top-0 left-0 animate-ping-3"
-                style={{
-                  backgroundColor: 'var(--icon-brand)',
-                  width: '3.58333px',
-                  height: '3.58333px',
-                }}
-              ></div>
-            </div>
-            <div
-              className="absolute z-10"
-              aria-expanded="false"
-              aria-haspopup="dialog"
-              style={{
-                left: '89.1667%',
-                top: '37.7778%',
-                transform: 'translate(-1.79167px, -1.79167px)',
-              }}
-            >
-              <div
-                className="w-4 h-4 rounded-full"
-                style={{
-                  backgroundColor: 'var(--icon-brand)',
-                  width: '3.58333px',
-                  height: '3.58333px',
-                }}
-              ></div>
-              <div
-                className="rounded-full absolute top-0 left-0 animate-ping-3"
-                style={{
-                  backgroundColor: 'var(--icon-brand)',
-                  width: '3.58333px',
-                  height: '3.58333px',
-                }}
-              ></div>
-            </div>
-            <div
-              className="absolute z-10"
-              aria-expanded="false"
-              aria-haspopup="dialog"
-              style={{
-                left: '49.6669%',
-                top: '25.4444%',
-                transform: 'translate(-1.79167px, -1.79167px)',
-              }}
-            >
-              <div
-                className="w-4 h-4 rounded-full"
-                style={{
-                  backgroundColor: 'var(--icon-brand)',
-                  width: '3.58333px',
-                  height: '3.58333px',
-                }}
-              ></div>
-              <div
-                className="rounded-full absolute top-0 left-0 animate-ping-3"
-                style={{
-                  backgroundColor: 'var(--icon-brand)',
-                  width: '3.58333px',
-                  height: '3.58333px',
-                }}
-              ></div>
-            </div>
+            {mapPins.map((pin) => (
+              <MapPin key={`${pin.left}-${pin.top}`} {...pin} />
+            ))}
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }

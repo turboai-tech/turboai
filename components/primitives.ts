@@ -4,7 +4,7 @@ export const title = tv({
   base: "tracking-tight inline",
   variants: {
     color: {
-      violet: "from-[#FF1CF7] to-[#b249f8]",
+      violet: "from-[color-mix(in_oklab,var(--accent)_72%,white)] to-[var(--accent)]",
       yellow: "from-[#FF705B] to-[#FFB457]",
       blue: "from-[#5EA2EF] to-[#0072F5]",
       cyan: "from-[#00b7fa] to-[#01cfea]",
