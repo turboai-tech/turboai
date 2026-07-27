@@ -30,7 +30,11 @@ export default function LocaleSwitcherSelect({
     items.find((item) => item.value === defaultValue) || items[0],
   );
 
+  // 当前语言变化时同步下拉显示；onChange 里的 setSelected 负责切换时的乐观更新。
+  // Next 16 新增的 react-hooks/set-state-in-effect 会标记此处 —— 消除它需要
+  // 改为渲染期派生，会牺牲乐观更新的即时反馈，属行为变更，不在本次升级范围内。
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelected(items.find((item) => item.value === locale) || items[0]);
   }, [locale, items]);
 

@@ -9,7 +9,10 @@ export default function Sitemap() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+  // 防止水合不匹配：主题决定 logo 用哪张图，服务端读不到主题。
+  // Next 16 新增的 react-hooks/set-state-in-effect 对这个 SSR 模式属误伤。
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

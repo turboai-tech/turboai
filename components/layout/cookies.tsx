@@ -7,8 +7,11 @@ import { useEffect, useState } from 'react';
 export default function Cookies() {
   const [isVisible, setIsVisible] = useState(false);
 
+  // localStorage 只在客户端存在，横幅的可见性必须挂载后才能确定。
+  // Next 16 新增的 react-hooks/set-state-in-effect 对这个模式属误伤。
   useEffect(() => {
     const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsVisible(!cookiesAccepted);
   }, []);
 
