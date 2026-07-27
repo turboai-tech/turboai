@@ -1,21 +1,32 @@
 'use client';
 
-import { Button } from '@heroui/react';
+import { Label, Switch } from '@heroui/react';
 import { Icon } from '@iconify/react';
 import { useTheme } from 'next-themes';
 import { FC, useEffect, useState } from 'react';
 
 export interface ThemeSwitchProps {
   className?: string;
+  /** Also used as the accessible name when the label is not shown. */
+  label?: string;
+  showLabel?: boolean;
 }
 
-export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className }) => {
+export const ThemeSwitch: FC<ThemeSwitchProps> = ({
+  className,
+  label = 'Toggle theme',
+  showLabel = false,
+}) => {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  // resolvedTheme, not theme: while following the system preference `theme` is
+  // "system", which would leave the switch off on a dark screen.
+  const { resolvedTheme, setTheme } = useTheme();
 
-  // 防止水合不匹配：仅在客户端挂载后渲染，避免服务端/客户端主题图标不一致。
-  // Next 16 的 eslint-config-next 新增了 react-hooks/set-state-in-effect，
-  // 对这个 SSR 水合模式属误伤（React 文档承认的合法例外）。行为保持不变。
+  // Avoid hydration mismatch: only render once mounted on the client, so the
+  // server/client theme icon never disagrees. Next 16's eslint-config-next
+  // added react-hooks/set-state-in-effect, which mis-flags this SSR hydration
+  // pattern (a legitimate exception acknowledged by the React docs). Behaviour
+  // is unchanged.
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
@@ -25,22 +36,29 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className }) => {
     return null;
   }
 
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
+  const isDark = resolvedTheme === 'dark';
 
   return (
-    <Button
-      isIconOnly
-      radius="full"
-      variant="light"
-      onPress={toggleTheme}
-      className={className}>
-      <Icon
-        className="text-default-500"
-        icon={theme === 'dark' ? 'solar:sun-linear' : 'solar:moon-linear'}
-        width={24}
-      />
-    </Button>
+    <Switch
+      aria-label={showLabel ? undefined : label}
+      className={className}
+      isSelected={isDark}
+      // Compact in the bar; roomier in the menu where it sits beside a label.
+      size={showLabel ? 'md' : 'sm'}
+      onChange={(isSelected) => setTheme(isSelected ? 'dark' : 'light')}>
+      <Switch.Content>
+        <Switch.Control>
+          <Switch.Thumb>
+            <Switch.Icon>
+              <Icon
+                className="text-[10px]"
+                icon={isDark ? 'solar:moon-bold' : 'solar:sun-bold'}
+              />
+            </Switch.Icon>
+          </Switch.Thumb>
+        </Switch.Control>
+        {showLabel ? <Label className="text-base text-muted">{label}</Label> : null}
+      </Switch.Content>
+    </Switch>
   );
 };

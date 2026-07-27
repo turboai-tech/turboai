@@ -16,7 +16,7 @@ export default function PrivacyJaPage() {
         <p>
           <strong>Turbo AIテクノロジー（上海）有限公司</strong>
           （以下、「当社」といいます）は、お客様が
-          <strong className="text-primary"> www.iturboai.com </strong>
+          <strong className="text-accent"> www.iturboai.com </strong>
           を通じて提供される当社のサービスとしてのソフトウェア製品（SaaS）を使用する際に、当社がお客様の情報をどのように収集、使用、開示、保護するかを説明するために、このプライバシーポリシーを策定しました。これらのサービスには、関連するソフトウェア、アプリケーション、ウェブサイト（総称して「本サービス」）が含まれます。
         </p>
         <p>
@@ -152,9 +152,9 @@ export default function PrivacyJaPage() {
         <p>
           <strong>ご注意：</strong>{' '}
           当社のサービスには、第三者のウェブサイト（ソーシャルメディアなど）へのリンクが含まれる場合がありますが、それらのプライバシーポリシーは当社とは独立しています。
-          <strong className="text-primary"> turboai </strong>
+          <strong className="text-accent"> turboai </strong>
           のサービスを離れて他のウェブサイトにアクセスしたり、他のサービスを利用したりする場合（
-          <strong className="text-primary"> turboai </strong>
+          <strong className="text-accent"> turboai </strong>
           が提供するリンクを経由した場合でも）、当社はこれらの第三者プラットフォームでお客様が提供する個人情報を保護することはできず、またその義務も負いません。
         </p>
 
@@ -229,7 +229,7 @@ export default function PrivacyJaPage() {
         <h2 className="text-lg font-bold my-2">9. お問い合わせ</h2>
         <p>
           このプライバシーポリシーに関するご質問やご懸念がある場合、または苦情がある場合は、{' '}
-          <a href="mailto:turboai@gmail.com" className="text-primary">
+          <a href="mailto:turboai@gmail.com" className="text-accent">
             turboai@gmail.com
           </a>
           までご連絡ください。

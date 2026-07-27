@@ -50,7 +50,7 @@ export default function TermJaPage() {
             返金を要求するには、顧客は返金期間内に当社のサポートチームに連絡し、購入詳細と返金要求の正当な理由を提供する必要があります（
             <a
               href="mailto:turboai@gmail.com"
-              className="text-primary underline"
+              className="text-accent underline"
             >
               turboai@gmail.com
             </a>
@@ -72,7 +72,7 @@ export default function TermJaPage() {
         <h2 className="text-lg font-bold my-2">5. プライバシーポリシー</h2>
         <p>
           当社による個人情報の収集、使用、共有については、当社の
-          <a href="/privacy" className="text-primary underline">
+          <a href="/privacy" className="text-accent underline">
             プライバシーポリシー
           </a>
           に記載されています。
@@ -109,7 +109,7 @@ export default function TermJaPage() {
         <h2 className="text-lg font-bold my-2">12. 公正な利用と不正防止</h2>
         <p>
           公正な環境を確保するため、コンテンツを過度にダウンロードした後に返金を要求するなどの乱用や不正行為を監視しています。違反があった場合、アカウントの停止や返金の拒否などの措置を取ることがあります。不当に告発されたと思われる場合は、
-          <a href="mailto:turboai@gmail.com" className="text-primary underline">
+          <a href="mailto:turboai@gmail.com" className="text-accent underline">
             turboai@gmail.com
           </a>
           までご連絡ください。
@@ -117,7 +117,7 @@ export default function TermJaPage() {
         <h2 className="text-lg font-bold my-2">13. 連絡先情報</h2>
         <p>
           本利用規約についてご不明な点がございましたら、
-          <a href="mailto:turboai@gmail.com" className="text-primary underline">
+          <a href="mailto:turboai@gmail.com" className="text-accent underline">
             turboai@gmail.com
           </a>
           までお問い合わせください。

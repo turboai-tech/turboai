@@ -1,8 +1,90 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@import '@heroui/styles';
 
-/* @config "../tailwind.config.js" */
+/* Match next-themes `class` strategy used by the app. */
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --background-image-hero-section-title: var(--hero-title-gradient);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-appear: appear 1s ease-in-out;
+  --animate-slide: slide 750ms ease-in-out;
+  --animate-scrolling-banner: scrolling-banner var(--duration) linear infinite;
+  --animate-scrolling-banner-vertical: scrolling-banner-vertical
+    var(--duration) linear infinite;
+  --animate-pulse-border: pulse-border 2s infinite;
+  --animate-voice-glow: voice-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes scrolling-banner {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - var(--gap) / 2));
+  }
+}
+
+@keyframes scrolling-banner-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-50% - var(--gap) / 2));
+  }
+}
+
+@keyframes pulse-border {
+  0% {
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(168, 85, 247, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
+  }
+}
+
+@keyframes voice-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 5px 2px rgba(192, 132, 252, 0.5),
+      0 0 7px 3px rgba(168, 85, 247, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 10px 4px rgba(192, 132, 252, 0.7),
+      0 0 15px 6px rgba(168, 85, 247, 0.5);
+  }
+}
+
 @layer base {
   :root {
     --hero-title-gradient: linear-gradient(to right, #333333, #33333399);
@@ -35,12 +117,59 @@
   }
 }
 
+/* Keep the horizontal clip on the root element: an overflow other than
+   `visible` on `body` would turn it into the scroll container for sticky
+   descendants as soon as an overlay locks scrolling on `html`. */
+html {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   --icon-brand: blue;
-  overflow-x: hidden;
+}
+
+/* Blueprint grid used behind hero and section headers. */
+@utility bg-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--color-default) 50%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-default) 50%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 56px 56px;
+}
+
+@utility mask-fade-out {
+  -webkit-mask-image: radial-gradient(
+    ellipse 75% 65% at 50% 0%,
+    #000 35%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 75% 65% at 50% 0%,
+    #000 35%,
+    transparent 100%
+  );
+}
+
+/* Small uppercase monospace label — the recurring "spec sheet" motif. */
+@utility label-mono {
+  @apply font-mono text-xs uppercase tracking-[0.18em] text-muted;
+}
+
+/* CJK glyphs fall back to a proportional face, where the wide latin
+   tracking reads as broken spacing rather than as a label. */
+html[lang='zh-CN'] .label-mono,
+html[lang='ja'] .label-mono {
+  letter-spacing: 0.06em;
 }
 
 /* sitemap animation */

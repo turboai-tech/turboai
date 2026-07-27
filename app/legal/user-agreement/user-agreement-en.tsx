@@ -25,11 +25,11 @@ export default function UserAgreementEnPage() {
           By creating an account, making a purchase, or using the Services, you
           acknowledge that you have read, understood, and agree to be bound by
           this Agreement, our{' '}
-          <a href="/privacy" className="text-primary underline">
+          <a href="/privacy" className="text-accent underline">
             Privacy Policy
           </a>
           , and our{' '}
-          <a href="/term" className="text-primary underline">
+          <a href="/term" className="text-accent underline">
             Terms & Conditions
           </a>
           , which are incorporated herein by reference.
@@ -171,7 +171,7 @@ export default function UserAgreementEnPage() {
         <h2 className="text-lg font-bold my-2">12. Contact Information</h2>
         <p>
           If you have any questions about this Agreement, please contact us at{' '}
-          <a href="mailto:turboai@gmail.com" className="text-primary underline">
+          <a href="mailto:turboai@gmail.com" className="text-accent underline">
             turboai@gmail.com
           </a>
           .

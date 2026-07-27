@@ -5,7 +5,7 @@ import { Providers } from '@/app/providers';
 import './globals.css';
 
 import Cookies from '@/components/layout/cookies';
-import { fontPacifico, fontSans } from '@/config/fonts';
+import { fontMono, fontPacifico, fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
 import { getUserLocale } from '@/services/locale';
 import { NextIntlClientProvider } from 'next-intl';
@@ -52,8 +52,9 @@ export default async function RootLayout({
       </head>
       <body
         className={clsx(
-          'min-h-screen bg-background font-sans antialiased overflow-y-auto',
+          'min-h-screen bg-background font-sans antialiased',
           fontSans.variable,
+          fontMono.variable,
           fontPacifico.variable,
         )}
       >

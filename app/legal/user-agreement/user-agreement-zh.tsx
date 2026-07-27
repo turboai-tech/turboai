@@ -20,11 +20,11 @@ export default function UserAgreementZhPage() {
         </p>
         <p>
           通过创建账户、进行购买或使用本服务，即表示您已阅读、理解并同意受本协议、我们的
-          <a href="/privacy" className="text-primary underline">
+          <a href="/privacy" className="text-accent underline">
             《隐私政策》
           </a>
           以及
-          <a href="/term" className="text-primary underline">
+          <a href="/term" className="text-accent underline">
             《服务条款》
           </a>
           的约束，这些文件已通过引用的方式并入本协议。
@@ -110,7 +110,7 @@ export default function UserAgreementZhPage() {
         <h2 className="text-lg font-bold my-2">12. 联系信息</h2>
         <p>
           如果您对本协议有任何疑问，请通过
-          <a href="mailto:turboai@gmail.com" className="text-primary underline">
+          <a href="mailto:turboai@gmail.com" className="text-accent underline">
             turboai@gmail.com
           </a>
           与我们联系。

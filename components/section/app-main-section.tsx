@@ -1,187 +1,123 @@
 'use client';
 
-import { Button } from '@heroui/react';
+import ButtonLink from '@/components/button-link';
 import { Icon } from '@iconify/react';
-import { AnimatePresence, LazyMotion, domAnimation, m } from 'framer-motion';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 import { useTranslations } from 'next-intl';
-import { useLayoutEffect, useRef, useState } from 'react';
-import { subtitle, title } from '../primitives';
 import AppScreenshotSkewed from './app-screenshot-skewed';
+
+const stats = ['1', '2', '3'] as const;
+
+// Each hero block fades up slightly after the previous one.
+const riseIn = (order: number) => ({
+  initial: { filter: 'blur(12px)', opacity: 0, y: 16 },
+  animate: { filter: 'blur(0px)', opacity: 1, y: 0 },
+  transition: {
+    bounce: 0,
+    delay: 0.08 * order,
+    duration: 0.9,
+    type: 'spring' as const,
+  },
+});
 
 export default function AppMainSections() {
   const t = useTranslations('AppMainSection');
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [dynamicMargin, setDynamicMargin] = useState(-200);
-
-  useLayoutEffect(() => {
-    function updateMargin(node: HTMLDivElement | null) {
-      if (node) {
-        const margin = -node.offsetHeight * 0.6;
-        setDynamicMargin(margin);
-      }
-    }
-
-    const currentSection = sectionRef.current;
-    updateMargin(currentSection);
-
-    // listen to window size change
-    window.addEventListener('resize', () => updateMargin(currentSection));
-
-    // listen to section content change
-    let resizeObserver: ResizeObserver | null = null;
-    if (currentSection) {
-      resizeObserver = new window.ResizeObserver(() =>
-        updateMargin(currentSection)
-      );
-      resizeObserver.observe(currentSection);
-    }
-
-    return () => {
-      window.removeEventListener('resize', () => updateMargin(currentSection));
-      if (resizeObserver && currentSection) {
-        resizeObserver.unobserve(currentSection);
-        resizeObserver.disconnect();
-      }
-    };
-  }, []);
 
   return (
-    <main className="relative container mx-auto mt-[80px] flex max-w-[1024px] flex-col items-start px-8">
-      <section
-        ref={sectionRef}
-        className="z-20 flex flex-col items-start justify-center gap-[18px] sm:gap-6">
-        <Button
-          className="h-9 overflow-hidden border-1 border-default-100 dark:bg-default-50 bg-default-300 px-[18px] py-2 text-small font-normal leading-5 text-default-500"
-          endContent={
-            <Icon
-              className="flex-none outline-none [&>path]:stroke-[2]"
-              icon="solar:arrow-right-linear"
-              width={20}
-            />
-          }
-          radius="full"
-          variant="bordered">
-          {t('button_si_solutions')}
-        </Button>
-        <LazyMotion features={domAnimation}>
-          <m.div
-            animate="kick"
-            className="flex flex-col gap-6"
-            exit="auto"
-            initial="auto"
-            transition={{
-              duration: 0.25,
-              ease: 'easeInOut',
-            }}
-            variants={{
-              auto: { width: 'auto' },
-              kick: { width: 'auto' },
-            }}>
-            <AnimatePresence mode="sync">
-              <m.div
-                key="hero-section-title"
-                animate={{ filter: 'blur(0px)', opacity: 1, x: 0 }}
-                className="text-start text-[clamp(40px,10vw,44px)] font-bold leading-[1.2] tracking-tighter sm:text-[64px]"
-                initial={{ filter: 'blur(16px)', opacity: 0, x: 15 + 1 * 2 }}
-                transition={{
-                  bounce: 0,
-                  delay: 0.01 * 10,
-                  duration: 0.8 + 0.1 * 8,
-                  type: 'spring',
-                }}>
-                <div className="bg-hero-section-title bg-clip-text text-transparent">
-                  <span className={title()}>{t('title_1')}&nbsp;</span>
-                  <span className={title({ color: 'violet' })}>
-                    {t('title_2')}&nbsp;
-                  </span>
-                  <span className={title()}>{t('title_3')}</span>
-                </div>
-                <div className="bg-hero-section-title bg-clip-text text-transparent">
-                  <span className={subtitle()}>{t('subtitle')}</span>
-                </div>
-              </m.div>
+    <section className="relative flex flex-col items-start pt-20">
+      <div
+        aria-hidden
+        className="bg-grid mask-fade-out pointer-events-none absolute inset-x-[-50vw] top-[-120px] h-[720px] select-none"
+      />
 
-              <m.div
-                key="hero-section-description"
-                animate={{ filter: 'blur(0px)', opacity: 1, x: 0 }}
-                className="text-start font-normal leading-7 text-default-500 sm:w-[466px] sm:text-[18px]"
-                initial={{ filter: 'blur(16px)', opacity: 0, x: 15 + 1 * 3 }}
-                transition={{
-                  bounce: 0,
-                  delay: 0.01 * 30,
-                  duration: 0.8 + 0.1 * 9,
-                  type: 'spring',
-                }}>
-                {t('description')}
-              </m.div>
-
-              <m.div
-                key="hero-section-buttons"
-                animate={{ filter: 'blur(0px)', opacity: 1, x: 0 }}
-                className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6"
-                initial={{ filter: 'blur(16px)', opacity: 0, x: 15 + 1 * 4 }}
-                transition={{
-                  bounce: 0,
-                  delay: 0.01 * 50,
-                  duration: 0.8 + 0.1 * 10,
-                  type: 'spring',
-                }}>
-                <Button
-                  color="success"
-                  className="bg-gradient-to-tr from-[#fd7bf8] to-[#b249f8] text-default-900 shadow-lg h-10 w-[163px] px-[16px] py-[10px] leading-5 font-medium text-small"
-                  radius="full">
-                  {t('button_get_demo')}
-                </Button>
-                <Button
-                  className="h-10 w-[163px] border-1 border-default-300 px-[16px] py-[10px] text-small font-medium leading-5"
-                  endContent={
-                    <span className="pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-default-100">
-                      <Icon
-                        className="text-default-500 [&>path]:stroke-[1.5]"
-                        icon="solar:arrow-right-linear"
-                        width={16}
-                      />
-                    </span>
-                  }
-                  radius="full"
-                  variant="bordered">
-                  {t('button_see_plans')}
-                </Button>
-              </m.div>
-            </AnimatePresence>
-          </m.div>
-        </LazyMotion>
-      </section>
       <LazyMotion features={domAnimation}>
-        <AnimatePresence mode="sync">
-          <m.div
-            key="hero-section-app-screenshot"
-            animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
-            className="w-full 2xl:mt-[100px]"
-            style={{
-              marginTop: dynamicMargin,
-              marginBottom: 40,
-            }}
-            initial={{ filter: 'blur(16px)', opacity: 0, y: 300 }}
-            transition={{
-              bounce: 0,
-              delay: 0.01 * 10,
-              duration: 0.8 + 0.1 * 8,
-              type: 'spring',
-            }}>
-            <AppScreenshotSkewed className="w-full" />
+        <section className="z-20 flex flex-col items-start justify-center gap-6">
+          <m.div {...riseIn(0)}>
+            <span className="label-mono inline-flex items-center gap-2 rounded-full border-1 border-default/40 bg-background/60 px-3 py-1.5 backdrop-blur-md">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+              </span>
+              {t('eyebrow')}
+            </span>
           </m.div>
-        </AnimatePresence>
+
+          <m.h1
+            {...riseIn(1)}
+            className="text-start text-[clamp(44px,10vw,52px)] font-bold leading-[1.05] tracking-tighter sm:text-[76px]">
+            <span className="text-foreground">{t('title_1')}&nbsp;</span>
+            <span className="bg-gradient-to-br from-[#FF1CF7] to-[#b249f8] bg-clip-text text-transparent">
+              {t('title_2')}&nbsp;
+            </span>
+            <span className="text-foreground">{t('title_3')}</span>
+          </m.h1>
+
+          <m.p
+            {...riseIn(2)}
+            className="text-start text-xl font-medium tracking-tight text-foreground/90 sm:text-2xl">
+            {t('subtitle')}
+          </m.p>
+
+          <m.p
+            {...riseIn(3)}
+            className="max-w-[560px] text-start text-base font-normal leading-7 text-muted sm:text-[18px]">
+            {t('description')}
+          </m.p>
+
+          <m.div
+            {...riseIn(4)}
+            className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+            <ButtonLink
+              className="h-11 rounded-full bg-gradient-to-tr from-[#fd7bf8] to-[#b249f8] px-6 text-sm font-medium text-foreground shadow-lg"
+              href="/#pricing-container">
+              {t('cta_primary')}
+            </ButtonLink>
+            <ButtonLink
+              className="h-11 rounded-full border border-default/50 px-6 text-sm font-medium"
+              href="/solutions"
+              variant="outline">
+              {t('cta_secondary')}
+              <Icon
+                className="text-muted [&>path]:stroke-[1.5]"
+                icon="solar:arrow-right-linear"
+                width={16}
+              />
+            </ButtonLink>
+          </m.div>
+
+          <m.dl
+            {...riseIn(5)}
+            className="mt-4 grid w-full grid-cols-1 gap-px overflow-hidden rounded-lg border-1 border-default/40 bg-default/50 sm:grid-cols-3">
+            {stats.map((index) => (
+              <div
+                key={index}
+                className="flex flex-col gap-1 bg-background px-5 py-4">
+                <dt className="font-mono text-xl font-semibold tracking-tight text-foreground">
+                  {t(`stat_${index}_value`)}
+                </dt>
+                <dd className="text-sm text-muted">
+                  {t(`stat_${index}_label`)}
+                </dd>
+              </div>
+            ))}
+          </m.dl>
+        </section>
+
+        <m.div
+          key="hero-section-app-screenshot"
+          animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+          className="mb-10 mt-14 w-full"
+          initial={{ filter: 'blur(16px)', opacity: 0, y: 120 }}
+          transition={{
+            bounce: 0,
+            delay: 0.1,
+            duration: 1.6,
+            type: 'spring',
+          }}>
+          <AppScreenshotSkewed className="w-full" />
+        </m.div>
       </LazyMotion>
-      {/* <div className="pointer-events-none absolute inset-0 top-[-25%] z-10 scale-150 select-none sm:scale-125">
-        <FadeInImage
-          fill
-          priority
-          alt="Gradient background"
-          src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/backgrounds/bg-gradient.png"
-        />
-      </div> */}
-    </main>
+    </section>
   );
 }

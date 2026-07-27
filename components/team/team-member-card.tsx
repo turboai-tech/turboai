@@ -1,7 +1,8 @@
 'use client';
 
-import { Avatar, cn, Link } from '@heroui/react';
+import { Avatar, cn } from '@heroui/react';
 import { Icon } from '@iconify/react';
+import Link from 'next/link';
 import React from 'react';
 
 export type TeamMember = {
@@ -24,54 +25,51 @@ const TeamMemberCard = React.forwardRef<HTMLDivElement, TeamMemberCardProps>(
     <div
       ref={ref}
       className={cn(
-        'flex flex-col items-center rounded-large bg-content1 px-4 py-6 text-center shadow-small',
-        className
+        'flex flex-col items-center rounded-lg bg-surface px-4 py-6 text-center shadow-sm',
+        className,
       )}
       {...props}>
-      <Avatar
-        className="h-20 w-20"
-        src={avatar}
-      />
+      <Avatar className="h-20 w-20">
+        {avatar ? <Avatar.Image alt={name} src={avatar} /> : null}
+        <Avatar.Fallback>{name.slice(0, 1)}</Avatar.Fallback>
+      </Avatar>
       <h3 className="mt-2 font-medium">{name || children}</h3>
-      <span className="text-small text-default-500">{role}</span>
-      <p className="mb-4 mt-2 text-default-600">{bio}</p>
+      <span className="text-sm text-muted">{role}</span>
+      {bio ? <p className="mb-4 mt-2 text-muted">{bio}</p> : <div className="mb-4" />}
       <div className="flex gap-4">
-        {social?.twitter && (
+        {social?.twitter ? (
           <Link
-            isExternal
-            href="#">
-            <Icon
-              className="text-default-400"
-              icon="bi:twitter"
-              width={20}
-            />
+            aria-label="Twitter"
+            className="text-muted"
+            href={`https://x.com/${social.twitter}`}
+            rel="noreferrer"
+            target="_blank">
+            <Icon icon="bi:twitter" width={20} />
           </Link>
-        )}
-        {social?.linkedin && (
+        ) : null}
+        {social?.linkedin ? (
           <Link
-            isExternal
-            href="#">
-            <Icon
-              className="text-default-400"
-              icon="bi:linkedin"
-              width={20}
-            />
+            aria-label="LinkedIn"
+            className="text-muted"
+            href={`https://www.linkedin.com/in/${social.linkedin}`}
+            rel="noreferrer"
+            target="_blank">
+            <Icon icon="bi:linkedin" width={20} />
           </Link>
-        )}
-        {social?.github && (
+        ) : null}
+        {social?.github ? (
           <Link
-            isExternal
-            href="#">
-            <Icon
-              className="text-default-400"
-              icon="bi:github"
-              width={20}
-            />
+            aria-label="GitHub"
+            className="text-muted"
+            href={`https://github.com/${social.github}`}
+            rel="noreferrer"
+            target="_blank">
+            <Icon icon="bi:github" width={20} />
           </Link>
-        )}
+        ) : null}
       </div>
     </div>
-  )
+  ),
 );
 
 TeamMemberCard.displayName = 'TeamMemberCard';

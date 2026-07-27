@@ -22,7 +22,7 @@ export const items: SidebarItem[] = [
     title: 'Projects',
     endContent: (
       <Icon
-        className="text-default-400"
+        className="text-muted"
         icon="solar:add-circle-line-duotone"
         width={24}
       />
@@ -35,7 +35,7 @@ export const items: SidebarItem[] = [
     title: 'Tasks',
     endContent: (
       <Icon
-        className="text-default-400"
+        className="text-muted"
         icon="solar:add-circle-line-duotone"
         width={24}
       />
@@ -55,7 +55,7 @@ export const items: SidebarItem[] = [
     endContent: (
       <Chip
         size="sm"
-        variant="flat">
+        variant="soft">
         New
       </Chip>
     ),
@@ -74,7 +74,7 @@ export const items: SidebarItem[] = [
     endContent: (
       <Chip
         size="sm"
-        variant="flat">
+        variant="soft">
         3
       </Chip>
     ),
@@ -111,7 +111,7 @@ export const sectionItems: SidebarItem[] = [
         title: 'Projects',
         endContent: (
           <Icon
-            className="text-default-400"
+            className="text-muted"
             icon="solar:add-circle-line-duotone"
             width={24}
           />
@@ -124,7 +124,7 @@ export const sectionItems: SidebarItem[] = [
         title: 'Tasks',
         endContent: (
           <Icon
-            className="text-default-400"
+            className="text-muted"
             icon="solar:add-circle-line-duotone"
             width={24}
           />
@@ -144,7 +144,7 @@ export const sectionItems: SidebarItem[] = [
         endContent: (
           <Chip
             size="sm"
-            variant="flat">
+            variant="soft">
             New
           </Chip>
         ),
@@ -192,7 +192,7 @@ export const sectionItems: SidebarItem[] = [
         endContent: (
           <Chip
             size="sm"
-            variant="flat">
+            variant="soft">
             3
           </Chip>
         ),
@@ -259,7 +259,7 @@ export const brandItems: SidebarItem[] = [
         title: 'Projects',
         endContent: (
           <Icon
-            className="text-primary-foreground/60"
+            className="text-accent-foreground/60"
             icon="solar:add-circle-line-duotone"
             width={24}
           />
@@ -272,7 +272,7 @@ export const brandItems: SidebarItem[] = [
         title: 'Tasks',
         endContent: (
           <Icon
-            className="text-primary-foreground/60"
+            className="text-accent-foreground/60"
             icon="solar:add-circle-line-duotone"
             width={24}
           />
@@ -291,9 +291,9 @@ export const brandItems: SidebarItem[] = [
         title: 'Tracker',
         endContent: (
           <Chip
-            className="bg-primary-foreground font-medium text-primary"
+            className="bg-primary-foreground font-medium text-accent"
             size="sm"
-            variant="flat">
+            variant="soft">
             New
           </Chip>
         ),
@@ -309,13 +309,7 @@ export const brandItems: SidebarItem[] = [
         href: '#',
         title: 'HeroUI',
         startContent: (
-          <TeamAvatar
-            classNames={{
-              base: 'border-1 border-primary-foreground/20',
-              name: 'text-primary-foreground/80',
-            }}
-            name="Hero UI"
-          />
+          <TeamAvatar name="Hero UI" />
         ),
       },
       {
@@ -323,13 +317,7 @@ export const brandItems: SidebarItem[] = [
         href: '#',
         title: 'Tailwind Variants',
         startContent: (
-          <TeamAvatar
-            classNames={{
-              base: 'border-1 border-primary-foreground/20',
-              name: 'text-primary-foreground/80',
-            }}
-            name="Tailwind Variants"
-          />
+          <TeamAvatar name="Tailwind Variants" />
         ),
       },
       {
@@ -337,13 +325,7 @@ export const brandItems: SidebarItem[] = [
         href: '#',
         title: 'HeroUI Pro',
         startContent: (
-          <TeamAvatar
-            classNames={{
-              base: 'border-1 border-primary-foreground/20',
-              name: 'text-primary-foreground/80',
-            }}
-            name="HeroUI Pro"
-          />
+          <TeamAvatar name="HeroUI Pro" />
         ),
       },
     ],
@@ -428,7 +410,7 @@ export const sectionNestedItems: SidebarItem[] = [
     title: 'Projects',
     endContent: (
       <Icon
-        className="text-default-400"
+        className="text-muted"
         icon="solar:add-circle-line-duotone"
         width={24}
       />
@@ -441,7 +423,7 @@ export const sectionNestedItems: SidebarItem[] = [
     title: 'Tasks',
     endContent: (
       <Icon
-        className="text-default-400"
+        className="text-muted"
         icon="solar:add-circle-line-duotone"
         width={24}
       />
@@ -461,7 +443,7 @@ export const sectionNestedItems: SidebarItem[] = [
     endContent: (
       <Chip
         size="sm"
-        variant="flat">
+        variant="soft">
         New
       </Chip>
     ),
@@ -480,7 +462,7 @@ export const sectionNestedItems: SidebarItem[] = [
     endContent: (
       <Chip
         size="sm"
-        variant="flat">
+        variant="soft">
         3
       </Chip>
     ),

@@ -67,7 +67,7 @@ export default function TermEnPage() {
             To request a refund, customers must contact our support team at{' '}
             <a
               href="mailto:turboai@gmail.com"
-              className="text-primary underline"
+              className="text-accent underline"
             >
               turboai@gmail.com
             </a>{' '}
@@ -98,7 +98,7 @@ export default function TermEnPage() {
         <p>
           Our collection, use, and sharing of your personal information are
           described in our{' '}
-          <a href="/privacy" className="text-primary underline">
+          <a href="/privacy" className="text-accent underline">
             Privacy Policy
           </a>
           .
@@ -149,7 +149,7 @@ export default function TermEnPage() {
           downloading content excessively then requesting refunds. Violations
           may lead to actions like account termination or refund denial. If you
           believe you've been wrongly accused, contact us at{' '}
-          <a href="mailto:turboai@gmail.com" className="text-primary underline">
+          <a href="mailto:turboai@gmail.com" className="text-accent underline">
             turboai@gmail.com
           </a>
           .
@@ -158,7 +158,7 @@ export default function TermEnPage() {
         <p>
           If you have any questions about these Terms & Conditions, please
           contact us at{' '}
-          <a href="mailto:turboai@gmail.com" className="text-primary underline">
+          <a href="mailto:turboai@gmail.com" className="text-accent underline">
             turboai@gmail.com
           </a>
           .

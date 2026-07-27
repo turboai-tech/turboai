@@ -1,13 +1,13 @@
 'use client';
 
+import { BuyerXLogo } from '@/components/icons';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import Link from 'next/link';
 
 const customers = [
   {
     key: 'buyerx',
-    src: 'https://buyerx.ai/assets/logo-BZTqc0pU.png',
+    Logo: BuyerXLogo,
     name: 'BuyerX',
     url: 'https://buyerx.ai/',
     location: 'buyerx_location',
@@ -23,7 +23,7 @@ export default function CustomersComponent() {
           {t('customers_title')}
         </span>
         <div className="flex flex-wrap gap-4 justify-center items-center">
-          {customers.map(({ key, src, name, url, location }) => (
+          {customers.map(({ key, Logo, name, url, location }) => (
             <Link
               key={key}
               href={url}
@@ -31,8 +31,8 @@ export default function CustomersComponent() {
               rel="noopener noreferrer"
               className="flex items-center gap-2 py-2 px-4 rounded shadow min-w-fit whitespace-nowrap"
             >
-              <div className="h-10 w-10 flex items-center justify-center flex-shrink-0">
-                <Image src={src} alt={name} width={41} height={41} />
+              <div className="h-10 flex items-center justify-center flex-shrink-0">
+                <Logo height={40} />
               </div>
               <div className="flex flex-col">
                 <span className="font-medium text-sm">{name}</span>

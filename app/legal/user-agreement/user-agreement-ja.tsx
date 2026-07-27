@@ -20,11 +20,11 @@ export default function UserAgreementJaPage() {
         </p>
         <p>
           アカウントを作成し、購入を行い、または本サービスを利用することにより、お客様は、本契約、ならびに参照により本契約に組み込まれる当社の{' '}
-          <a href="/privacy" className="text-primary underline">
+          <a href="/privacy" className="text-accent underline">
             プライバシーポリシー
           </a>
           および
-          <a href="/term" className="text-primary underline">
+          <a href="/term" className="text-accent underline">
             利用規約
           </a>
           を読み、理解し、それに拘束されることに同意したものとみなされます。
@@ -117,7 +117,7 @@ export default function UserAgreementJaPage() {
         <h2 className="text-lg font-bold my-2">12. 連絡先情報</h2>
         <p>
           本契約についてご不明な点がございましたら、
-          <a href="mailto:turboai@gmail.com" className="text-primary underline">
+          <a href="mailto:turboai@gmail.com" className="text-accent underline">
             turboai@gmail.com
           </a>
           までお問い合わせください。

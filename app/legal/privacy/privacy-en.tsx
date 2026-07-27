@@ -17,7 +17,7 @@ export default function PrivacyEnPage() {
           established this Privacy Policy to explain how we collect, use,
           disclose, and protect your information when you use our
           software-as-a-service products provided through the
-          <strong className="text-primary"> www.iturboai.com</strong>. These
+          <strong className="text-accent"> www.iturboai.com</strong>. These
           services include related software, applications, and websites
           (collectively referred to as the &quot;Services&quot;).
         </p>
@@ -239,9 +239,9 @@ export default function PrivacyEnPage() {
           <strong>Please note:</strong> Our Services may include links to
           third-party websites (such as social media), whose privacy policies
           are independent of ours. Please be aware that when you leave
-          <strong className="text-primary"> turboai</strong> Services for other
+          <strong className="text-accent"> turboai</strong> Services for other
           websites or use other services, even if accessed through links
-          provided by <strong className="text-primary"> turboai</strong>, we
+          provided by <strong className="text-accent"> turboai</strong>, we
           cannot and have no obligation to protect the personal information you
           provide on these third-party platforms.
         </p>
@@ -377,7 +377,7 @@ export default function PrivacyEnPage() {
         <p>
           If you have any questions or concerns about this Privacy Policy, or if
           you have a complaint, please contact us via{' '}
-          <a href="mailto:turboai@gmail.com" className="text-primary">
+          <a href="mailto:turboai@gmail.com" className="text-accent">
             turboai@gmail.com
           </a>
           .

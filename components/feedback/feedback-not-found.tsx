@@ -1,37 +1,33 @@
 'use client';
 
-import { Button, Divider, Link, Textarea } from '@heroui/react';
+import { Button, Separator, TextArea } from '@heroui/react';
 import { Icon } from '@iconify/react';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
 import FeedbackRating from '@/components/feedback/feedback-rating';
-import { useTranslations } from 'next-intl';
 
 export default function FeedbackNotFound() {
   const t = useTranslations('NotFound');
 
   return (
-    <div className="flex flex-col items-center justify-center w-full mt-20">
+    <div className="mt-20 flex w-full flex-col items-center justify-center">
       <form
-        className="flex w-full max-w-sm flex-col gap-2 rounded-medium bg-content1 p-3 shadow-small"
+        className="flex w-full max-w-sm flex-col gap-2 rounded-md bg-surface p-3 shadow-sm"
         onSubmit={(e) => e.preventDefault()}>
-        <Textarea
+        <TextArea
           aria-label="Feedback"
           name="feedback"
           placeholder={t('feedback_placeholder')}
-          variant="faded"
-          rows={20}
+          rows={8}
+          variant="secondary"
         />
 
         <div className="flex w-full items-center justify-end gap-2 px-1">
-          <Icon
-            className="text-default-400 dark:text-default-300"
-            icon="la:markdown"
-            width={20}
-          />
-          <p className="text-tiny text-default-400 dark:text-default-300">
+          <Icon className="text-muted" icon="la:markdown" width={20} />
+          <p className="text-xs text-muted">
             <Link
-              className="text-tiny text-default-500"
-              color="foreground"
+              className="inline-flex items-center gap-0.5 text-xs text-muted underline-offset-2 hover:underline"
               href="https://guides.github.com/features/mastering-markdown/"
               rel="noreferrer"
               target="_blank">
@@ -45,14 +41,11 @@ export default function FeedbackNotFound() {
           </p>
         </div>
 
-        <Divider className="my-2" />
+        <Separator className="my-2" />
 
         <div className="flex w-full items-center justify-between">
           <FeedbackRating name="rating" />
-          <Button
-            color="primary"
-            size="sm"
-            type="submit">
+          <Button size="sm" type="submit" variant="primary">
             {t('submit')}
           </Button>
         </div>

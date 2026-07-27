@@ -1,8 +1,7 @@
 'use client';
 
-import { Accordion, AccordionItem } from '@heroui/react';
+import { Accordion } from '@heroui/react';
 import { Icon } from '@iconify/react';
-
 import { useTranslations } from 'next-intl';
 import faqs from './faqs';
 
@@ -17,28 +16,28 @@ export default function Faq() {
           <span className="hidden md:inline-block">{t('title')}</span>
         </h2>
         <Accordion
-          fullWidth
-          keepContentMounted
-          className="gap-3"
-          itemClasses={{
-            base: 'px-6 !bg-transparent hover:!bg-default-100 !shadow-none data-[open=true]:!bg-default-100',
-            title: 'font-medium',
-            trigger: 'py-4 md:py-6',
-            content: 'pt-0 pb-6 text-base text-default-500',
-            indicator: 'data-[open=true]:rotate-180',
-          }}
-          items={faqs}
-          selectionMode="multiple"
-          variant="splitted"
-        >
+          allowsMultipleExpanded
+          className="w-full gap-3"
+          variant="surface">
           {faqs.map((item, i) => (
-            <AccordionItem
+            <Accordion.Item
               key={i}
-              indicator={<Icon icon="solar:alt-arrow-down-linear" width={24} />}
-              title={t(item.title)}
-            >
-              {t(item.content)}
-            </AccordionItem>
+              className="rounded-lg border border-default/40 bg-transparent px-6 data-[expanded=true]:bg-default/40"
+              id={String(i)}>
+              <Accordion.Heading>
+                <Accordion.Trigger className="py-4 font-medium md:py-6">
+                  {t(item.title)}
+                  <Accordion.Indicator>
+                    <Icon icon="solar:alt-arrow-down-linear" width={24} />
+                  </Accordion.Indicator>
+                </Accordion.Trigger>
+              </Accordion.Heading>
+              <Accordion.Panel>
+                <Accordion.Body className="pb-6 pt-0 text-base text-muted">
+                  {t(item.content)}
+                </Accordion.Body>
+              </Accordion.Panel>
+            </Accordion.Item>
           ))}
         </Accordion>
       </div>

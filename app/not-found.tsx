@@ -10,14 +10,12 @@ export default function NotFound() {
   const t = useTranslations('NotFound');
 
   return (
-    <div className="w-full mx-auto min-h-[calc(100dvh-10px)] flex flex-col items-center justify-center gap-10">
+    <div className="mx-auto flex min-h-[calc(100dvh-10px)] w-full flex-col items-center justify-center gap-10">
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-2xl font-bold">{t('title')}</h1>
-        <p className="text-sm text-center mt-2">{t('description')}</p>
+        <p className="mt-2 text-center text-sm">{t('description')}</p>
         <Link href="/">
-          <Button
-            radius="full"
-            className="my-6 border-1 border-bg-default-100/70 hover:bg-bg-default-100/70 hover:border-bg-default-100/70 bg-bg-default-100/70">
+          <Button className="my-6 rounded-full border border-default/40 bg-default/40 hover:bg-default/50">
             {t('back')}
             <Icon
               className="[&>path]:stroke-[2px]"

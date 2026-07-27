@@ -1,37 +1,18 @@
 'use client';
 
-import type { AvatarProps } from '@heroui/react';
-
 import { Avatar, cn } from '@heroui/react';
-import React from 'react';
 
-const TeamAvatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
-  ({ name, className, classNames = {}, ...props }, ref) => (
-    <Avatar
-      {...props}
-      ref={ref}
-      classNames={{
-        ...classNames,
-        base: cn(
-          'bg-transparent border border-divider',
-          classNames?.base,
-          className
-        ),
-        name: cn(
-          'text-default-500 text-[0.6rem] font-semibold',
-          classNames?.name
-        ),
-      }}
-      getInitials={(name) =>
-        (name[0] || '') + (name[name.lastIndexOf(' ') + 1] || '').toUpperCase()
-      }
-      name={name}
-      radius="md"
-      size="sm"
-    />
-  )
-);
+type TeamAvatarProps = {
+  name?: string;
+  src?: string;
+  className?: string;
+};
 
-TeamAvatar.displayName = 'TeamAvatar';
-
-export default TeamAvatar;
+export default function TeamAvatar({ name = 'T', src, className }: TeamAvatarProps) {
+  return (
+    <Avatar className={cn('h-6 w-6', className)}>
+      {src ? <Avatar.Image alt={name} src={src} /> : null}
+      <Avatar.Fallback>{name.slice(0, 1)}</Avatar.Fallback>
+    </Avatar>
+  );
+}

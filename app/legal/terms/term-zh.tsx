@@ -50,7 +50,7 @@ export default function TermZhPage() {
             要申请退款，客户必须在退款期内通过{' '}
             <a
               href="mailto:turboai@gmail.com"
-              className="text-primary underline"
+              className="text-accent underline"
             >
               turboai@gmail.com
             </a>{' '}
@@ -72,7 +72,7 @@ export default function TermZhPage() {
         <h2 className="text-lg font-bold my-2">5. 隐私政策</h2>
         <p>
           我们对您个人信息的收集、使用和共享在我们的{' '}
-          <a href="/privacy" className="text-primary underline">
+          <a href="/privacy" className="text-accent underline">
             隐私政策
           </a>
           中有详细说明。
@@ -105,7 +105,7 @@ export default function TermZhPage() {
         <h2 className="text-lg font-bold my-2">12. 公平使用和欺诈预防</h2>
         <p>
           为确保公平环境，我们监控滥用或欺诈行为，例如过量下载内容后申请退款。违规行为可能导致帐户终止或退款被拒等措施。如果您认为自己被错误指控，请通过{' '}
-          <a href="mailto:turboai@gmail.com" className="text-primary underline">
+          <a href="mailto:turboai@gmail.com" className="text-accent underline">
             turboai@gmail.com
           </a>
           与我们联系。
@@ -113,7 +113,7 @@ export default function TermZhPage() {
         <h2 className="text-lg font-bold my-2">13. 联系信息</h2>
         <p>
           如果您对本服务条款有任何疑问，请通过{' '}
-          <a href="mailto:turboai@gmail.com" className="text-primary underline">
+          <a href="mailto:turboai@gmail.com" className="text-accent underline">
             turboai@gmail.com
           </a>
           与我们联系。

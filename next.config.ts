@@ -2,6 +2,7 @@ import { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
  
 const nextConfig: NextConfig = {
+    output: 'standalone',
     transpilePackages: ['superjson'],
     async redirects() {
         return [
@@ -15,7 +16,6 @@ const nextConfig: NextConfig = {
     images: {
         remotePatterns: [
             new URL('https://nextuipro.nyc3.cdn.digitaloceanspaces.com/**'),
-            new URL('https://buyerx.ai/assets/**'),
         ],
     },
     experimental: {},

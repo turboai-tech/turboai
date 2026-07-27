@@ -1,11 +1,11 @@
 ignoredBuiltDependencies:
   - '@clerk/shared'
   - '@heroui/shared-utils'
-  - '@tailwindcss/oxide'
 
 onlyBuiltDependencies:
   - '@prisma/client'
   - '@prisma/engines'
+  - '@tailwindcss/oxide'
   - esbuild
   - prisma
   - sharp

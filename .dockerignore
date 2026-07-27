@@ -1,0 +1,40 @@
+# dependencies & build output
+node_modules
+.next
+out
+dist
+coverage
+playwright-report
+test-results
+
+# VCS & IDE
+.git
+.gitignore
+.cursor
+.vscode
+.idea
+
+# env & secrets — inject at build/run time, do not bake into the image
+.env
+.env.*
+!.env.example
+
+# docs & local tooling
+docs
+*.md
+LICENSE
+Dockerfile*
+.dockerignore
+docker-compose*.yml
+
+# tests
+playwright.config.ts
+**/*.test.ts
+**/*.spec.ts
+
+# misc
+.DS_Store
+*.log
+tsconfig.tsbuildinfo
+npm-debug.log*
+pnpm-debug.log*

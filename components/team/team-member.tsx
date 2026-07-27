@@ -1,8 +1,7 @@
 'use client';
 
-import { Button, Spacer } from '@heroui/react';
+import ButtonLink from '@/components/button-link';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 import ScrollingBanner from '../scrolling/scrolling-powers';
 import type { TeamMember } from './team-member-card';
 import TeamMemberCard from './team-member-card';
@@ -12,9 +11,9 @@ export default function TeamMemberComponent() {
 
   const teamMembers: TeamMember[] = [
     {
-      name: t('team_member_shaoxiao.name'),
-      role: t('team_member_shaoxiao.role'),
-      bio: t('team_member_shaoxiao.bio'),
+      name: t('team_member_david.name'),
+      role: t('team_member_david.role'),
+      bio: t('team_member_david.bio'),
       avatar: '/avatars/member_shaoxiao.jpg',
       social: {
         twitter: 'shaoxiao_hello',
@@ -33,85 +32,70 @@ export default function TeamMemberComponent() {
         github: '',
       },
     },
-  ];
+    {
+      name: t('team_member_neil.name'),
+      role: t('team_member_neil.role'),
+      bio: t('team_member_neil.bio'),
+      avatar: '/avatars/member_neil.jpg',
+      social: {
+        twitter: '',
+        linkedin: '',
+        github: '',
+      },
+    },
+  ]
 
+  const tCareer = useTranslations('career')
   const positions = [
-    {
-      key: 'fullstack',
-      position: 'FullStack Engineer',
-    },
-    {
-      key: 'frontend',
-      position: 'Frontend Engineer',
-    },
-    {
-      key: 'backend',
-      position: 'Backend Engineer',
-    },
-    {
-      key: 'pm',
-      position: 'Product Manager',
-    },
-    {
-      key: 'designer',
-      position: 'UI/UX Designer',
-    },
-    {
-      key: 'business',
-      position: 'Business Development',
-    },
-    {
-      key: 'sales',
-      position: 'Sales Manager',
-    },
-    {
-      key: 'marketing',
-      position: 'Marketing Manager',
-    },
-  ];
+    { key: 'fde', position: tCareer('roles.fde.title') },
+    { key: 'ai_engineer', position: tCareer('roles.ai_engineer.title') },
+    { key: 'ai_infra', position: tCareer('roles.ai_infra.title') },
+  ]
 
   return (
     <section
       id="team-container"
-      className="flex max-w-4xl flex-col items-center py-12 mx-auto"
-    >
+      className="mx-auto flex max-w-4xl flex-col items-center py-12">
       <div className="flex max-w-xl flex-col text-center">
-        <h2 className="font-medium text-secondary">{t('subtitle')}</h2>
+        <h2 className="font-medium text-accent">{t('subtitle')}</h2>
         <h1 className="text-3xl font-medium tracking-tight">{t('title')}</h1>
-        <Spacer y={4} />
-        <h2 className="text-large text-default-500">{t('description')}</h2>
-        <Spacer y={4} />
+        <div className="h-4" />
+        <h2 className="text-lg text-muted">{t('description')}</h2>
+        <div className="h-4" />
         <div className="flex w-full justify-center gap-2">
-          <Button variant="ghost" as={Link} href="/about/story">
+          <ButtonLink href="/about/story" variant="ghost">
             {t('button')}
-          </Button>
-          <Button color="secondary" as={Link} href="/about/career">
+          </ButtonLink>
+          <ButtonLink href="/about/career" variant="secondary">
             {t('open_positions')}
-          </Button>
+          </ButtonLink>
         </div>
       </div>
-      <div className="mt-12 flex w-full gap-8 flex-wrap justify-center items-center mx-auto">
-        {teamMembers.map((member, index) => (
-          <TeamMemberCard aria-label={member.name} key={index} {...member} />
+      <div className="mx-auto mt-12 grid w-full max-w-3xl grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-4">
+        {teamMembers.map((member) => (
+          <TeamMemberCard
+            aria-label={member.name}
+            className="w-full"
+            key={member.name}
+            {...member}
+          />
         ))}
       </div>
-      <div className="mt-8 items-center justify-center flex flex-col gap-2">
-        <span className="text-lg text-secondary font-medium">
+      <div className="mt-8 flex flex-col items-center justify-center gap-2">
+        <span className="text-lg font-medium text-accent">
           {t('view_opening_positions')}
         </span>
-        <Spacer y={2} />
+        <div className="h-2" />
         <ScrollingBanner
           isVertical
           shouldPauseOnHover
-          duration={20}
-          gap="20px"
           className="w-full justify-center"
-        >
+          duration={20}
+          gap="20px">
           {positions.map(({ key, position }) => (
             <div
               key={key}
-              className="flex items-center justify-center text-foreground text-base"
-            >
+              className="flex items-center justify-center text-base text-foreground">
               {position}
             </div>
           ))}

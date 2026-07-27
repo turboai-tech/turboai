@@ -14,7 +14,7 @@ export default function PrivacyZhPage() {
         <p>
           <strong>特铱铂智能科技（上海）有限公司</strong>
           （以下简称"我们"）制定本隐私政策，旨在说明当您使用我们通过
-          <strong className="text-primary"> www.iturboai.com </strong>
+          <strong className="text-accent"> www.iturboai.com </strong>
           提供的软件即服务（SaaS）产品时，我们如何收集、使用、披露和保护您的信息。这些服务包括相关的软件、应用程序和网站（统称为"服务"）。
         </p>
         <p>
@@ -142,9 +142,9 @@ export default function PrivacyZhPage() {
         <p>
           <strong>请注意：</strong>
           我们的服务可能包含指向第三方网站（如社交媒体）的链接，其隐私政策独立于我们。请知悉，当您离开
-          <strong className="text-primary"> turboai </strong>
+          <strong className="text-accent"> turboai </strong>
           服务访问其他网站或使用其他服务时，即使是通过
-          <strong className="text-primary"> turboai </strong>
+          <strong className="text-accent"> turboai </strong>
           提供的链接访问，我们无法也无义务保护您在这些第三方平台上提供的个人信息。
         </p>
 
@@ -215,7 +215,7 @@ export default function PrivacyZhPage() {
         <h2 className="text-lg font-bold my-2">9. 联系我们</h2>
         <p>
           若您对本隐私政策有任何疑问或疑虑，或有投诉，请通过{' '}
-          <a href="mailto:turboai@gmail.com" className="text-primary">
+          <a href="mailto:turboai@gmail.com" className="text-accent">
             turboai@gmail.com
           </a>{' '}
           联系我们。

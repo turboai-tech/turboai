@@ -35,9 +35,9 @@ const model_logos = [
     name: 'Qwen',
   },
   {
-    key: 'llama',
-    src: '/logos/llama.svg',
-    name: 'Llama',
+    key: 'kimi',
+    src: '/logos/kimi.svg',
+    name: 'Kimi',
   },
 ];
 
