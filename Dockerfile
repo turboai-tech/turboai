@@ -28,7 +28,12 @@ RUN sed -i 's#https\?://dl-cdn.alpinelinux.org/alpine#https://mirrors.aliyun.com
   && apk add --no-cache libc6-compat
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN corepack enable && corepack prepare pnpm@10.12.1 --activate
+# Install pnpm via China npm mirror — corepack's default hits registry.npmjs.org and times out on Aliyun ECS
+ARG PNPM_REGISTRY=https://registry.npmmirror.com
+ENV COREPACK_NPM_REGISTRY=$PNPM_REGISTRY
+RUN npm config set registry "$PNPM_REGISTRY" \
+  && npm install -g pnpm@10.12.1 \
+  && pnpm --version
 
 FROM base AS deps
 ARG PNPM_REGISTRY=https://registry.npmmirror.com
