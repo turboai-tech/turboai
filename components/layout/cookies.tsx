@@ -49,26 +49,41 @@ export default function Cookies() {
           {t('sentense_end_symbol')}
         </p>
         <div className="mt-4 flex items-center gap-x-2">
-          {/* Inline accent styles so theme switches cannot be overridden by Button/CSS utilities. */}
-          <button
-            type="button"
-            className="inline-flex h-9 cursor-pointer items-center justify-center rounded-full px-4 text-sm font-medium shadow-lg transition-transform active:scale-[0.97]"
+          {/* Use div+role to avoid global `button { border-* }` theme rules. */}
+          <div
+            role="button"
+            tabIndex={0}
+            className="inline-flex h-9 cursor-pointer items-center justify-center rounded-full px-4 text-sm font-medium shadow-lg transition-transform select-none active:scale-[0.97]"
             style={{
               backgroundColor: 'var(--accent)',
               color: 'var(--accent-foreground)',
-              border: 'none',
+              border: '0 solid transparent',
               outline: 'none',
-              boxShadow: '0 10px 15px -3px color-mix(in oklab, var(--accent) 35%, transparent)',
+              boxShadow:
+                '0 10px 15px -3px color-mix(in oklab, var(--accent) 35%, transparent)',
             }}
-            onClick={handleAcceptAll}>
+            onClick={handleAcceptAll}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault()
+                handleAcceptAll()
+              }
+            }}>
             {t('accept_all')}
-          </button>
-          <button
-            type="button"
-            className="inline-flex h-9 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent px-4 text-sm font-medium text-foreground transition-colors hover:bg-default/60 active:scale-[0.97]"
-            onClick={handleCookieSettings}>
+          </div>
+          <div
+            role="button"
+            tabIndex={0}
+            className="inline-flex h-9 cursor-pointer items-center justify-center rounded-full px-4 text-sm font-medium text-foreground transition-colors select-none hover:bg-default/60 active:scale-[0.97]"
+            onClick={handleCookieSettings}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault()
+                handleCookieSettings()
+              }
+            }}>
             {t('cookie_settings')}
-          </button>
+          </div>
         </div>
       </div>
     </div>
