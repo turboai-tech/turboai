@@ -1,39 +1,38 @@
-'use client';
+'use client'
 
-import { Button } from '@heroui/react';
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 export default function Cookies() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false)
 
   // localStorage 只在客户端存在，横幅的可见性必须挂载后才能确定。
   // Next 16 新增的 react-hooks/set-state-in-effect 对这个模式属误伤。
   useEffect(() => {
-    const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+    const cookiesAccepted = localStorage.getItem('cookiesAccepted')
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsVisible(!cookiesAccepted);
-  }, []);
+    setIsVisible(!cookiesAccepted)
+  }, [])
 
-  const t = useTranslations('cookies');
+  const t = useTranslations('cookies')
 
   const handleAcceptAll = () => {
-    setIsVisible(false);
-    localStorage.setItem('cookiesAccepted', 'true');
-  };
+    setIsVisible(false)
+    localStorage.setItem('cookiesAccepted', 'true')
+  }
 
   const handleCookieSettings = () => {
-    console.log('Cookie Settings clicked');
-  };
+    console.log('Cookie Settings clicked')
+  }
 
   if (!isVisible) {
-    return null;
+    return null
   }
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 px-6 pb-6">
-      <div className="pointer-events-auto mx-auto max-w-xl rounded-lg border border-divider bg-background/15 px-6 py-4 shadow-sm backdrop-blur">
+    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 px-6 pb-6">
+      <div className="pointer-events-auto mx-auto max-w-xl rounded-lg border border-default/40 bg-background/80 px-6 py-4 shadow-sm backdrop-blur">
         <p className="text-sm font-normal text-foreground">
           {t('intro_text')}&nbsp;
           <b className="font-semibold">&quot;{t('accept_all')}&quot;</b>
@@ -43,32 +42,27 @@ export default function Cookies() {
           </span>
           {t('controlled_consent_text')}&nbsp;
           <Link
-            className="text-sm text-blue-600 underline-offset-2 hover:underline dark:text-blue-400"
+            className="text-sm text-accent underline-offset-2 hover:underline"
             href="/legal/privacy">
             {t('cookie_policy')}
           </Link>
           {t('sentense_end_symbol')}
         </p>
-        <div className="mt-4 flex items-center gap-x-1">
-          <Button
-            className="rounded-lg px-4 font-medium"
-            style={{
-              border: 'solid 2px transparent',
-              backgroundImage: `linear-gradient(hsl(var(--cookie-button-bg)), hsl(var(--cookie-button-bg))), linear-gradient(83.87deg, #F54180, #9353D3)`,
-              backgroundOrigin: 'border-box',
-              backgroundClip: 'padding-box, border-box',
-            }}
-            onPress={handleAcceptAll}>
+        <div className="mt-4 flex items-center gap-x-2">
+          <button
+            type="button"
+            className="cta-gradient inline-flex h-9 cursor-pointer items-center justify-center rounded-full px-4 text-sm font-medium shadow-lg transition-transform active:scale-[0.97]"
+            onClick={handleAcceptAll}>
             {t('accept_all')}
-          </Button>
-          <Button
-            className="rounded-lg font-medium"
-            variant="ghost"
-            onPress={handleCookieSettings}>
+          </button>
+          <button
+            type="button"
+            className="inline-flex h-9 cursor-pointer items-center justify-center rounded-full px-4 text-sm font-medium text-foreground transition-colors hover:bg-default/60 active:scale-[0.97]"
+            onClick={handleCookieSettings}>
             {t('cookie_settings')}
-          </Button>
+          </button>
         </div>
       </div>
     </div>
-  );
+  )
 }
