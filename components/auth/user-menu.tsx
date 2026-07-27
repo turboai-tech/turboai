@@ -57,8 +57,7 @@ export default function UserMenu() {
       {/* Trigger is already a button — keep children non-interactive */}
       <Dropdown.Trigger
         aria-label={t('account')}
-        className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full p-0"
-        variant="ghost">
+        className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-0 bg-transparent p-0 shadow-none">
         <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-default/40 text-sm font-medium leading-none">
           {String(label).slice(0, 1).toUpperCase()}
         </span>
