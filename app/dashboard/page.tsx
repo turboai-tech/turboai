@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import { Logo } from '@/components/icons';
+import ClaimLeads from '@/components/lead/claim-leads';
 import LocaleSwitcher from '@/components/locale-switch';
 import { ThemeSwitch } from '@/components/theme-switch';
 import { sectionItemsWithTeams } from '@/components/sidebar/sidebar-items';
@@ -15,6 +16,8 @@ export default function DashboardPage() {
 
   return (
     <div className="flex h-dvh w-full">
+      {/* 登录后认领此前以同一邮箱留下的资料 */}
+      <ClaimLeads />
       <aside
         className={`fixed inset-y-0 left-0 z-40 flex w-72 flex-col border-r border-default/40 bg-background p-4 transition-transform lg:static lg:translate-x-0 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'

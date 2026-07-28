@@ -4,6 +4,8 @@ import { Toast } from '@heroui/react'
 import { ThemeProvider, ThemeProviderProps } from 'next-themes'
 import * as React from 'react'
 
+import { TRPCProvider } from '@/utils/trpc-client'
+
 export interface ProvidersProps {
   children: React.ReactNode
   themeProps?: ThemeProviderProps
@@ -18,7 +20,7 @@ export function Providers({ children, themeProps }: ProvidersProps) {
       disableTransitionOnChange
       {...themeProps}>
       <Toast.Provider />
-      {children}
+      <TRPCProvider>{children}</TRPCProvider>
     </ThemeProvider>
   )
 }
