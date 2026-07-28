@@ -11,7 +11,7 @@
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
 import { defaultBackendProxy } from '../backend_proxy';
-import { publicProcedure, router } from '../trpc';
+import { protectedProcedure, router } from '../trpc';
 
 const TaskStatus = z.enum([
   'JOB_STATUS_UNSPECIFIED',
@@ -47,7 +47,7 @@ type AutoTask = {
 };
 
 export const autoTaskRouter = router({
-  list: publicProcedure
+  list: protectedProcedure
     .input(
       z.object({
         page_size: z.number().min(1).max(100).nullish(),
@@ -74,7 +74,7 @@ export const autoTaskRouter = router({
       return items?.data;
     }),
 
-  byId: publicProcedure
+  byId: protectedProcedure
     .input(
       z.object({
         id: z.number(),
@@ -96,7 +96,7 @@ export const autoTaskRouter = router({
       return task.data;
     }),
 
-  create: publicProcedure
+  create: protectedProcedure
     .input(
       z.object({
         task_code: z.string(),

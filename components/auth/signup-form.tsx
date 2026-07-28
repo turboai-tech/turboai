@@ -1,32 +1,46 @@
 'use client'
 
-import { Button, Input, Label, TextField } from '@heroui/react'
-import Link from 'next/link'
+import { Alert, Button, Checkbox, Input, Label, TextField } from '@heroui/react'
 import { useRouter } from 'next/navigation'
-import { FormEvent, useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { FormEvent, useState } from 'react'
 
 import { createClient } from '@/lib/supabase/client'
+import { isReservedAuthEmail } from '@/lib/wechat/identity'
+
+import { authErrorKey } from './auth-error'
+import PasswordField from './password-field'
+
+const MIN_PASSWORD_LENGTH = 8
 
 export default function SignupForm() {
   const t = useTranslations('Auth')
   const router = useRouter()
-  const [error, setError] = useState<string | null>(null)
+
+  const [errorKey, setErrorKey] = useState<string | null>(null)
   const [message, setMessage] = useState<string | null>(null)
   const [pending, setPending] = useState(false)
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    setError(null)
+    setErrorKey(null)
     setMessage(null)
-    setPending(true)
 
     const form = new FormData(event.currentTarget)
     const email = String(form.get('email') ?? '')
     const password = String(form.get('password') ?? '')
 
+    // 拦住内部保留域名：微信登录用 wx_<unionid>@wechat.invalid 作为身份映射，
+    // 若允许自行注册，抢注即等于劫持对应的微信账号。
+    if (isReservedAuthEmail(email)) {
+      setErrorKey('error_reserved_email')
+      return
+    }
+
+    setPending(true)
+
     const supabase = createClient()
-    const { data, error: signUpError } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -36,11 +50,12 @@ export default function SignupForm() {
 
     setPending(false)
 
-    if (signUpError) {
-      setError(signUpError.message)
+    if (error) {
+      setErrorKey(authErrorKey(error))
       return
     }
 
+    // 关闭邮箱确认时会直接返回 session，此时无需再等确认邮件
     if (data.session) {
       router.replace('/dashboard')
       router.refresh()
@@ -51,29 +66,56 @@ export default function SignupForm() {
   }
 
   return (
-    <form className="flex w-full max-w-sm flex-col gap-4" onSubmit={onSubmit}>
-      <TextField isRequired name="email" type="email">
+    <form className="flex flex-col gap-4" onSubmit={onSubmit}>
+      {errorKey ? (
+        <Alert status="danger" className="text-sm">
+          {t(errorKey)}
+        </Alert>
+      ) : null}
+      {message ? (
+        <Alert status="success" className="text-sm">
+          {message}
+        </Alert>
+      ) : null}
+
+      <TextField isRequired className="w-full" name="email" type="email">
         <Label>{t('email')}</Label>
-        <Input autoComplete="email" placeholder="you@company.com" />
-      </TextField>
-      <TextField isRequired minLength={8} name="password" type="password">
-        <Label>{t('password')}</Label>
-        <Input autoComplete="new-password" />
+        <Input
+          autoComplete="email"
+          className="border-default/50 border"
+          placeholder="you@company.com"
+        />
       </TextField>
 
-      {error ? <p className="text-sm text-danger">{error}</p> : null}
-      {message ? <p className="text-sm text-accent">{message}</p> : null}
+      <PasswordField
+        autoComplete="new-password"
+        label={t('password')}
+        minLength={MIN_PASSWORD_LENGTH}
+        toggleLabel={t('toggle_password_visibility')}
+      />
+      <p className="text-muted px-1 text-xs">
+        {t('password_hint', { min: MIN_PASSWORD_LENGTH })}
+      </p>
 
-      <Button isDisabled={pending} type="submit" variant="primary">
+      <div className="px-1 py-2">
+        <Checkbox className="text-muted text-sm" isRequired name="terms">
+          <Checkbox.Content>
+            <Checkbox.Control className="border-default/60 border">
+              <Checkbox.Indicator />
+            </Checkbox.Control>
+            {t('accept_terms')}
+          </Checkbox.Content>
+        </Checkbox>
+      </div>
+
+      <Button
+        className="mt-1 w-full"
+        isDisabled={pending}
+        type="submit"
+        variant="primary"
+      >
         {pending ? t('signing_up') : t('sign_up')}
       </Button>
-
-      <p className="text-center text-sm text-muted">
-        {t('have_account')}{' '}
-        <Link className="text-accent underline-offset-2 hover:underline" href="/login">
-          {t('sign_in')}
-        </Link>
-      </p>
     </form>
   )
 }

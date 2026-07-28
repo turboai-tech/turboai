@@ -45,6 +45,7 @@
     "react-dom": "19.2.8",
     "react-query": "^3.39.3",
     "recharts": "^2.15.3",
+    "server-only": "^0.0.1",
     "superjson": "1.13.3",
     "tailwind-variants": "^1.0.0",
     "tailwindcss": "^4.3.3",

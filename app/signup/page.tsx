@@ -1,21 +1,35 @@
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 
+import AuthCard from '@/components/auth/auth-card'
+import OAuthButtons from '@/components/auth/oauth-buttons'
 import SignupForm from '@/components/auth/signup-form'
+import { getWechatConfigOrNull } from '@/lib/wechat/config'
 
 export default async function SignupPage() {
   const t = await getTranslations('Auth')
+  const wechatEnabled = getWechatConfigOrNull() !== null
 
   return (
-    <div className="mx-auto flex min-h-[70vh] w-full max-w-md flex-col items-center justify-center gap-8 px-4 py-16">
-      <div className="text-center">
-        <h1 className="text-2xl font-semibold tracking-tight">
-          {t('sign_up_title')}
-        </h1>
-        <p className="mt-2 text-sm text-muted">{t('sign_up_description')}</p>
-      </div>
-      <SignupForm />
-      <Link className="text-sm text-muted hover:text-foreground" href="/">
+    <div className="flex min-h-[70vh] w-full flex-col items-center justify-center py-4">
+      <AuthCard
+        description={t('sign_up_description')}
+        oauth={<OAuthButtons wechatEnabled={wechatEnabled} />}
+        oauthLabel={t('or')}
+        title={t('sign_up_title')}
+        footer={
+          <>
+            {t('have_account')}&nbsp;
+            <Link className="text-accent font-medium hover:underline" href="/login">
+              {t('sign_in')}
+            </Link>
+          </>
+        }
+      >
+        <SignupForm />
+      </AuthCard>
+
+      <Link className="text-muted hover:text-accent mt-2 text-sm transition-colors" href="/">
         {t('back_home')}
       </Link>
     </div>

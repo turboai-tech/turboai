@@ -11,7 +11,7 @@
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
 import { defaultBackendProxy } from '../backend_proxy';
-import { publicProcedure, router } from '../trpc';
+import { protectedProcedure, router } from '../trpc';
 import { PageInfo } from './pagement';
 
 export const MaterialType = {
@@ -83,7 +83,7 @@ export type MaterialQueryResponse = {
 
 
 export const materialRouter = router({
-  list: publicProcedure
+  list: protectedProcedure
     .input(
       z.object({
         page_size: z.number().min(1).max(20).nullish().default(20),
@@ -136,7 +136,7 @@ export const materialRouter = router({
       return response?.data;
     }),
 
-  byId: publicProcedure
+  byId: protectedProcedure
     .input(
       z.object({
         id: z.string(),
@@ -157,7 +157,7 @@ export const materialRouter = router({
       return material_resp.data;
     }),
 
-  create_material: publicProcedure
+  create_material: protectedProcedure
     .input(z.object({
       file_base64: z.string().min(1, 'File base64 is required'),
       file_name: z.string().min(1, 'File name is required'),

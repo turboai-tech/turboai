@@ -17,13 +17,13 @@ export default function BannerComponent() {
         🚀
       </span>
       <p className="min-w-0 text-sm text-foreground">
-        <Link className="text-inherit" href="/#pricing-container">
+        <Link className="text-inherit" href="/contact">
           {t('banner_title')}
         </Link>
       </p>
       <ButtonLink
         className="cta-border-gradient group relative h-9 shrink-0 overflow-hidden rounded-full bg-transparent text-sm font-normal text-foreground"
-        href="/#pricing-container"
+        href="/contact"
         variant="outline">
         {t('banner_button')}
         <Icon
