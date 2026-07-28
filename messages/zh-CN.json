@@ -496,6 +496,7 @@
     "product_label": "Turbo Label",
     "product_voice": "Turbo Voice",
     "product_reel": "Turbo Reel",
-    "product_other": "其他/不确定"
+    "product_other": "其他/不确定",
+    "error_rate_limited": "提交过于频繁，请稍后再试。"
   }
 }

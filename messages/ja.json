@@ -496,6 +496,7 @@
     "product_label": "Turbo Label",
     "product_voice": "Turbo Voice",
     "product_reel": "Turbo Reel",
-    "product_other": "その他 / 未定"
+    "product_other": "その他 / 未定",
+    "error_rate_limited": "試行回数が多すぎます。しばらくしてお試しください。"
   }
 }

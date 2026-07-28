@@ -11,6 +11,9 @@ import { createClient } from '@/lib/supabase/server';
 export interface Context {
   user: User | null;
   supabase: SupabaseClient;
+  /** 客户端 IP，用于限流与审计；取不到时为 null */
+  ip: string | null;
+  userAgent: string | null;
 }
 
 /**
@@ -18,6 +21,23 @@ export interface Context {
  */
 export function createContextInner(opts: Context): Context {
   return opts;
+}
+
+/**
+ * 从请求头取客户端 IP。
+ *
+ * 生产环境应改为只信任已知反代注入的头 —— 否则客户端可以伪造 X-Forwarded-For
+ * 来绕过基于 IP 的限流。部署到 Vercel 时优先用 x-vercel-forwarded-for，
+ * 那个头由平台注入，客户端改不了。
+ */
+function clientIp(headers: Headers): string | null {
+  const vercel = headers.get('x-vercel-forwarded-for');
+  if (vercel) return vercel.split(',')[0]?.trim() || null;
+
+  const forwarded = headers.get('x-forwarded-for');
+  if (forwarded) return forwarded.split(',')[0]?.trim() || null;
+
+  return headers.get('x-real-ip');
 }
 
 /**
@@ -29,15 +49,18 @@ export function createContextInner(opts: Context): Context {
  * 这里必须用 `getUser()` 而非 `getSession()`：后者只解析 cookie 内容、不校验
  * JWT 签名，伪造 cookie 即可冒充任意用户；`getUser()` 会向 Supabase 校验签名。
  * 服务端一律用前者 —— 这是本项目的安全底线，改动前请先读 docs/auth-design.md。
- *
- * @see https://trpc.io/docs/v11/context
  */
-export async function createContext(): Promise<Context> {
+export async function createContext(req?: Request): Promise<Context> {
   const supabase = await createClient();
 
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  return createContextInner({ user: user ?? null, supabase });
+  return createContextInner({
+    user: user ?? null,
+    supabase,
+    ip: req ? clientIp(req.headers) : null,
+    userAgent: req?.headers.get('user-agent') ?? null,
+  });
 }

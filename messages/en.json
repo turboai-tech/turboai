@@ -496,6 +496,7 @@
     "product_label": "Turbo Label",
     "product_voice": "Turbo Voice",
     "product_reel": "Turbo Reel",
-    "product_other": "Other / not sure"
+    "product_other": "Other / not sure",
+    "error_rate_limited": "Too many attempts. Please try again later."
   }
 }

@@ -9,10 +9,12 @@ const handler = (req: NextRequest) =>
     endpoint: '/api/trpc',
     router: appRouter,
     req,
-    // createContext 自己通过 next/headers 读 cookie 还原会话，因此不需要在这里
-    // 转交 req。此前这里传的是 `{} as CreateNextContextOptions` —— 一个被强制
-    // 转型的空对象，导致上下文始终为空、鉴权无从谈起。
-    createContext,
+    // 会话由 createContext 自己从 cookie 还原；传 req 是为了取 IP 与 UA，
+    // 限流分桶和审计都需要。
+    //
+    // 此前这里传的是 `{} as CreateNextContextOptions` —— 一个被强制转型的空
+    // 对象，导致上下文始终为空、鉴权无从谈起。
+    createContext: () => createContext(req),
   });
 
 export { handler as GET, handler as POST };

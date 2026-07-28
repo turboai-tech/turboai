@@ -4,6 +4,7 @@ import { NextResponse, type NextRequest } from 'next/server'
 
 import { createAdminClient } from '@/lib/supabase/admin'
 import { createClient } from '@/lib/supabase/server'
+import { RATE_LIMITS, checkRateLimit, recordAuthEvent } from '@/server/security'
 import { WECHAT_EMAIL_DOMAIN } from '@/lib/wechat/identity'
 import { authenticateWithCode } from '@/lib/wechat/client'
 
@@ -26,7 +27,24 @@ function failure(request: NextRequest, reason: string) {
   return response
 }
 
+/** 与 tRPC context 同一套取法：平台注入的头优先，客户端伪造不了 */
+function clientIp(request: NextRequest): string | null {
+  const vercel = request.headers.get('x-vercel-forwarded-for')
+  if (vercel) return vercel.split(',')[0]?.trim() || null
+  const forwarded = request.headers.get('x-forwarded-for')
+  if (forwarded) return forwarded.split(',')[0]?.trim() || null
+  return request.headers.get('x-real-ip')
+}
+
 export async function GET(request: NextRequest) {
+  const ip = clientIp(request)
+  const userAgent = request.headers.get('user-agent')
+
+  // 这个入口会触发对微信的换取请求，拿伪造 code 反复打即可放大成对外流量。
+  if (!(await checkRateLimit(RATE_LIMITS.wechatCallback, ip))) {
+    return failure(request, 'wechat_rate_limited')
+  }
+
   const code = request.nextUrl.searchParams.get('code')
   const state = request.nextUrl.searchParams.get('state')
   const expectedState = request.cookies.get(STATE_COOKIE)?.value
@@ -96,6 +114,18 @@ export async function GET(request: NextRequest) {
   if (verifyError) {
     return failure(request, 'wechat_session_failed')
   }
+
+  await recordAuthEvent({
+    event: 'wechat.signin',
+    email,
+    ip,
+    userAgent,
+    detail: {
+      openid: wechatUser.openid,
+      has_unionid: Boolean(wechatUser.unionid),
+      new_user: !alreadyExists,
+    },
+  })
 
   const response = NextResponse.redirect(new URL(next, request.url))
   response.cookies.delete(STATE_COOKIE)

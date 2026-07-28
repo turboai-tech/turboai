@@ -26,6 +26,7 @@ const ERROR_KEY_BY_REASON: Record<string, string> = {
   wechat_user_create_failed: 'error_wechat_failed',
   wechat_session_failed: 'error_wechat_failed',
   wechat_unconfigured: 'error_wechat_unconfigured',
+  wechat_rate_limited: 'error_rate_limited',
 }
 
 export function authErrorKey(error: { code?: string; message?: string }): string {

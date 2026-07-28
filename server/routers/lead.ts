@@ -3,6 +3,11 @@ import { z } from 'zod';
 
 import { createAdminClient } from '@/lib/supabase/admin';
 
+import {
+  RATE_LIMITS,
+  enforceRateLimit,
+  recordAuthEvent,
+} from '../security';
 import { protectedProcedure, publicProcedure, router } from '../trpc';
 
 /** 与 messages 里的产品清单对应，收窄取值避免脏数据进库 */
@@ -44,7 +49,10 @@ export const leadRouter = router({
    */
   submit: publicProcedure
     .input(LeadInput)
-    .mutation(async ({ input }) => {
+    .mutation(async ({ ctx, input }) => {
+      // 这是我们自己拥有的公开写接口，没有任何上游保护，是真实的滥用目标。
+      await enforceRateLimit(RATE_LIMITS.leadSubmit, ctx.ip);
+
       const admin = createAdminClient();
 
       const { error } = await admin.from('leads').insert({
@@ -67,6 +75,14 @@ export const leadRouter = router({
           cause: error,
         });
       }
+
+      await recordAuthEvent({
+        event: 'lead.submitted',
+        email: input.email,
+        ip: ctx.ip,
+        userAgent: ctx.userAgent,
+        detail: { source: input.source ?? null },
+      });
 
       // 不回传任何已存在的记录 —— 否则这个公开接口就成了「某邮箱是否留过资」
       // 的探测器。
@@ -92,6 +108,21 @@ export const leadRouter = router({
       });
     }
 
-    return { claimed: (data as number | null) ?? 0 };
+    const claimed = (data as number | null) ?? 0;
+
+    // 认领是把未验证来源的数据并进 profile 的动作，值得留痕以便事后追溯。
+    // 0 条时不记，避免每次进控制台都写一行噪音。
+    if (claimed > 0) {
+      await recordAuthEvent({
+        event: 'lead.claimed',
+        userId: ctx.user.id,
+        email: ctx.user.email ?? null,
+        ip: ctx.ip,
+        userAgent: ctx.userAgent,
+        detail: { claimed },
+      });
+    }
+
+    return { claimed };
   }),
 });

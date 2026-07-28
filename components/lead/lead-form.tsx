@@ -62,8 +62,14 @@ export default function LeadForm({ source }: LeadFormProps) {
         source,
         locale,
       })
-    } catch {
-      setError(t('error_submit'))
+    } catch (cause) {
+      // 区分超限与一般失败：提示「请重试」会让用户立刻再点，正好又撞限流。
+      const code = (cause as { data?: { code?: string } })?.data?.code
+      setError(
+        code === 'TOO_MANY_REQUESTS'
+          ? t('error_rate_limited')
+          : t('error_submit'),
+      )
     }
   }
 

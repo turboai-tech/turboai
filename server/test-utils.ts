@@ -23,6 +23,8 @@ export function createAuthedContext(overrides: Partial<Context> = {}): Context {
     // 测试不触达 Supabase，故留空桩；一旦某个 procedure 真的用到 ctx.supabase，
     // 会在测试中显式报错，而不是静默连上真实数据库。
     supabase: null as unknown as SupabaseClient,
+    ip: null,
+    userAgent: null,
     ...overrides,
   });
 }
@@ -34,5 +36,7 @@ export function createAnonymousContext(): Context {
   return createContextInner({
     user: null,
     supabase: null as unknown as SupabaseClient,
+    ip: null,
+    userAgent: null,
   });
 }
