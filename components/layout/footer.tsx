@@ -5,7 +5,7 @@ import type { IconProps } from '@iconify/react';
 import ButtonLink from '@/components/button-link';
 import { Separator } from '@heroui/react';
 import { Icon } from '@iconify/react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import React from 'react';
 import { Logo } from '../icons';
@@ -14,7 +14,11 @@ type SocialIconProps = Omit<IconProps, 'icon'>;
 
 export default function FooterComponent() {
   const t = useTranslations('Footer');
+  const locale = useLocale();
   const currentYear = new Date().getFullYear();
+  const ignitionHref = locale.startsWith('zh')
+    ? 'https://ignition.iturboai.com/zh'
+    : 'https://ignition.iturboai.com/en';
 
   const footerNavigation = {
     services: [
@@ -27,6 +31,7 @@ export default function FooterComponent() {
       { name: t('how_we_build'), href: '/#process-container' },
       { name: t('pricing_plans'), href: '/#pricing-container' },
       { name: t('products'), href: '/products' },
+      { name: t('ignition'), href: ignitionHref, external: true },
       { name: t('collaborations'), href: '/#collaborations-container' },
     ],
     aboutUs: [
@@ -86,16 +91,26 @@ export default function FooterComponent() {
       items,
     }: {
       title: string;
-      items: { name: string; href: string }[];
+      items: { name: string; href: string; external?: boolean }[];
     }) => (
       <div>
         <h3 className="text-sm font-semibold text-muted">{title}</h3>
         <ul className="mt-6 space-y-4">
           {items.map((item) => (
             <li key={item.name}>
-              <Link className="text-sm text-muted" href={item.href}>
-                {item.name}
-              </Link>
+              {item.external ? (
+                <a
+                  className="text-sm text-muted"
+                  href={item.href}
+                  rel="noopener noreferrer"
+                  target="_blank">
+                  {item.name}
+                </a>
+              ) : (
+                <Link className="text-sm text-muted" href={item.href}>
+                  {item.name}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
