@@ -30,11 +30,11 @@ export default function ResetPasswordForm({
   if (!hasSession) {
     return (
       <div className="flex flex-col gap-3">
-        <Alert status="danger" className="text-small">
+        <Alert status="danger" className="text-sm">
           {t('reset_link_invalid')}
         </Alert>
         <Link
-          className="text-small text-default-500 text-center hover:underline"
+          className="text-muted hover:text-accent text-center text-sm transition-colors"
           href="/forgot-password"
         >
           {t('send_reset_link')}
@@ -73,9 +73,9 @@ export default function ResetPasswordForm({
   }
 
   return (
-    <form className="flex flex-col gap-3" onSubmit={onSubmit}>
+    <form className="flex flex-col gap-4" onSubmit={onSubmit}>
       {errorKey ? (
-        <Alert status="danger" className="text-small">
+        <Alert status="danger" className="text-sm">
           {t(errorKey)}
         </Alert>
       ) : null}
@@ -93,12 +93,12 @@ export default function ResetPasswordForm({
         name="confirm_password"
         toggleLabel={t('toggle_password_visibility')}
       />
-      <p className="text-tiny text-default-500 px-1">
+      <p className="text-muted px-1 text-xs">
         {t('password_hint', { min: MIN_PASSWORD_LENGTH })}
       </p>
 
       <Button
-        className="w-full"
+        className="mt-1 w-full"
         isDisabled={pending}
         type="submit"
         variant="primary"

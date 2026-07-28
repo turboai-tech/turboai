@@ -11,7 +11,7 @@ export default async function SignupPage() {
   const wechatEnabled = getWechatConfigOrNull() !== null
 
   return (
-    <div className="flex min-h-[70vh] w-full flex-col items-center justify-center">
+    <div className="flex min-h-[70vh] w-full flex-col items-center justify-center py-4">
       <AuthCard
         description={t('sign_up_description')}
         oauth={<OAuthButtons wechatEnabled={wechatEnabled} />}
@@ -20,7 +20,7 @@ export default async function SignupPage() {
         footer={
           <>
             {t('have_account')}&nbsp;
-            <Link className="hover:underline" href="/login">
+            <Link className="text-accent font-medium hover:underline" href="/login">
               {t('sign_in')}
             </Link>
           </>
@@ -29,7 +29,7 @@ export default async function SignupPage() {
         <SignupForm />
       </AuthCard>
 
-      <Link className="text-small text-default-500 hover:underline" href="/">
+      <Link className="text-muted hover:text-accent mt-2 text-sm transition-colors" href="/">
         {t('back_home')}
       </Link>
     </div>

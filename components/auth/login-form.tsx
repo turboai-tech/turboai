@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert, Button, Checkbox, Input, Label, TextField } from '@heroui/react'
+import { Alert, Button, Input, Label, TextField } from '@heroui/react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
@@ -10,6 +10,7 @@ import { createClient } from '@/lib/supabase/client'
 
 import { authErrorKey, callbackErrorKey } from './auth-error'
 import PasswordField from './password-field'
+import RememberMe from './remember-me'
 
 export default function LoginForm() {
   const t = useTranslations('Auth')
@@ -46,16 +47,20 @@ export default function LoginForm() {
   }
 
   return (
-    <form className="flex flex-col gap-3" onSubmit={onSubmit}>
+    <form className="flex flex-col gap-4" onSubmit={onSubmit}>
       {errorKey ? (
-        <Alert status="danger" className="text-small">
+        <Alert status="danger" className="text-sm">
           {t(errorKey)}
         </Alert>
       ) : null}
 
       <TextField isRequired className="w-full" name="email" type="email">
         <Label>{t('email')}</Label>
-        <Input autoComplete="email" placeholder="you@company.com" />
+        <Input
+          autoComplete="email"
+          className="border-default/50 border"
+          placeholder="you@company.com"
+        />
       </TextField>
 
       <PasswordField
@@ -64,12 +69,10 @@ export default function LoginForm() {
         toggleLabel={t('toggle_password_visibility')}
       />
 
-      <div className="flex w-full items-center justify-between px-1 py-2">
-        <Checkbox name="remember">
-          {t('remember_me')}
-        </Checkbox>
+      <div className="flex w-full items-center justify-between gap-3 pt-1">
+        <RememberMe label={t('remember_me')} />
         <Link
-          className="text-small text-default-500 hover:underline"
+          className="text-muted hover:text-accent text-sm transition-colors"
           href="/forgot-password"
         >
           {t('forgot_password')}
@@ -77,7 +80,7 @@ export default function LoginForm() {
       </div>
 
       <Button
-        className="w-full"
+        className="mt-1 w-full"
         isDisabled={pending}
         type="submit"
         variant="primary"

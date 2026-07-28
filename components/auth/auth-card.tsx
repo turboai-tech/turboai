@@ -12,9 +12,13 @@ interface AuthCardProps {
 }
 
 /**
- * 登录 / 注册共用的卡片外壳。
+ * 登录 / 注册 / 找回密码共用的卡片外壳。
  *
- * 抽出来是因为两页的外观完全一致 —— 各写一份必然在后续迭代中走样。
+ * 抽出来是因为这几页的外观完全一致 —— 各写一份必然在后续迭代中走样。
+ *
+ * 样式用站点自己的语义 token（surface / muted / accent / default）而不是
+ * HeroUI 的调色板类。HeroUI v3 已经不提供 bg-content1、shadow-small 这类
+ * v2 时代的工具类，写了也不会生成任何样式。
  */
 export default function AuthCard({
   title,
@@ -25,27 +29,35 @@ export default function AuthCard({
   footer,
 }: AuthCardProps) {
   return (
-    <div className="flex w-full items-center justify-center px-4 py-16">
-      <div className="rounded-large bg-content1 shadow-small flex w-full max-w-sm flex-col gap-4 px-8 pt-6 pb-10">
-        <div className="flex flex-col gap-1">
-          <h1 className="text-large font-medium">{title}</h1>
-          <p className="text-small text-default-500">{description}</p>
+    <div className="w-full px-4 py-12 sm:py-16">
+      <div className="mx-auto w-full max-w-[420px]">
+        <div className="border-default/40 bg-surface rounded-3xl border p-7 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_-12px_rgba(0,0,0,0.12)] sm:p-8">
+          <div className="mb-6 flex flex-col gap-1.5">
+            <h1 className="text-foreground text-xl font-semibold tracking-tight">
+              {title}
+            </h1>
+            <p className="text-muted text-sm leading-relaxed">{description}</p>
+          </div>
+
+          {children}
+
+          {oauth ? (
+            <>
+              <div className="my-6 flex items-center gap-3">
+                <Separator className="bg-default/40 h-px flex-1" />
+                <span className="text-muted text-xs font-medium tracking-wide uppercase">
+                  {oauthLabel}
+                </span>
+                <Separator className="bg-default/40 h-px flex-1" />
+              </div>
+              {oauth}
+            </>
+          ) : null}
         </div>
 
-        {children}
-
-        {oauth ? (
-          <>
-            <div className="flex items-center gap-4 py-2">
-              <Separator className="flex-1" />
-              <p className="text-tiny text-default-500 shrink-0">{oauthLabel}</p>
-              <Separator className="flex-1" />
-            </div>
-            {oauth}
-          </>
+        {footer ? (
+          <p className="text-muted mt-6 text-center text-sm">{footer}</p>
         ) : null}
-
-        {footer ? <div className="text-small text-center">{footer}</div> : null}
       </div>
     </div>
   )

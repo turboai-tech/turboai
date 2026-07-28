@@ -43,27 +43,31 @@ export default function ForgotPasswordForm() {
 
   if (sent) {
     return (
-      <Alert status="success" className="text-small">
+      <Alert status="success" className="text-sm">
         {t('reset_email_sent')}
       </Alert>
     )
   }
 
   return (
-    <form className="flex flex-col gap-3" onSubmit={onSubmit}>
+    <form className="flex flex-col gap-4" onSubmit={onSubmit}>
       {errorKey ? (
-        <Alert status="danger" className="text-small">
+        <Alert status="danger" className="text-sm">
           {t(errorKey)}
         </Alert>
       ) : null}
 
       <TextField isRequired className="w-full" name="email" type="email">
         <Label>{t('email')}</Label>
-        <Input autoComplete="email" placeholder="you@company.com" />
+        <Input
+          autoComplete="email"
+          className="border-default/50 border"
+          placeholder="you@company.com"
+        />
       </TextField>
 
       <Button
-        className="w-full"
+        className="mt-1 w-full"
         isDisabled={pending}
         type="submit"
         variant="primary"

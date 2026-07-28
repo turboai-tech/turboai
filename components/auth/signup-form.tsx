@@ -66,21 +66,25 @@ export default function SignupForm() {
   }
 
   return (
-    <form className="flex flex-col gap-3" onSubmit={onSubmit}>
+    <form className="flex flex-col gap-4" onSubmit={onSubmit}>
       {errorKey ? (
-        <Alert status="danger" className="text-small">
+        <Alert status="danger" className="text-sm">
           {t(errorKey)}
         </Alert>
       ) : null}
       {message ? (
-        <Alert status="success" className="text-small">
+        <Alert status="success" className="text-sm">
           {message}
         </Alert>
       ) : null}
 
       <TextField isRequired className="w-full" name="email" type="email">
         <Label>{t('email')}</Label>
-        <Input autoComplete="email" placeholder="you@company.com" />
+        <Input
+          autoComplete="email"
+          className="border-default/50 border"
+          placeholder="you@company.com"
+        />
       </TextField>
 
       <PasswordField
@@ -89,18 +93,23 @@ export default function SignupForm() {
         minLength={MIN_PASSWORD_LENGTH}
         toggleLabel={t('toggle_password_visibility')}
       />
-      <p className="text-tiny text-default-500 px-1">
+      <p className="text-muted px-1 text-xs">
         {t('password_hint', { min: MIN_PASSWORD_LENGTH })}
       </p>
 
       <div className="px-1 py-2">
-        <Checkbox isRequired name="terms">
-          {t('accept_terms')}
+        <Checkbox className="text-muted text-sm" isRequired name="terms">
+          <Checkbox.Content>
+            <Checkbox.Control className="border-default/60 border">
+              <Checkbox.Indicator />
+            </Checkbox.Control>
+            {t('accept_terms')}
+          </Checkbox.Content>
         </Checkbox>
       </div>
 
       <Button
-        className="w-full"
+        className="mt-1 w-full"
         isDisabled={pending}
         type="submit"
         variant="primary"

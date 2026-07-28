@@ -41,7 +41,7 @@ export default function PasswordField({
       type={isVisible ? 'text' : 'password'}
     >
       <Label>{label}</Label>
-      <InputGroupRoot>
+      <InputGroupRoot className="border-default/50 border">
         <InputGroupInput autoComplete={autoComplete} minLength={minLength} />
         <InputGroupSuffix>
           <button

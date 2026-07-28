@@ -44,25 +44,25 @@ export default function OAuthButtons({
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2.5">
       <Button
-        className="w-full"
+        className="border-default/50 hover:bg-default/20 w-full justify-center gap-2.5 transition-colors"
         variant="outline"
         isDisabled={pending !== null}
         onPress={signInWithGoogle}
       >
-        <Icon icon="flat-color-icons:google" width={20} />
+        <Icon icon="flat-color-icons:google" width={18} />
         {t('continue_with_google')}
       </Button>
 
       {wechatEnabled ? (
         <Button
-          className="w-full"
+          className="border-default/50 hover:bg-default/20 w-full justify-center gap-2.5 transition-colors"
           variant="outline"
           isDisabled={pending !== null}
           onPress={signInWithWechat}
         >
-          <Icon icon="ri:wechat-fill" width={20} className="text-[#07C160]" />
+          <Icon icon="ri:wechat-fill" width={18} className="text-[#07C160]" />
           {t('continue_with_wechat')}
         </Button>
       ) : null}

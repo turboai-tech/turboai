@@ -13,10 +13,10 @@ export default async function LoginPage() {
   const wechatEnabled = getWechatConfigOrNull() !== null
 
   return (
-    <div className="flex min-h-[70vh] w-full flex-col items-center justify-center">
+    <div className="flex min-h-[70vh] w-full flex-col items-center justify-center py-4">
       <Suspense
         fallback={
-          <div className="bg-default/40 rounded-large h-96 w-full max-w-sm animate-pulse" />
+          <div className="bg-default/30 h-[480px] w-full max-w-[420px] animate-pulse rounded-3xl" />
         }
       >
         <AuthCard
@@ -27,7 +27,7 @@ export default async function LoginPage() {
           footer={
             <>
               {t('no_account')}&nbsp;
-              <Link className="hover:underline" href="/signup">
+              <Link className="text-accent font-medium hover:underline" href="/signup">
                 {t('sign_up')}
               </Link>
             </>
@@ -37,7 +37,7 @@ export default async function LoginPage() {
         </AuthCard>
       </Suspense>
 
-      <Link className="text-small text-default-500 hover:underline" href="/">
+      <Link className="text-muted hover:text-accent mt-2 text-sm transition-colors" href="/">
         {t('back_home')}
       </Link>
     </div>
