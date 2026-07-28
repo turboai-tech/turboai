@@ -104,7 +104,7 @@ export default function NavbarComponent({ className }: { className?: string }) {
           {!isMenuOpen ? (
             <ButtonLink
               className="hidden h-9 shrink-0 rounded-full cta-gradient px-4 text-sm font-medium whitespace-nowrap md:inline-flex"
-              href="/#pricing-container"
+              href="/contact"
               size="sm">
               {t('cta')}
             </ButtonLink>
@@ -140,7 +140,7 @@ export default function NavbarComponent({ className }: { className?: string }) {
             <ButtonLink
               className="mt-2 rounded-full cta-gradient font-medium"
               fullWidth
-              href="/#pricing-container"
+              href="/contact"
               onClick={closeMenu}>
               {t('cta')}
             </ButtonLink>

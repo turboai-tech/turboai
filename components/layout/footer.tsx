@@ -39,6 +39,7 @@ export default function FooterComponent() {
       { name: t('team'), href: '/#team-container' },
       { name: t('latest_news'), href: '/about/news' },
       { name: t('career_opportunities'), href: '/about/career' },
+      { name: t('contact'), href: '/contact' },
     ],
     legal: [
       { name: t('claim'), href: '/legal/claim' },
@@ -136,7 +137,7 @@ export default function FooterComponent() {
         </div>
         <ButtonLink
           className="relative h-11 shrink-0 rounded-full cta-gradient px-6 text-sm font-medium shadow-lg"
-          href="/#pricing-container">
+          href="/contact">
           {t('cta_button')}
           <Icon icon="solar:arrow-right-linear" width={16} />
         </ButtonLink>

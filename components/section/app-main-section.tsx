@@ -70,7 +70,7 @@ export default function AppMainSections() {
             className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
             <ButtonLink
               className="h-11 rounded-full cta-gradient px-6 text-sm font-medium shadow-lg"
-              href="/#pricing-container">
+              href="/contact">
               {t('cta_primary')}
             </ButtonLink>
             <ButtonLink

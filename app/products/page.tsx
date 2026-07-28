@@ -119,7 +119,7 @@ export default function ProductsPage() {
         </div>
         <ButtonLink
           className="relative h-11 shrink-0 rounded-full cta-gradient px-6 text-sm font-medium shadow-lg"
-          href="/#pricing-container">
+          href="/contact">
           {t('cta_button')}
           <Icon icon="solar:arrow-right-linear" width={16} />
         </ButtonLink>
