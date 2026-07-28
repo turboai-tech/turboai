@@ -1,12 +1,15 @@
 'use client'
 
-import { Button, Input, Label, TextField } from '@heroui/react'
+import { Alert, Button, Checkbox, Input, Label, TextField } from '@heroui/react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { FormEvent, useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { FormEvent, useState } from 'react'
 
 import { createClient } from '@/lib/supabase/client'
+
+import { authErrorKey, callbackErrorKey } from './auth-error'
+import PasswordField from './password-field'
 
 export default function LoginForm() {
   const t = useTranslations('Auth')
@@ -14,14 +17,14 @@ export default function LoginForm() {
   const searchParams = useSearchParams()
   const next = searchParams.get('next') ?? '/dashboard'
 
-  const [error, setError] = useState<string | null>(
-    searchParams.get('error') ? t('error_callback') : null,
+  const [errorKey, setErrorKey] = useState<string | null>(() =>
+    callbackErrorKey(searchParams.get('error')),
   )
   const [pending, setPending] = useState(false)
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    setError(null)
+    setErrorKey(null)
     setPending(true)
 
     const form = new FormData(event.currentTarget)
@@ -29,45 +32,58 @@ export default function LoginForm() {
     const password = String(form.get('password') ?? '')
 
     const supabase = createClient()
-    const { error: signInError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
 
-    setPending(false)
-
-    if (signInError) {
-      setError(signInError.message)
+    if (error) {
+      setPending(false)
+      setErrorKey(authErrorKey(error))
       return
     }
 
+    // 成功后保持 pending：跳转完成前禁用按钮，避免重复提交
     router.replace(next)
     router.refresh()
   }
 
   return (
-    <form className="flex w-full max-w-sm flex-col gap-4" onSubmit={onSubmit}>
-      <TextField isRequired name="email" type="email">
+    <form className="flex flex-col gap-3" onSubmit={onSubmit}>
+      {errorKey ? (
+        <Alert status="danger" className="text-small">
+          {t(errorKey)}
+        </Alert>
+      ) : null}
+
+      <TextField isRequired className="w-full" name="email" type="email">
         <Label>{t('email')}</Label>
         <Input autoComplete="email" placeholder="you@company.com" />
       </TextField>
-      <TextField isRequired name="password" type="password">
-        <Label>{t('password')}</Label>
-        <Input autoComplete="current-password" />
-      </TextField>
 
-      {error ? <p className="text-sm text-danger">{error}</p> : null}
+      <PasswordField
+        autoComplete="current-password"
+        label={t('password')}
+        toggleLabel={t('toggle_password_visibility')}
+      />
 
-      <Button isDisabled={pending} type="submit" variant="primary">
+      <div className="flex w-full items-center justify-between px-1 py-2">
+        <Checkbox name="remember">
+          {t('remember_me')}
+        </Checkbox>
+        <Link
+          className="text-small text-default-500 hover:underline"
+          href="/forgot-password"
+        >
+          {t('forgot_password')}
+        </Link>
+      </div>
+
+      <Button
+        className="w-full"
+        isDisabled={pending}
+        type="submit"
+        variant="primary"
+      >
         {pending ? t('signing_in') : t('sign_in')}
       </Button>
-
-      <p className="text-center text-sm text-muted">
-        {t('no_account')}{' '}
-        <Link className="text-accent underline-offset-2 hover:underline" href="/signup">
-          {t('sign_up')}
-        </Link>
-      </p>
     </form>
   )
 }
