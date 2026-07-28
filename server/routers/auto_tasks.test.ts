@@ -3,12 +3,12 @@
  */
 import { expect, test } from '@playwright/test';
 import type { inferProcedureInput } from '@trpc/server';
-import { createContextInner } from '../context';
+import { createAuthedContext } from '../test-utils';
 import type { AppRouter } from './_app';
 import { createCaller } from './_app';
 
 test('create and get auto task', async () => {
-  const ctx = await createContextInner({});
+  const ctx = createAuthedContext();
   const caller = createCaller(ctx);
 
   const input: inferProcedureInput<AppRouter['autoTask']['create']> = {

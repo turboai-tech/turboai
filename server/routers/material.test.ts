@@ -3,12 +3,12 @@
  */
 import { expect, test } from '@playwright/test';
 import { File } from 'buffer';
-import { createContextInner } from '../context';
+import { createAuthedContext } from '../test-utils';
 import { createCaller } from './_app';
 import { MadeFrom, MaterialType } from './material';
 
 test('material enums', async () => {
-//   const ctx = await createContextInner({});
+//   const ctx = createAuthedContext();
 //   const caller = createCaller(ctx);
 
   expect(MaterialType.MATERIAL_TYPE_TEXT).toBe(1);
@@ -20,7 +20,7 @@ test('material enums', async () => {
 
 
 test('material create with video file', async () => {
-  const ctx = await createContextInner({});
+  const ctx = createAuthedContext();
   const caller = createCaller(ctx);
 
   // 创建真实的文件内容
