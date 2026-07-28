@@ -119,7 +119,21 @@
     "error_wechat_cancelled": "WeChat ログインをキャンセルしました。",
     "error_wechat_failed": "WeChat ログインに失敗しました。もう一度お試しください。",
     "error_wechat_unconfigured": "WeChat ログインはまだご利用いただけません。",
-    "error_unknown": "問題が発生しました。しばらくしてからお試しください。"
+    "error_unknown": "問題が発生しました。しばらくしてからお試しください。",
+    "forgot_password_title": "パスワードをリセット",
+    "forgot_password_description": "登録済みのメールアドレスを入力すると、リセットリンクをお送りします。",
+    "send_reset_link": "リセットリンクを送信",
+    "sending": "送信中…",
+    "reset_email_sent": "そのメールアドレスが登録されていれば、リセットリンクを送信しました。受信箱をご確認ください。",
+    "back_to_sign_in": "ログインに戻る",
+    "reset_password_title": "新しいパスワードを設定",
+    "reset_password_description": "アカウントの新しいパスワードを設定してください。",
+    "new_password": "新しいパスワード",
+    "confirm_password": "新しいパスワード（確認）",
+    "update_password": "パスワードを更新",
+    "saving": "保存中…",
+    "reset_link_invalid": "このリセットリンクは無効か期限切れです。再度お申し込みください。",
+    "error_password_mismatch": "パスワードが一致しません。"
   },
   "Footer": {
     "value_description": "グローバルな業務デリバリーを担う、最前線の AI 構築企業。一言のアイデアを、本番で動くプロダクトに変えます。",

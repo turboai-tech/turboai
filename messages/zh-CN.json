@@ -119,7 +119,21 @@
     "error_wechat_cancelled": "已取消微信登录。",
     "error_wechat_failed": "微信登录失败，请重试。",
     "error_wechat_unconfigured": "微信登录暂未开放。",
-    "error_unknown": "出了点问题，请稍后再试。"
+    "error_unknown": "出了点问题，请稍后再试。",
+    "forgot_password_title": "重置密码",
+    "forgot_password_description": "输入注册邮箱，我们会发送一封重置链接。",
+    "send_reset_link": "发送重置链接",
+    "sending": "发送中…",
+    "reset_email_sent": "如果该邮箱已注册，重置链接已发出，请查收邮件。",
+    "back_to_sign_in": "返回登录",
+    "reset_password_title": "设置新密码",
+    "reset_password_description": "为你的账号设置一个新密码。",
+    "new_password": "新密码",
+    "confirm_password": "确认新密码",
+    "update_password": "更新密码",
+    "saving": "保存中…",
+    "reset_link_invalid": "重置链接无效或已过期，请重新申请。",
+    "error_password_mismatch": "两次输入的密码不一致。"
   },
   "Footer": {
     "value_description": "一家面向全球业务交付的 AI 构建企业，始终站在技术前沿。我们把想法从一句话，做成真正上线的产品。",

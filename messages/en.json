@@ -119,7 +119,21 @@
     "error_wechat_cancelled": "WeChat sign-in was cancelled.",
     "error_wechat_failed": "WeChat sign-in failed. Please try again.",
     "error_wechat_unconfigured": "WeChat sign-in is not available yet.",
-    "error_unknown": "Something went wrong. Please try again."
+    "error_unknown": "Something went wrong. Please try again.",
+    "forgot_password_title": "Reset your password",
+    "forgot_password_description": "Enter your email and we will send you a reset link.",
+    "send_reset_link": "Send reset link",
+    "sending": "Sending…",
+    "reset_email_sent": "If that email is registered, a reset link is on its way. Check your inbox.",
+    "back_to_sign_in": "Back to sign in",
+    "reset_password_title": "Set a new password",
+    "reset_password_description": "Choose a new password for your account.",
+    "new_password": "New password",
+    "confirm_password": "Confirm new password",
+    "update_password": "Update password",
+    "saving": "Saving…",
+    "reset_link_invalid": "That reset link is invalid or has expired. Request a new one.",
+    "error_password_mismatch": "The two passwords do not match."
   },
   "Footer": {
     "value_description": "A frontier AI build-and-delivery company for global businesses. We take ideas from a sentence to a shipped product.",

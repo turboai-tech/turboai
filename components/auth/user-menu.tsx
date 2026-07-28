@@ -29,7 +29,8 @@ export default function UserMenu() {
       })
       subscription = result.data.subscription
     } catch {
-      setUser(null)
+      // Supabase 未配置时保持未登录态 —— user 的初始值已经是 null，
+      // 这里无需再 setState（同步 setState 也会触发级联渲染警告）。
     }
 
     return () => subscription?.unsubscribe()

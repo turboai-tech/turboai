@@ -32,9 +32,15 @@ export default function NavbarComponent({ className }: { className?: string }) {
 
   const closeMenu = () => setIsMenuOpen(false)
 
-  useEffect(() => {
-    closeMenu()
-  }, [pathname])
+  // 路由变化时收起移动端菜单。用「渲染期比对上一次的值」而不是 effect ——
+  // effect 里同步 setState 会多一轮提交后渲染，菜单会闪一下；在渲染期调整
+  // 状态时 React 会直接丢弃这次输出并立即重渲，不会有中间帧。
+  // https://react.dev/reference/react/useState#storing-information-from-previous-renders
+  const [lastPathname, setLastPathname] = useState(pathname)
+  if (lastPathname !== pathname) {
+    setLastPathname(pathname)
+    setIsMenuOpen(false)
+  }
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : ''

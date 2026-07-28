@@ -3,15 +3,19 @@
 import { Description, Label, ListBox, Popover, Switch, buttonVariants, cn } from '@heroui/react'
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useSyncExternalStore } from 'react'
 import { useTranslations } from 'next-intl'
 
 import {
-  DESIGN_THEME_STORAGE_KEY,
-  VIBRANT_STORAGE_KEY,
+  DEFAULT_DESIGN_THEME,
   applyDesignTheme,
+  applyVibrantPalette,
   getStoredDesignTheme,
+  getStoredVibrant,
   isDesignThemeId,
+  setStoredDesignTheme,
+  setStoredVibrant,
+  subscribeDesignTheme,
   type DesignThemeId,
 } from '@/utils/design-theme'
 
@@ -41,51 +45,44 @@ export default function DesignThemeSelector({
   compact?: boolean
 }) {
   const t = useTranslations('ThemeSelector')
-  const [active, setActive] = useState<DesignThemeId>('default')
-  const [mounted, setMounted] = useState(false)
-  const [vibrant, setVibrant] = useState(false)
 
+  // 主题存在 localStorage 里，是 React 之外的状态，因此订阅它而不是在 effect
+  // 里读一次再 setState。第三个参数是服务端快照：SSR 与水合期间一律按默认主题
+  // 渲染，水合完成后才切到真实值，从而不会出现服务端/客户端标记不一致。
+  const active = useSyncExternalStore(
+    subscribeDesignTheme,
+    getStoredDesignTheme,
+    () => DEFAULT_DESIGN_THEME,
+  )
+  const vibrant = useSyncExternalStore(
+    subscribeDesignTheme,
+    getStoredVibrant,
+    () => false,
+  )
+
+  // 把当前值同步到 document 上。这个 effect 只做 DOM 副作用、不 setState，
+  // 因此不会引发级联渲染。
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true)
-  }, [])
-
-  useEffect(() => {
-    const stored = getStoredDesignTheme()
-    if (stored !== 'default') {
-      setActive(stored)
-      applyDesignTheme(stored)
-    }
-
-    const storedVibrant = localStorage.getItem(VIBRANT_STORAGE_KEY)
-    if (storedVibrant === 'true') {
-      setVibrant(true)
-      document.documentElement.setAttribute('data-vibrant-palette', 'true')
-    }
-  }, [])
+    applyDesignTheme(active)
+    applyVibrantPalette(vibrant)
+  }, [active, vibrant])
 
   const handleSelect = useCallback((keys: 'all' | Set<React.Key>) => {
     if (keys === 'all') return
     const selected = [...keys][0]
     if (typeof selected !== 'string' || !isDesignThemeId(selected)) return
 
-    setActive(selected)
-    localStorage.setItem(DESIGN_THEME_STORAGE_KEY, selected)
-    applyDesignTheme(selected)
+    setStoredDesignTheme(selected)
   }, [])
 
   const handleVibrantToggle = useCallback((isSelected: boolean) => {
-    setVibrant(isSelected)
-    localStorage.setItem(VIBRANT_STORAGE_KEY, String(isSelected))
-    if (isSelected) {
-      document.documentElement.setAttribute('data-vibrant-palette', 'true')
-    } else {
-      document.documentElement.removeAttribute('data-vibrant-palette')
-    }
+    setStoredVibrant(isSelected)
   }, [])
 
   const current = THEMES.find((theme) => theme.id === active)
-  const showAvatar = mounted && active !== 'default' && current
+  // 不再需要单独的 mounted 标志：useSyncExternalStore 在 SSR 与水合期间返回
+  // 服务端快照（default），水合完成后才切到真实值，效果与原来的 mounted 一致。
+  const showAvatar = active !== 'default' && current
 
   return (
     <Popover>
