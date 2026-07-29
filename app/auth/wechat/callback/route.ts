@@ -4,6 +4,7 @@ import { NextResponse, type NextRequest } from 'next/server'
 
 import { createAdminClient } from '@/lib/supabase/admin'
 import { createClient } from '@/lib/supabase/server'
+import { getRequestOrigin } from '@/lib/site-url'
 import { RATE_LIMITS, checkRateLimit, recordAuthEvent } from '@/server/security'
 import { WECHAT_EMAIL_DOMAIN } from '@/lib/wechat/identity'
 import { authenticateWithCode } from '@/lib/wechat/client'
@@ -19,9 +20,8 @@ function safeEqual(a: string, b: string): boolean {
 }
 
 function failure(request: NextRequest, reason: string) {
-  const response = NextResponse.redirect(
-    new URL(`/login?error=${reason}`, request.url),
-  )
+  const origin = getRequestOrigin(request)
+  const response = NextResponse.redirect(`${origin}/login?error=${reason}`)
   response.cookies.delete(STATE_COOKIE)
   response.cookies.delete(NEXT_COOKIE)
   return response
@@ -127,7 +127,9 @@ export async function GET(request: NextRequest) {
     },
   })
 
-  const response = NextResponse.redirect(new URL(next, request.url))
+  const response = NextResponse.redirect(
+    `${getRequestOrigin(request)}${next.startsWith('/') ? next : '/dashboard'}`,
+  )
   response.cookies.delete(STATE_COOKIE)
   response.cookies.delete(NEXT_COOKIE)
   return response

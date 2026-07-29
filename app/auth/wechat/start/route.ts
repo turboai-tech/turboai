@@ -3,6 +3,7 @@ import { randomBytes } from 'node:crypto'
 import { NextResponse, type NextRequest } from 'next/server'
 
 import { buildAuthorizeUrl } from '@/lib/wechat/client'
+import { getRequestOrigin } from '@/lib/site-url'
 
 export const STATE_COOKIE = 'wx_oauth_state'
 export const NEXT_COOKIE = 'wx_oauth_next'
@@ -17,6 +18,7 @@ function sanitizeNext(value: string | null): string {
 
 export async function GET(request: NextRequest) {
   const next = sanitizeNext(request.nextUrl.searchParams.get('next'))
+  const origin = getRequestOrigin(request)
 
   let authorizeUrl: string
   const state = randomBytes(32).toString('hex')
@@ -26,7 +28,7 @@ export async function GET(request: NextRequest) {
   } catch {
     // 未配置微信环境变量时不要抛 500，回到登录页给出可读提示
     return NextResponse.redirect(
-      new URL('/login?error=wechat_unconfigured', request.url),
+      `${origin}/login?error=wechat_unconfigured`,
     )
   }
 

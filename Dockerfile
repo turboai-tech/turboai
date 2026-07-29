@@ -7,18 +7,23 @@
 #   docker build \
 #     --build-arg NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co \
 #     --build-arg NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key \
+#     --build-arg NEXT_PUBLIC_SITE_URL=https://iturboai.com \
 #     -t turboai:latest .
 #   docker save turboai:latest | gzip > turboai.tar.gz
 #   scp turboai.tar.gz admin@ECS_IP:~/
 #   # on ECS:
 #   gunzip -c ~/turboai.tar.gz | sudo docker load
-#   sudo docker run -d --name turboai --restart unless-stopped -p 3000:3000 turboai:latest
+#   sudo docker run -d --name turboai --restart unless-stopped -p 3000:3000 \
+#     -e NEXT_PUBLIC_SITE_URL=https://iturboai.com \
+#     -e SUPABASE_SERVICE_ROLE_KEY=your_service_role \
+#     turboai:latest
 #
 # If you must build on ECS, use a China base image + Alpine mirror:
 #   sudo docker build \
 #     --build-arg BASE_IMAGE=docker.m.daocloud.io/library/node:22-alpine \
 #     --build-arg NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co \
 #     --build-arg NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key \
+#     --build-arg NEXT_PUBLIC_SITE_URL=https://iturboai.com \
 #     -t turboai:latest .
 
 ARG BASE_IMAGE=node:22-alpine
@@ -46,9 +51,11 @@ ARG PNPM_REGISTRY=https://registry.npmmirror.com
 ARG NEXT_PUBLIC_SUPABASE_URL
 ARG NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
 ARG NEXT_PUBLIC_SUPABASE_ANON_KEY
+ARG NEXT_PUBLIC_SITE_URL
 ENV NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL
 ENV NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=$NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
 ENV NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY
+ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
 ENV NODE_ENV=production
 RUN pnpm config set registry "$PNPM_REGISTRY"
 COPY --from=deps /app/node_modules ./node_modules
@@ -59,6 +66,11 @@ FROM base AS runner
 ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
+# Runtime fallback for auth redirects (also bake NEXT_PUBLIC_SITE_URL at build time)
+ARG NEXT_PUBLIC_SITE_URL
+ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
+ARG SUPABASE_SERVICE_ROLE_KEY
+ENV SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY
 
 RUN addgroup -S -g 1001 nodejs && adduser -S -u 1001 -G nodejs nextjs
 
