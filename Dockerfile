@@ -7,14 +7,14 @@
 #   docker build \
 #     --build-arg NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co \
 #     --build-arg NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key \
-#     --build-arg NEXT_PUBLIC_SITE_URL=https://iturboai.com \
+#     --build-arg NEXT_PUBLIC_SITE_URL=https://www.iturboai.com \
 #     -t turboai:latest .
 #   docker save turboai:latest | gzip > turboai.tar.gz
 #   scp turboai.tar.gz admin@ECS_IP:~/
 #   # on ECS:
 #   gunzip -c ~/turboai.tar.gz | sudo docker load
 #   sudo docker run -d --name turboai --restart unless-stopped -p 3000:3000 \
-#     -e NEXT_PUBLIC_SITE_URL=https://iturboai.com \
+#     -e NEXT_PUBLIC_SITE_URL=https://www.iturboai.com \
 #     -e SUPABASE_SERVICE_ROLE_KEY=your_service_role \
 #     turboai:latest
 #
@@ -23,7 +23,7 @@
 #     --build-arg BASE_IMAGE=docker.m.daocloud.io/library/node:22-alpine \
 #     --build-arg NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co \
 #     --build-arg NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key \
-#     --build-arg NEXT_PUBLIC_SITE_URL=https://iturboai.com \
+#     --build-arg NEXT_PUBLIC_SITE_URL=https://www.iturboai.com \
 #     -t turboai:latest .
 
 ARG BASE_IMAGE=node:22-alpine

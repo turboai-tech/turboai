@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 import { createClient } from '@/lib/supabase/client'
+import { getPublicSiteOrigin } from '@/lib/site-url'
 
 interface OAuthButtonsProps {
   /** 登录成功后的落地路径 */
@@ -25,10 +26,12 @@ export default function OAuthButtons({
     setPending('google')
 
     const supabase = createClient()
+    // Prefer configured origin so apex↔www and reverse-proxy hosts stay allow-listed in Supabase.
+    const origin = getPublicSiteOrigin() || window.location.origin
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`,
+        redirectTo: `${origin}/auth/callback?next=${encodeURIComponent(next)}`,
       },
     })
 

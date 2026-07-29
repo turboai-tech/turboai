@@ -26,7 +26,7 @@ export default function ForgotPasswordForm() {
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       // 邮件里的链接先经过 /auth/callback 核销 token 建立会话，
       // 再落到 /reset-password 让用户设置新密码。
-      redirectTo: `${window.location.origin}/auth/callback?next=/reset-password`,
+      redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || window.location.origin}/auth/callback?next=/reset-password`,
     })
 
     setPending(false)
