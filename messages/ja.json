@@ -459,6 +459,8 @@
     "email": "仕事用メールアドレス",
     "full_name": "お名前",
     "phone": "電話番号",
+    "phone_placeholder": "携帯電話番号",
+    "phone_select_country": "先に国・地域を選択してください",
     "country": "国・地域",
     "industry": "業種",
     "job_title": "役職",

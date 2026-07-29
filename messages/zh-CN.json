@@ -459,6 +459,8 @@
     "email": "工作邮箱",
     "full_name": "称呼",
     "phone": "电话",
+    "phone_placeholder": "手机号码",
+    "phone_select_country": "请先选择国家/地区",
     "country": "国家/地区",
     "industry": "行业",
     "job_title": "职位",

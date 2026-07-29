@@ -459,6 +459,8 @@
     "email": "Work email",
     "full_name": "Name",
     "phone": "Phone",
+    "phone_placeholder": "Mobile number",
+    "phone_select_country": "Select a country first",
     "country": "Country / region",
     "industry": "Industry",
     "job_title": "Job title",

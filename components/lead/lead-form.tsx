@@ -16,7 +16,14 @@ import { FormEvent, useState } from 'react'
 import { trpc } from '@/utils/trpc-client'
 
 import FieldSelect from './field-select'
-import { COUNTRY_VALUES, INDUSTRY_VALUES, PRODUCT_VALUES } from './options'
+import {
+  COUNTRY_VALUES,
+  INDUSTRY_VALUES,
+  PRODUCT_VALUES,
+  composePhone,
+  defaultCountryFromLocale,
+  dialCodeForCountry,
+} from './options'
 
 interface LeadFormProps {
   /** 归因用：这份留资来自哪个位置 */
@@ -27,12 +34,15 @@ export default function LeadForm({ source }: LeadFormProps) {
   const t = useTranslations('Lead')
   const locale = useLocale()
 
-  const [country, setCountry] = useState<string | null>(null)
+  const [country, setCountry] = useState<string | null>(() =>
+    defaultCountryFromLocale(locale),
+  )
   const [industry, setIndustry] = useState<string | null>(null)
   const [interests, setInterests] = useState<string[]>([])
   const [error, setError] = useState<string | null>(null)
 
   const submit = trpc.lead.submit.useMutation()
+  const dialCode = dialCodeForCountry(country)
 
   const countryOptions = COUNTRY_VALUES.map((value) => ({
     value,
@@ -53,7 +63,7 @@ export default function LeadForm({ source }: LeadFormProps) {
       await submit.mutateAsync({
         email: String(form.get('email') ?? ''),
         fullName: String(form.get('full_name') ?? '') || undefined,
-        phone: String(form.get('phone') ?? '') || undefined,
+        phone: composePhone(country, String(form.get('phone') ?? '')),
         jobTitle: String(form.get('job_title') ?? '') || undefined,
         message: String(form.get('message') ?? '') || undefined,
         country: country ?? undefined,
@@ -98,20 +108,10 @@ export default function LeadForm({ source }: LeadFormProps) {
         />
       </TextField>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <TextField className="w-full" name="full_name">
-          <Label>{t('full_name')}</Label>
-          <Input autoComplete="name" className="border-default/50 border" />
-        </TextField>
-
-        <TextField className="w-full" name="phone" type="tel">
-          <Label>{t('phone')}</Label>
-          <Input autoComplete="tel" className="border-default/50 border" />
-        </TextField>
-      </div>
-
+      {/* Country first — phone dialling code depends on it. */}
       <div className="grid gap-4 sm:grid-cols-2">
         <FieldSelect
+          isRequired
           label={t('country')}
           name="country"
           onChange={setCountry}
@@ -129,6 +129,32 @@ export default function LeadForm({ source }: LeadFormProps) {
         />
       </div>
 
+      <div className="grid gap-4 sm:grid-cols-2">
+        <TextField className="w-full" name="full_name">
+          <Label>{t('full_name')}</Label>
+          <Input autoComplete="name" className="border-default/50 border" />
+        </TextField>
+
+        <TextField className="w-full" name="phone" type="tel">
+          <Label>{t('phone')}</Label>
+          <div className="flex items-stretch gap-2">
+            <span
+              aria-hidden
+              className="border-default/50 text-foreground inline-flex min-w-14 shrink-0 items-center justify-center rounded-xl border bg-default/30 px-2.5 text-sm font-medium tabular-nums">
+              {dialCode || '—'}
+            </span>
+            <Input
+              autoComplete="tel-national"
+              className="border-default/50 min-w-0 flex-1 border"
+              inputMode="tel"
+              placeholder={
+                dialCode ? t('phone_placeholder') : t('phone_select_country')
+              }
+            />
+          </div>
+        </TextField>
+      </div>
+
       <TextField className="w-full" name="job_title">
         <Label>{t('job_title')}</Label>
         {/* 职位不做枚举：真实职位名称千差万别，下拉框只会逼人选「其他」 */}
@@ -142,8 +168,7 @@ export default function LeadForm({ source }: LeadFormProps) {
       <CheckboxGroup
         className="flex flex-col gap-2"
         value={interests}
-        onChange={setInterests}
-      >
+        onChange={setInterests}>
         <Label>{t('product_interest')}</Label>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
           {PRODUCT_VALUES.map((value) => (
@@ -171,8 +196,7 @@ export default function LeadForm({ source }: LeadFormProps) {
         className="mt-1 w-full"
         isDisabled={submit.isPending}
         type="submit"
-        variant="primary"
-      >
+        variant="primary">
         {submit.isPending ? t('submitting') : t('submit')}
       </Button>
 
