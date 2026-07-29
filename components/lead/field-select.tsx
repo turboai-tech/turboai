@@ -18,10 +18,9 @@ interface FieldSelectProps {
 }
 
 /**
- * 表单里的下拉选择。
- *
- * HeroUI v3 的 Select 要五层组合（Root / Trigger / Value / Indicator /
- * Popover + ListBox），在表单里重复五次会淹没实际逻辑，所以包一层。
+ * Form select wired to HeroUI v3’s Select composition.
+ * Use `value` / `onChange` and static ListBox items with `id` + `textValue`
+ * — the `items` render-prop shape without `id` leaves the menu unusable.
  */
 export default function FieldSelect({
   label,
@@ -37,27 +36,25 @@ export default function FieldSelect({
       className="w-full"
       isRequired={isRequired}
       name={name}
-      selectedKey={value}
-      onSelectionChange={(key) => onChange(key === null ? null : String(key))}
-    >
+      placeholder={placeholder}
+      value={value}
+      onChange={(key) => onChange(key == null ? null : String(key))}>
       <Label>{label}</Label>
-      <Select.Trigger className="border-default/50 border">
-        <Select.Value>
-          {({ selectedText }) => (
-            <span className={selectedText ? undefined : 'text-muted'}>
-              {selectedText || placeholder}
-            </span>
-          )}
-        </Select.Value>
+      <Select.Trigger className="border border-default/50" type="button">
+        <Select.Value />
         <Select.Indicator />
       </Select.Trigger>
-      <Select.Popover>
-        <ListBox items={options}>
-          {(option) => (
-            <ListBox.Item key={option.value} id={option.value}>
+      <Select.Popover className="z-50">
+        <ListBox>
+          {options.map((option) => (
+            <ListBox.Item
+              key={option.value}
+              id={option.value}
+              textValue={option.label}>
               {option.label}
+              <ListBox.ItemIndicator />
             </ListBox.Item>
-          )}
+          ))}
         </ListBox>
       </Select.Popover>
     </Select>
