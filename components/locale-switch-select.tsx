@@ -1,11 +1,12 @@
 'use client'
 
-import { Locale } from '@/i18n/config'
-import { setUserLocale } from '@/services/locale'
 import { Button, Dropdown, Label } from '@heroui/react'
 import { Icon } from '@iconify/react'
 import { useLocale } from 'next-intl'
 import React, { useEffect, useTransition } from 'react'
+
+import { usePathname, useRouter } from '@/i18n/navigation'
+import type { Locale } from '@/i18n/config'
 
 type Props = {
   defaultValue: string
@@ -24,6 +25,8 @@ export default function LocaleSwitcherSelect({
 }: Props) {
   const [, startTransition] = useTransition()
   const locale = useLocale()
+  const router = useRouter()
+  const pathname = usePathname()
   const [selected, setSelected] = React.useState(
     items.find((item) => item.value === defaultValue) || items[0],
   )
@@ -44,7 +47,7 @@ export default function LocaleSwitcherSelect({
     if (!next) return
     setSelected(next)
     startTransition(() => {
-      setUserLocale(value as Locale)
+      router.replace(pathname, { locale: value as Locale })
     })
   }
 

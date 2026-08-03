@@ -7,9 +7,14 @@ const nextConfig: NextConfig = {
     async redirects() {
         return [
             {
-            source: '/overview',
-            destination: '/',
-            permanent: true,
+                source: '/overview',
+                destination: '/',
+                permanent: true,
+            },
+            {
+                source: '/:locale(zh-CN|ja)/overview',
+                destination: '/:locale',
+                permanent: true,
             },
         ];
     },

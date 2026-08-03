@@ -1,12 +1,15 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
+import { stripLocalePrefix } from '@/lib/locale-path'
+
 import { getSupabaseEnvOrNull } from './env'
 
-export async function updateSession(request: NextRequest) {
-  let supabaseResponse = NextResponse.next({
-    request,
-  })
+export async function updateSession(
+  request: NextRequest,
+  response: NextResponse = NextResponse.next({ request }),
+) {
+  let supabaseResponse = response
 
   const env = getSupabaseEnvOrNull()
   if (!env) {
@@ -22,9 +25,7 @@ export async function updateSession(request: NextRequest) {
         cookiesToSet.forEach(({ name, value }) =>
           request.cookies.set(name, value),
         )
-        supabaseResponse = NextResponse.next({
-          request,
-        })
+        // Preserve the upstream (e.g. next-intl) response while refreshing cookies.
         cookiesToSet.forEach(({ name, value, options }) =>
           supabaseResponse.cookies.set(name, value, options),
         )
@@ -40,7 +41,7 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  const pathname = request.nextUrl.pathname
+  const pathname = stripLocalePrefix(request.nextUrl.pathname)
   const isAuthRoute =
     pathname.startsWith('/login') ||
     pathname.startsWith('/signup') ||
@@ -48,14 +49,19 @@ export async function updateSession(request: NextRequest) {
 
   if (!user && pathname.startsWith('/dashboard')) {
     const urlRedirect = request.nextUrl.clone()
-    urlRedirect.pathname = '/login'
-    urlRedirect.searchParams.set('next', pathname)
+    // Keep the active locale prefix when sending users to login.
+    const localeMatch = request.nextUrl.pathname.match(/^\/(zh-CN|ja)(?=\/|$)/)
+    urlRedirect.pathname = localeMatch ? `/${localeMatch[1]}/login` : '/login'
+    urlRedirect.searchParams.set('next', request.nextUrl.pathname)
     return NextResponse.redirect(urlRedirect)
   }
 
   if (user && isAuthRoute && !pathname.startsWith('/auth/callback')) {
     const urlRedirect = request.nextUrl.clone()
-    urlRedirect.pathname = '/dashboard'
+    const localeMatch = request.nextUrl.pathname.match(/^\/(zh-CN|ja)(?=\/|$)/)
+    urlRedirect.pathname = localeMatch
+      ? `/${localeMatch[1]}/dashboard`
+      : '/dashboard'
     return NextResponse.redirect(urlRedirect)
   }
 

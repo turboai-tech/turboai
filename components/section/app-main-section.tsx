@@ -24,17 +24,17 @@ export default function AppMainSections() {
   const t = useTranslations('AppMainSection');
 
   return (
-    <section className="relative flex flex-col items-start pt-12 sm:pt-20">
+    <section className="relative flex w-full flex-col items-stretch pt-12 sm:pt-20">
       <div
         aria-hidden
         className="bg-grid mask-fade-out pointer-events-none absolute inset-x-[-50vw] top-[-80px] h-[520px] select-none sm:top-[-120px] sm:h-[720px]"
       />
 
       <LazyMotion features={domAnimation}>
-        <div className="z-20 flex w-full flex-col gap-8 lg:flex-row lg:items-end lg:justify-start lg:gap-8">
-          <section className="flex w-full min-w-0 flex-col items-start justify-center gap-5 sm:gap-6 lg:w-auto lg:shrink-0">
+        <div className="z-20 grid w-full grid-cols-1 items-end gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-10">
+          <section className="flex min-w-0 flex-col items-start justify-center gap-5 sm:gap-6">
             <m.div {...riseIn(0)}>
-              <span className="label-mono inline-flex items-center gap-2 rounded-full border-1 border-default/40 bg-background/60 px-3 py-1.5 backdrop-blur-md">
+              <span className="label-mono inline-flex items-center gap-2 rounded-full border border-default/40 bg-background/60 px-3 py-1.5 backdrop-blur-md">
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
@@ -45,7 +45,7 @@ export default function AppMainSections() {
 
             <m.h1
               {...riseIn(1)}
-              className="text-start text-[clamp(40px,9vw,52px)] font-bold leading-[1.05] tracking-tighter sm:text-[76px] lg:whitespace-nowrap">
+              className="text-start text-[clamp(40px,8vw,68px)] font-bold leading-[1.05] tracking-tighter lg:whitespace-nowrap">
               <span className="text-foreground">{t('title_1')}&nbsp;</span>
               <span className="text-cta-gradient">
                 {t('title_2')}&nbsp;
@@ -61,7 +61,7 @@ export default function AppMainSections() {
 
             <m.p
               {...riseIn(3)}
-              className="max-w-[560px] text-start text-base font-normal leading-7 text-muted sm:text-[18px]">
+              className="max-w-xl text-start text-base font-normal leading-7 text-muted sm:text-[18px]">
               {t('description')}
             </m.p>
 
@@ -90,7 +90,7 @@ export default function AppMainSections() {
           <m.div
             key="hero-section-video"
             {...riseIn(3)}
-            className="w-full shrink-0 sm:max-w-md lg:mb-1 lg:w-[min(38%,22rem)]">
+            className="w-full min-w-0 lg:w-full">
             <div className="relative overflow-hidden rounded-lg border border-default/40 bg-default/20">
               <video
                 autoPlay
@@ -109,7 +109,7 @@ export default function AppMainSections() {
 
         <m.dl
           {...riseIn(5)}
-          className="z-20 mt-8 grid w-full grid-cols-1 gap-px overflow-hidden rounded-lg border-1 border-default/40 bg-default/50 sm:mt-10 sm:mb-6 sm:grid-cols-3">
+          className="z-20 mt-8 grid w-full grid-cols-1 gap-px overflow-hidden rounded-lg border border-default/40 bg-default/50 sm:mt-10 sm:mb-6 sm:grid-cols-3">
           {stats.map((index) => (
             <div
               key={index}

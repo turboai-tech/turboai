@@ -6,7 +6,7 @@ import ButtonLink from '@/components/button-link';
 import { Separator } from '@heroui/react';
 import { Icon } from '@iconify/react';
 import { useLocale, useTranslations } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import React from 'react';
 import { Logo } from '../icons';
 
@@ -153,6 +153,15 @@ export default function FooterComponent() {
             <p className="max-w-sm text-sm leading-6 text-muted">
               {t('value_description')}
             </p>
+            <div className="flex flex-col gap-1 text-sm text-muted">
+              <a
+                className="text-muted underline-offset-2 hover:text-foreground hover:underline"
+                href="mailto:contact@iturboai.com">
+                contact@iturboai.com
+              </a>
+              <p>{t('location_shanghai')}</p>
+              <p>{t('location_tokyo')}</p>
+            </div>
             <div className="flex items-center gap-5">
               {footerNavigation.social.map((item) => (
                 <a

@@ -5,6 +5,28 @@
     "ja": "日语",
     "label": "语言"
   },
+  "HomeMeta": {
+    "title": "面向初创与企业的 AI 产品构建与交付",
+    "description": "Turbo AI 设计、构建并交付 AI 产品——智能体、数据管线、交互界面与完整系统——从一句话到生产环境。立足上海，服务东京及更远地区。",
+    "keywords": "Turbo AI, AI 产品开发, AI 智能体, AI 构建交付, 上海 AI 公司, 东京 AI 工程, Ignition 归因"
+  },
+  "facts": {
+    "eyebrow": "一览",
+    "title": "可以引用的事实",
+    "description": "第一次通话前，团队最常问到的问题，短答如下。",
+    "item_1_question": "Turbo AI 是什么？",
+    "item_1_answer": "Turbo AI 是一家 AI 前沿的构建交付企业。我们为其他公司设计、构建并交付 AI 产品——不是方案幻灯片。",
+    "item_2_question": "Turbo AI 不做什么？",
+    "item_2_answer": "我们不是纯研究实验室，不是人力中介，也不是交接后消失的咨询公司。我们不会扣留客户的知识产权。",
+    "item_3_question": "多快能交付？",
+    "item_3_answer": "可用原型通常约两周。生产系统通常四到十二周。",
+    "item_4_question": "成果归谁？",
+    "item_4_answer": "归你。代码、模型与文档会交接，并部署在你控制的基础设施上。",
+    "item_5_question": "你们在哪里？",
+    "item_5_answer": "我们立足上海，并与东京及更远地区的团队合作。",
+    "item_6_question": "真正在做的是谁？",
+    "item_6_answer": "创始人和我们自己的 AI 工程师。你和写生产代码的人之间，没有层层客户经理。"
+  },
   "AppMainSection": {
     "eyebrow": "AI 前沿的构建交付企业",
     "title_1": "用 AI",
@@ -69,6 +91,7 @@
     "products": "产品",
     "pricing": "合作方式",
     "blog": "动态",
+    "about": "关于我们",
     "signin": "登录",
     "signup": "注册",
     "cta": "开启项目",
@@ -172,19 +195,25 @@
     "cookie_preferences": "Cookie 偏好",
     "values": "价值观",
     "contact": "联系我们",
-    "company_name": "特铱铂智能科技（上海）有限公司"
+    "company_name": "特铱铂智能科技（上海）有限公司",
+    "location_shanghai": "中国上海",
+    "location_tokyo": "日本东京"
   },
   "NotFound": {
     "title": "404 — 页面不存在",
     "description": "这个页面我们还没做。",
     "back": "回到首页",
     "feedback_placeholder": "有什么想法或建议可以让我们做得更好",
-    "submit": "提交"
+    "submit": "提交",
+    "feedback_cta": "在找特定内容？告诉我们你需要什么。",
+    "contact_us": "联系我们"
   },
   "story": {
     "eyebrow": "我们的故事",
     "title": "我们是怎么走到这里的",
     "description": "简单说：我们不断遇到一些团队，他们有想法，却找不到能把它做出来的人。",
+    "definition_title": "什么是 AI 构建交付企业？",
+    "definition_body": "AI 构建交付企业会把一个产品想法——常常只是一句话——变成生产环境里能跑的软件。在 Turbo AI，这包括设计、模型、数据、界面、评测与部署；成果归客户所有，并运行在客户控制的基础设施上。",
     "milestone_1_date": "2024",
     "milestone_1_title": "起念",
     "milestone_1_description": "两个工程师反复发现同一件事：做 AI 产品，最难的从来不是模型，而是模型周围的一切——数据、评测、界面、部署。有想法的团队很多，能把它做出来的人很少。",
@@ -193,12 +222,23 @@
     "milestone_2_description": "我们在上海创办 Turbo AI，就是要做那样的人。一家为交付而生的企业：接过一个想法，交还一个能用的产品，中间不隔那么多层。",
     "milestone_3_date": "现在",
     "milestone_3_title": "继续前行",
-    "milestone_3_description": "我们为上海和东京的初创公司与企业交付产品。项目变多了，能交付的东西也更重了。这里每个工程师都写上线的代码——这是刻意的。"
+    "milestone_3_description": "我们为上海和东京的初创公司与企业交付产品。项目变多了，能交付的东西也更重了。这里每个工程师都写上线的代码——这是刻意的。",
+    "founders_title": "谁在做交付",
+    "founders_description": "客户直接与写生产代码的人合作，而不是一串客户经理。",
+    "founder_1_name": "David",
+    "founder_1_role": "联合创始人",
+    "founder_1_bio": "前线交付工程师，前特斯拉算法团队。擅长把模糊的 AI 想法做成团队能上线、能运营的软件。",
+    "founder_2_name": "Ting",
+    "founder_2_role": "联合创始人",
+    "founder_2_bio": "AI 项目经理，前特斯拉算法团队。负责交付体系、评测，以及从原型到生产的路径。",
+    "founder_3_name": "Neil",
+    "founder_3_role": "联合创始人",
+    "founder_3_bio": "大模型算法工程师，前 Tec-Do。专注模型、智能体，以及交接后仍能稳定运行的基础设施。"
   },
   "news": {
     "eyebrow": "动态",
-    "title": "暂时还没有可报的消息",
-    "description": "我们一直埋头做产品。等有值得写下来的进展，会出现在这里。",
+    "title": "先埋头做事，有进展再写",
+    "description": "我们正专注交付客户项目和自有产品。等有值得写下的内容——发布、一线笔记或招聘——会出现在这里。",
     "cta_build": "看看我们能做什么",
     "cta_careers": "在招职位"
   },
@@ -221,6 +261,7 @@
     "status_live": "已上线",
     "status_beta": "测试中",
     "visit_product": "打开产品",
+    "talk_to_us": "找我们聊聊",
     "item_ignition_title": "Ignition",
     "item_ignition_description": "能开进账单的归因。承载私域游戏化增长——大转盘、兑换码、裂变——并把每一次奖励缝回到可确定、可审计的转化路径与只追加账本。",
     "item_chat_title": "Turbo Chat",
@@ -310,7 +351,7 @@
     "cookie_policy": "Cookie 政策",
     "sentense_end_symbol": "。",
     "accept_all": "接受所有",
-    "cookie_settings": "Cookie 设置"
+    "cookie_settings": "仅必要 Cookie"
   },
   "Faq": {
     "title": "常被问到的问题",
@@ -327,7 +368,13 @@
     "answer_5": "那我们就和他们并肩做。我们很大一部分工作，是帮内部团队打通他们不熟悉的那一段，而不是取代任何人。"
   },
   "sitemap": {
-    "sitemap_title": "我们在哪里"
+    "sitemap_title": "我们在哪里",
+    "sitemap_description": "与上海、东京及更远地区的团队一起构建。",
+    "pin_shanghai": "上海",
+    "pin_tokyo": "东京",
+    "pin_singapore": "新加坡",
+    "pin_americas": "美洲",
+    "pin_europe": "欧洲"
   },
   "pricing": {
     "eyebrow": "合作",
@@ -358,13 +405,25 @@
     "card_3_button_text": "找我们聊聊"
   },
   "customers": {
-    "customers_title": "他们选择了我们",
+    "eyebrow": "实证",
+    "title": "已经在线上跑的东西",
+    "description": "我们不会用站不住脚的 logo 撑场面。眼下能展示的是：一个客户部署，以及一个我们自有品牌的产品。",
+    "customers_title": "部分客户",
     "buyerx": "BuyerX",
-    "buyerx_location": "东京, 日本"
+    "buyerx_location": "东京, 日本",
+    "buyerx_note": "为东京电商团队做的私域增长与归因——路径可确定、奖励可入账，运营同事真的在用。",
+    "buyerx_cta": "访问 BuyerX",
+    "ignition": "Ignition",
+    "ignition_badge": "自有产品",
+    "ignition_note": "能开进账单的归因。先为自己做，再把同一套栈产品化，也用在客户项目里。",
+    "ignition_cta": "查看产品"
   },
   "career": {
+    "eyebrow": "加入我们",
     "title": "加入我们，一起做落地",
     "description": "我们招的是能和客户一起把 AI 系统做进生产的人——不是写方案的人。如果你想做真正上线的 agent、模型和基础设施，来聊聊。",
+    "apply_cta": "发送申请邮件",
+    "apply_role_cta": "申请这个岗位",
     "section_overview": "岗位简介",
     "section_responsibilities": "你会做什么",
     "section_requirements": "我们期望你",
@@ -454,6 +513,7 @@
     }
   },
   "Lead": {
+    "eyebrow": "联系",
     "title": "联系我们",
     "description": "留下你的信息，我们会在一个工作日内回复。",
     "email": "工作邮箱",

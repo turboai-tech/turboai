@@ -1,7 +1,7 @@
 'use client'
 
 import { Alert, Button } from '@heroui/react'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { FormEvent, useState } from 'react'

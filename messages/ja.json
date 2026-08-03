@@ -5,6 +5,28 @@
     "ja": "日本語",
     "label": "言語"
   },
+  "HomeMeta": {
+    "title": "スタートアップと企業向け AI プロダクトの構築・デリバリー",
+    "description": "Turbo AI は、エージェント、データパイプライン、インターフェース、システム一式まで、一文から本番まで AI プロダクトを設計・構築・納品します。上海を拠点に、東京ほか各地のチームと働いています。",
+    "keywords": "Turbo AI, AIプロダクト開発, AIエージェント, AI構築デリバリー, 上海AI, 東京AIエンジニアリング, Ignition"
+  },
+  "facts": {
+    "eyebrow": "要点",
+    "title": "引用できる事実",
+    "description": "初回の打ち合わせ前によく聞かれる質問への、短い答えです。",
+    "item_1_question": "Turbo AI とは？",
+    "item_1_answer": "Turbo AI は最前線の AI 構築・デリバリー企業です。他社のために AI プロダクトを設計・構築・納品します。スライド資料ではありません。",
+    "item_2_question": "Turbo AI がやらないことは？",
+    "item_2_answer": "純粋な研究所でも、人材マーケットでも、引き渡し後に消えるコンサルでもありません。お客様の IP を人質にもしません。",
+    "item_3_question": "どのくらいの速さで納品できますか？",
+    "item_3_answer": "動くプロトタイプは通常約2週間。本番システムは通常4〜12週間です。",
+    "item_4_question": "成果物の所有者は？",
+    "item_4_answer": "お客様です。コード、モデル、ドキュメントをお渡しし、お客様が管理するインフラに導入します。",
+    "item_5_question": "どこで活動していますか？",
+    "item_5_answer": "上海を拠点に、東京をはじめ各地のチームと協働しています。",
+    "item_6_question": "実際に作っているのは誰ですか？",
+    "item_6_answer": "創業者と、私たち自身の AI エンジニアです。本番コードを書く人とお客様の間に、何層もの営業担当はいません。"
+  },
   "AppMainSection": {
     "eyebrow": "最前線の AI 構築・デリバリー企業",
     "title_1": "AI で",
@@ -69,6 +91,7 @@
     "products": "プロダクト",
     "pricing": "ご依頼方法",
     "blog": "ニュース",
+    "about": "私たちについて",
     "signin": "ログイン",
     "signup": "新規登録",
     "cta": "プロジェクトを始める",
@@ -172,19 +195,25 @@
     "cookie_preferences": "Cookie 設定",
     "values": "価値観",
     "contact": "お問い合わせ",
-    "company_name": "ターボ知能技術（上海）有限会社"
+    "company_name": "ターボ知能技術（上海）有限会社",
+    "location_shanghai": "中国・上海",
+    "location_tokyo": "日本・東京"
   },
   "NotFound": {
     "title": "404 — ページが見つかりません",
     "description": "このページはまだ用意していません。",
     "back": "ホームに戻る",
     "feedback_placeholder": "ご意見・ご提案があればお聞かせください",
-    "submit": "送信"
+    "submit": "送信",
+    "feedback_cta": "お探しのものがありますか？必要な内容を教えてください。",
+    "contact_us": "お問い合わせ"
   },
   "story": {
     "eyebrow": "私たちのストーリー",
     "title": "ここに至るまで",
     "description": "端的に言えば、アイデアはあるのに形にできる人がいないチームに、何度も出会ってきたからです。",
+    "definition_title": "AI 構築・デリバリー企業とは？",
+    "definition_body": "AI 構築・デリバリー企業は、プロダクトのアイデア——多くは一文——を受け取り、本番で動くソフトウェアをお返しします。Turbo AI では設計、モデル、データ、インターフェース、評価、デプロイまでを担い、成果物はお客様のものとして、お客様が管理するインフラ上で動かします。",
     "milestone_1_date": "2024",
     "milestone_1_title": "きっかけ",
     "milestone_1_description": "二人のエンジニアは、同じことに何度も気づきました。AI プロダクトで難しいのはモデルではなく、その周りにあるすべて——データ、評価、インターフェース、デプロイ——だということに。アイデアを持つチームは多く、それを形にできる人は少なかった。",
@@ -193,12 +222,23 @@
     "milestone_2_description": "その「形にできる人」になるために、上海で Turbo AI を立ち上げました。アイデアを受け取り、動くプロダクトをお返しする。その間に余計な層を挟まない——そのためだけにつくった会社です。",
     "milestone_3_date": "現在",
     "milestone_3_title": "これからも",
-    "milestone_3_description": "上海と東京で、スタートアップから大企業までのプロダクトを届けています。案件も、届けられるものも増えました。ここでは全員が本番のコードを書きます。意図的にそうしています。"
+    "milestone_3_description": "上海と東京で、スタートアップから大企業までのプロダクトを届けています。案件も、届けられるものも増えました。ここでは全員が本番のコードを書きます。意図的にそうしています。",
+    "founders_title": "誰が作っているか",
+    "founders_description": "お客様は、本番コードを書く人と直接協働します。営業担当のリレーはありません。",
+    "founder_1_name": "David",
+    "founder_1_role": "共同創業者",
+    "founder_1_bio": "フォワードデプロイドエンジニア。元 Tesla アルゴリズムチーム。曖昧な AI アイデアを、出荷・運用できるソフトウェアへ落とします。",
+    "founder_2_name": "Ting",
+    "founder_2_role": "共同創業者",
+    "founder_2_bio": "AI プログラムマネージャー。元 Tesla アルゴリズムチーム。デリバリー体制、評価、プロトタイプから本番への道筋を担います。",
+    "founder_3_name": "Neil",
+    "founder_3_role": "共同創業者",
+    "founder_3_bio": "LLM アルゴリズムエンジニア。元 Tec-Do。モデル、エージェント、引き渡し後も動き続けるインフラに焦点を当てています。"
   },
   "news": {
-    "eyebrow": "ニュース",
-    "title": "まだお知らせはありません",
-    "description": "いまはプロダクト開発に集中しています。書くに値する進展があれば、ここに載せます。",
+    "eyebrow": "アップデート",
+    "title": "いまは静かに作っています",
+    "description": "クライアント案件と自社プロダクトの出荷に集中しています。ローンチや現場のメモ、採用など、書く価値のある進展があればここに載せます。",
     "cta_build": "できることを見る",
     "cta_careers": "募集中のポジション"
   },
@@ -221,6 +261,7 @@
     "status_live": "提供中",
     "status_beta": "ベータ",
     "visit_product": "プロダクトを開く",
+    "talk_to_us": "相談する",
     "item_ignition_title": "Ignition",
     "item_ignition_description": "請求書に載せられるアトリビューション。私域のゲーミフィケーション成長——ルーレット、交換コード、拡散——を、確定的で監査可能な転換経路と追記専用の複式帳簿につなぎます。",
     "item_chat_title": "Turbo Chat",
@@ -310,7 +351,7 @@
     "cookie_policy": "Cookie ポリシー",
     "sentense_end_symbol": "をご覧ください。",
     "accept_all": "すべて受け入れる",
-    "cookie_settings": "Cookie 設定"
+    "cookie_settings": "必要最小限のみ"
   },
   "Faq": {
     "title": "よくいただく質問",
@@ -327,7 +368,13 @@
     "answer_5": "その場合は並走します。私たちの仕事の多くは、社内チームが未知の領域で詰まったところを解きほぐすことであって、誰かを置き換えることではありません。"
   },
   "sitemap": {
-    "sitemap_title": "拠点"
+    "sitemap_title": "拠点",
+    "sitemap_description": "上海、東京、そしてその先のチームと一緒に構築しています。",
+    "pin_shanghai": "上海",
+    "pin_tokyo": "東京",
+    "pin_singapore": "シンガポール",
+    "pin_americas": "米州",
+    "pin_europe": "欧州"
   },
   "pricing": {
     "eyebrow": "ご依頼",
@@ -358,13 +405,25 @@
     "card_3_button_text": "相談する"
   },
   "customers": {
-    "customers_title": "ご導入企業",
+    "eyebrow": "実績",
+    "title": "すでに本番で動いているもの",
+    "description": "裏付けのないロゴでページを埋めません。いま示せるのは、クライアント導入と自社ブランドのプロダクトです。",
+    "customers_title": "ご導入事例",
     "buyerx": "BuyerX",
-    "buyerx_location": "東京, 日本"
+    "buyerx_location": "東京, 日本",
+    "buyerx_note": "東京のコマースチーム向けの私域グロースとアトリビューション。確定的な経路、帳簿化された報酬、現場が本当に使う画面。",
+    "buyerx_cta": "BuyerX を見る",
+    "ignition": "Ignition",
+    "ignition_badge": "自社プロダクト",
+    "ignition_note": "請求書に載せられるアトリビューション。まず自分たちのために作り、同じスタックをプロダクト化してクライアント案件にも使っています。",
+    "ignition_cta": "プロダクトを見る"
   },
   "career": {
+    "eyebrow": "採用",
     "title": "ビルダーとして参加する",
     "description": "私たちは、顧客と一緒に AI システムを本番へ届ける人を雇います。スライドではなく成果物を。本番で動くエージェント・モデル・インフラを作りたいなら、話しましょう。",
+    "apply_cta": "メールで応募",
+    "apply_role_cta": "このポジションに応募",
     "section_overview": "役割の概要",
     "section_responsibilities": "担当すること",
     "section_requirements": "求めること",
@@ -454,6 +513,7 @@
     }
   },
   "Lead": {
+    "eyebrow": "お問い合わせ",
     "title": "お問い合わせ",
     "description": "ご記入いただければ、1営業日以内にご返信します。",
     "email": "仕事用メールアドレス",

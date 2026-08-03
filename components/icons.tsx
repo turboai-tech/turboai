@@ -29,7 +29,7 @@ export const Logo: React.FC<IconSvgProps> = ({
         textAnchor="middle"
         fontSize={dynamicFontSize}
         fontWeight="bold"
-        fontFamily="'Pacifico', cursive">
+        fontFamily="var(--font-pacifico), cursive">
         Turbo ai
       </text>
     </svg>

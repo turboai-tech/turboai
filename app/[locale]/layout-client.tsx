@@ -1,0 +1,32 @@
+'use client'
+
+import BannerComponent from '@/components/layout/banner'
+import FooterComponent from '@/components/layout/footer'
+import NavbarComponent from '@/components/layout/navbar'
+import { usePathname } from '@/i18n/navigation'
+
+export default function RootLayoutClient({
+  children,
+  locale,
+}: {
+  children: React.ReactNode
+  locale: string
+}) {
+  const pathname = usePathname()
+  const isDashboard = pathname.startsWith('/dashboard')
+
+  return (
+    <div lang={locale} className="items-center justify-center">
+      {isDashboard ? (
+        <main className="mx-auto w-full">{children}</main>
+      ) : (
+        <>
+          <BannerComponent />
+          <NavbarComponent />
+          <main className="mx-auto w-4/5">{children}</main>
+          <FooterComponent />
+        </>
+      )}
+    </div>
+  )
+}

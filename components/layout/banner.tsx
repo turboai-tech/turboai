@@ -4,18 +4,26 @@ import ButtonLink from '@/components/button-link'
 import { Button } from '@heroui/react'
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
+import { useEffect, useState } from 'react'
+
+const BANNER_DISMISSED_KEY = 'turboai.banner.dismissed'
 
 export default function BannerComponent() {
   const t = useTranslations('Navbar')
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setVisible(localStorage.getItem(BANNER_DISMISSED_KEY) !== '1')
+  }, [])
+
+  if (!visible) return null
 
   return (
     <div
       data-banner
-      className="flex w-full flex-wrap items-center gap-x-3 gap-y-2 border-b border-default/40 bg-gradient-to-r from-default/40 via-[color-mix(in_oklab,var(--accent)_16%,transparent)] to-[color-mix(in_oklab,var(--accent)_10%,transparent)] px-4 py-2 sm:flex-nowrap sm:px-3.5 sm:before:flex-1">
-      <span aria-label="rocket" className="hidden shrink-0 md:block" role="img">
-        🚀
-      </span>
+      className="flex w-full flex-wrap items-center gap-x-3 gap-y-2 border-b border-default/40 bg-linear-to-r from-default/40 via-[color-mix(in_oklab,var(--accent)_16%,transparent)] to-[color-mix(in_oklab,var(--accent)_10%,transparent)] px-4 py-2 sm:flex-nowrap sm:px-3.5 sm:before:flex-1">
       <p className="min-w-0 text-sm text-foreground">
         <Link className="text-inherit" href="/contact">
           {t('banner_title')}
@@ -40,10 +48,8 @@ export default function BannerComponent() {
           size="sm"
           variant="ghost"
           onPress={() => {
-            const banner = document.querySelector('[data-banner]')
-            if (banner) {
-              banner.remove()
-            }
+            localStorage.setItem(BANNER_DISMISSED_KEY, '1')
+            setVisible(false)
           }}>
           <Icon
             aria-hidden="true"

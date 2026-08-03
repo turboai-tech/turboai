@@ -5,7 +5,7 @@ import SectionHeading from '@/components/section/section-heading';
 import { Chip, cn } from '@heroui/react';
 import { Icon } from '@iconify/react';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import React from 'react';
 
 import { engagements, type EngagementGroup } from './engagements';
@@ -108,7 +108,7 @@ export default function PricingComponent() {
 
             <ButtonLink
               className="w-full rounded-full font-medium"
-              href="/#process-container"
+              href="/contact"
               variant={engagement.featured ? 'primary' : 'outline'}>
               {t(engagement.buttonText)}
             </ButtonLink>
@@ -120,7 +120,7 @@ export default function PricingComponent() {
         {t('question')}&nbsp;
         <Link
           className="text-sm text-foreground underline"
-          href="/#process-container">
+          href="/contact">
           {t('question_access')}
         </Link>
       </p>

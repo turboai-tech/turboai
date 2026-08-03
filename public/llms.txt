@@ -1,0 +1,59 @@
+# Turbo AI
+
+> Turbo AI is a frontier AI build-and-delivery company. We design, build and ship AI products for other companies — from a sentence to production software.
+
+## What we are
+- An engineering company that builds and delivers AI systems for startups and enterprises
+- Founded in Shanghai; we work with teams across Shanghai, Tokyo and beyond
+- Legal entity: Turbo AI Technology (Shanghai) Co., Ltd.
+- Brand names: Turbo AI, Turbo · ai, TurboAI
+- Website: https://www.iturboai.com
+
+## What we are not
+- Not a pure research lab
+- Not a staffing marketplace
+- Not a slide-deck consultancy that disappears at handover
+- We do not hold client IP hostage or resell client work
+
+## What we build
+- AI agents (research, ops, support, outreach)
+- Conversational products (chat and voice)
+- Data pipelines, labelling and evaluation
+- Model work (fine-tuning, distillation, serving)
+- Whole products (design, frontend, backend, deployment)
+- Internal automation
+
+## How fast we ship
+- Working prototype: usually about 2 weeks
+- Production system: usually 4–12 weeks, depending on infrastructure and compliance
+
+## Ownership
+- Clients own the code, models and documentation we deliver
+- Systems are deployed on infrastructure the client controls
+
+## Products we ship under our own brand
+- Ignition — attribution and private-domain growth: https://ignition.iturboai.com
+- Turbo Chat, Turbo Label, Turbo Voice, Turbo Reel — see https://www.iturboai.com/products
+
+## Proof
+- BuyerX (Tokyo) — client deployment: https://buyerx.ai
+- Ignition — our own productised stack
+
+## Key pages
+- Home: https://www.iturboai.com
+- What we build: https://www.iturboai.com/solutions
+- Products: https://www.iturboai.com/products
+- Contact: https://www.iturboai.com/contact
+- Story: https://www.iturboai.com/about/story
+- Careers: https://www.iturboai.com/about/career
+- Chinese: https://www.iturboai.com/zh-CN
+- Japanese: https://www.iturboai.com/ja
+
+## Contact
+- Email: contact@iturboai.com
+- Careers: careers@iturboai.com
+- Locations: Shanghai, China; Tokyo, Japan
+
+## Optional
+- Privacy: https://www.iturboai.com/legal/privacy
+- Terms: https://www.iturboai.com/legal/terms

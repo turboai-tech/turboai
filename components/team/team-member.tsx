@@ -28,7 +28,7 @@ export default function TeamMemberComponent() {
       avatar: '/avatars/member_ting.jpg',
       social: {
         twitter: '',
-        linkedin: 'ting',
+        linkedin: '',
         github: '',
       },
     },

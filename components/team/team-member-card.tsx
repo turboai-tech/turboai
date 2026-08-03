@@ -2,7 +2,7 @@
 
 import { Avatar, cn } from '@heroui/react';
 import { Icon } from '@iconify/react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import React from 'react';
 
 export type TeamMember = {

@@ -1,9 +1,7 @@
-'use client';
-
-import AiCloudsComponent from './ai_clouds';
-import AiModelsComponent from './ai_models';
-import CustomersComponent from './customers';
-import TechnologiesComponent from './technologies';
+import AiCloudsComponent from './ai_clouds'
+import AiModelsComponent from './ai_models'
+import CustomersComponent from './customers'
+import TechnologiesComponent from './technologies'
 
 export default function CollaborationsComponent() {
   return (
@@ -13,5 +11,5 @@ export default function CollaborationsComponent() {
       <AiCloudsComponent />
       <TechnologiesComponent />
     </div>
-  );
+  )
 }

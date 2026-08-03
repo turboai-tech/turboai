@@ -11,6 +11,7 @@ import {
   TextField,
 } from '@heroui/react'
 import { useLocale, useTranslations } from 'next-intl'
+import { useSearchParams } from 'next/navigation'
 import { FormEvent, useState } from 'react'
 
 import { trpc } from '@/utils/trpc-client'
@@ -33,12 +34,19 @@ interface LeadFormProps {
 export default function LeadForm({ source }: LeadFormProps) {
   const t = useTranslations('Lead')
   const locale = useLocale()
+  const searchParams = useSearchParams()
+  const interestParam = searchParams.get('interest')
+  const initialInterest =
+    interestParam &&
+    (PRODUCT_VALUES as readonly string[]).includes(interestParam)
+      ? [interestParam]
+      : []
 
   const [country, setCountry] = useState<string | null>(() =>
     defaultCountryFromLocale(locale),
   )
   const [industry, setIndustry] = useState<string | null>(null)
-  const [interests, setInterests] = useState<string[]>([])
+  const [interests, setInterests] = useState<string[]>(initialInterest)
   const [error, setError] = useState<string | null>(null)
 
   const submit = trpc.lead.submit.useMutation()

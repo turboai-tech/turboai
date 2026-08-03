@@ -5,6 +5,28 @@
     "ja": "Japanese",
     "label": "Language"
   },
+  "HomeMeta": {
+    "title": "AI product build and delivery for startups and enterprises",
+    "description": "Turbo AI designs, builds and ships AI products — agents, data pipelines, interfaces and full systems — from a sentence to production. Based in Shanghai and Tokyo.",
+    "keywords": "Turbo AI, AI product development, AI agents, AI build and delivery, Shanghai AI company, Tokyo AI engineering, Ignition attribution"
+  },
+  "facts": {
+    "eyebrow": "At a glance",
+    "title": "Facts you can quote",
+    "description": "Short answers to the questions teams usually ask before the first call.",
+    "item_1_question": "What is Turbo AI?",
+    "item_1_answer": "Turbo AI is a frontier AI build-and-delivery company. We design, build and ship AI products for other companies — not slide decks.",
+    "item_2_question": "What does Turbo AI not do?",
+    "item_2_answer": "We are not a research lab, a staffing marketplace, or a consultancy that disappears at handover. We do not hold client IP hostage.",
+    "item_3_question": "How fast can you ship?",
+    "item_3_answer": "A working prototype usually takes about two weeks. A production system usually takes four to twelve weeks.",
+    "item_4_question": "Who owns the work?",
+    "item_4_answer": "You do. Code, models and documentation are handed over and deployed on infrastructure you control.",
+    "item_5_question": "Where do you operate?",
+    "item_5_answer": "We are based in Shanghai and work with teams across Tokyo and beyond.",
+    "item_6_question": "Who actually builds it?",
+    "item_6_answer": "The founders and our own AI engineers. There are no layers of account management between you and the people writing production code."
+  },
   "AppMainSection": {
     "eyebrow": "Frontier AI, built and delivered",
     "title_1": "We build",
@@ -69,6 +91,7 @@
     "products": "Products",
     "pricing": "Pricing",
     "blog": "News",
+    "about": "About",
     "signin": "Sign in",
     "signup": "Sign up",
     "cta": "Start a build",
@@ -172,19 +195,25 @@
     "cookie_preferences": "Cookie preferences",
     "values": "Values",
     "contact": "Contact",
-    "company_name": "Turbo AI Technology (Shanghai) Co., Ltd."
+    "company_name": "Turbo AI Technology (Shanghai) Co., Ltd.",
+    "location_shanghai": "Shanghai, China",
+    "location_tokyo": "Tokyo, Japan"
   },
   "NotFound": {
     "title": "404 — page not found",
     "description": "This one we have not built yet.",
     "back": "Back to home",
     "feedback_placeholder": "Ideas or suggestions to improve our product",
-    "submit": "Submit"
+    "submit": "Submit",
+    "feedback_cta": "Looking for something specific? Tell us what you need.",
+    "contact_us": "Contact us"
   },
   "story": {
     "eyebrow": "Our story",
     "title": "How we got here",
     "description": "Short version: we kept meeting teams who had the idea but not the people to build it.",
+    "definition_title": "What is an AI build-and-delivery company?",
+    "definition_body": "An AI build-and-delivery company takes a product idea — often just a sentence — and returns working software in production. At Turbo AI that means design, models, data, interfaces, evaluation and deployment, owned by the client and run on infrastructure they control.",
     "milestone_1_date": "2024",
     "milestone_1_title": "The idea",
     "milestone_1_description": "Two engineers kept noticing the same thing. The hard part of an AI product was never the model — it was everything around it. The data, the evaluation, the interface, the deployment. Plenty of teams had the idea. Far fewer had the people who could build it.",
@@ -193,12 +222,23 @@
     "milestone_2_description": "We started Turbo AI in Shanghai to be those people. A company built for one purpose: take an idea in, hand a working product back, without the layers that usually sit between the two.",
     "milestone_3_date": "Now",
     "milestone_3_title": "Still building",
-    "milestone_3_description": "We build for startups and enterprises across Shanghai and Tokyo. The work has grown and so has what we can deliver. Every engineer here ships production code, and that is deliberate."
+    "milestone_3_description": "We build for startups and enterprises across Shanghai and Tokyo. The work has grown and so has what we can deliver. Every engineer here ships production code, and that is deliberate.",
+    "founders_title": "Who is building it",
+    "founders_description": "Clients work directly with the people who write the production code — not a relay of account managers.",
+    "founder_1_name": "David",
+    "founder_1_role": "Co-founder",
+    "founder_1_bio": "Forward deployed engineer, formerly of the Tesla algorithm team. Turns ambiguous AI ideas into software teams can ship and operate.",
+    "founder_2_name": "Ting",
+    "founder_2_role": "Co-founder",
+    "founder_2_bio": "AI program manager, formerly of the Tesla algorithm team. Owns delivery systems, evaluation and the path from prototype to production.",
+    "founder_3_name": "Neil",
+    "founder_3_role": "Co-founder",
+    "founder_3_bio": "LLM algorithm engineer, ex-Tec-Do. Focused on models, agents and the infrastructure that keeps products running after handover."
   },
   "news": {
-    "eyebrow": "News",
-    "title": "Nothing to report yet",
-    "description": "We have been heads-down building. When there is something worth writing up, it will appear here.",
+    "eyebrow": "Updates",
+    "title": "Building in public, quietly for now",
+    "description": "We are heads-down shipping client work and our own products. When there is something worth writing up — a launch, a note from the field, a hire — it will appear here.",
     "cta_build": "See what we build",
     "cta_careers": "Open positions"
   },
@@ -221,6 +261,7 @@
     "status_live": "Live",
     "status_beta": "Beta",
     "visit_product": "Open product",
+    "talk_to_us": "Talk to us",
     "item_ignition_title": "Ignition",
     "item_ignition_description": "Attribution you can put on a bill. Private-domain growth with gamified acquisition, deterministic attribution paths and an append-only double-entry ledger.",
     "item_chat_title": "Turbo Chat",
@@ -310,7 +351,7 @@
     "cookie_policy": "Cookie policy",
     "sentense_end_symbol": ".",
     "accept_all": "Accept all",
-    "cookie_settings": "Cookie settings"
+    "cookie_settings": "Essential only"
   },
   "Faq": {
     "title": "Questions we get asked",
@@ -327,7 +368,13 @@
     "answer_5": "Then we work alongside them. A lot of our work is unblocking an in-house team that has hit something unfamiliar, rather than replacing anyone."
   },
   "sitemap": {
-    "sitemap_title": "Where we are"
+    "sitemap_title": "Where we are",
+    "sitemap_description": "Building with teams across Shanghai, Tokyo and beyond.",
+    "pin_shanghai": "Shanghai",
+    "pin_tokyo": "Tokyo",
+    "pin_singapore": "Singapore",
+    "pin_americas": "Americas",
+    "pin_europe": "Europe"
   },
   "pricing": {
     "eyebrow": "Engagement",
@@ -358,13 +405,25 @@
     "card_3_button_text": "Talk to us"
   },
   "customers": {
-    "customers_title": "Built for",
+    "eyebrow": "Proof",
+    "title": "Work that is already live",
+    "description": "We do not pad this page with logos we cannot stand behind. Here is what we can show today — a client deployment and a product we ship under our own brand.",
+    "customers_title": "Selected clients",
     "buyerx": "BuyerX",
-    "buyerx_location": "Tokyo, Japan"
+    "buyerx_location": "Tokyo, Japan",
+    "buyerx_note": "Private-domain growth and attribution for a Tokyo commerce team — deterministic paths, ledgered rewards, and a product surface their operators actually use.",
+    "buyerx_cta": "Visit BuyerX",
+    "ignition": "Ignition",
+    "ignition_badge": "Our product",
+    "ignition_note": "Attribution you can put on a bill. We built it for ourselves first, then productised the same stack we use on client builds.",
+    "ignition_cta": "See products"
   },
   "career": {
+    "eyebrow": "Careers",
     "title": "Join the builders",
     "description": "We hire people who ship AI systems with customers — not slide decks. If you want to build production agents, models and infrastructure that land in the real world, talk to us.",
+    "apply_cta": "Apply by email",
+    "apply_role_cta": "Apply for this role",
     "section_overview": "Role overview",
     "section_responsibilities": "What you will do",
     "section_requirements": "What you bring",
@@ -454,6 +513,7 @@
     }
   },
   "Lead": {
+    "eyebrow": "Contact",
     "title": "Get in touch",
     "description": "Leave your details and we will reply within one business day.",
     "email": "Work email",

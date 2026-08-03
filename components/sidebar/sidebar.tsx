@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@heroui/react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import type { ReactNode } from 'react';
 
 export enum SidebarItemType {

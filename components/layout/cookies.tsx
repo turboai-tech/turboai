@@ -1,8 +1,10 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { useEffect, useState } from 'react'
+
+const COOKIES_KEY = 'cookiesAccepted'
 
 export default function Cookies() {
   const [isVisible, setIsVisible] = useState(false)
@@ -10,20 +12,15 @@ export default function Cookies() {
   // localStorage 只在客户端存在，横幅的可见性必须挂载后才能确定。
   // Next 16 新增的 react-hooks/set-state-in-effect 对这个模式属误伤。
   useEffect(() => {
-    const cookiesAccepted = localStorage.getItem('cookiesAccepted')
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsVisible(!cookiesAccepted)
+    setIsVisible(!localStorage.getItem(COOKIES_KEY))
   }, [])
 
   const t = useTranslations('cookies')
 
-  const handleAcceptAll = () => {
+  const dismiss = (value: string) => {
     setIsVisible(false)
-    localStorage.setItem('cookiesAccepted', 'true')
-  }
-
-  const handleCookieSettings = () => {
-    console.log('Cookie Settings clicked')
+    localStorage.setItem(COOKIES_KEY, value)
   }
 
   if (!isVisible) {
@@ -62,11 +59,11 @@ export default function Cookies() {
               boxShadow:
                 '0 10px 15px -3px color-mix(in oklab, var(--accent) 35%, transparent)',
             }}
-            onClick={handleAcceptAll}
+            onClick={() => dismiss('all')}
             onKeyDown={(event) => {
               if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault()
-                handleAcceptAll()
+                dismiss('all')
               }
             }}>
             {t('accept_all')}
@@ -75,11 +72,11 @@ export default function Cookies() {
             role="button"
             tabIndex={0}
             className="inline-flex h-9 cursor-pointer items-center justify-center rounded-full px-4 text-sm font-medium text-foreground transition-colors select-none hover:bg-default/60 active:scale-[0.97]"
-            onClick={handleCookieSettings}
+            onClick={() => dismiss('essential')}
             onKeyDown={(event) => {
               if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault()
-                handleCookieSettings()
+                dismiss('essential')
               }
             }}>
             {t('cookie_settings')}

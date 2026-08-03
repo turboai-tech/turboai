@@ -15,6 +15,14 @@ const mapPins = [
   { left: '49.6669%', top: '25.4444%' },
 ] as const
 
+const locations = [
+  'pin_shanghai',
+  'pin_tokyo',
+  'pin_singapore',
+  'pin_americas',
+  'pin_europe',
+] as const
+
 function MapPin({ left, top }: { left: string; top: string }) {
   return (
     <div
@@ -50,31 +58,45 @@ export default function Sitemap() {
 
   return (
     <div className="relative mx-auto flex w-full flex-col gap-4 px-4 py-8">
-      <h2 className="px-2 text-center text-2xl leading-7">
-        <span className="hidden md:inline-block">{t('sitemap_title')}</span>
-      </h2>
-      <div className="mt-[40px] flex w-full flex-col items-center justify-center">
+      <h2 className="px-2 text-center text-2xl leading-7">{t('sitemap_title')}</h2>
+      <p className="mx-auto max-w-xl text-center text-sm text-muted">
+        {t('sitemap_description')}
+      </p>
+      <ul className="mx-auto flex flex-wrap items-center justify-center gap-2">
+        {locations.map((key) => (
+          <li
+            key={key}
+            className="rounded-full border border-default/40 px-3 py-1 text-xs text-muted">
+            {t(key)}
+          </li>
+        ))}
+      </ul>
+      <div className="mt-6 flex w-full flex-col items-center justify-center">
         <div className="flex w-full max-w-[1440px]">
           <div className="relative aspect-[2/1] w-full">
             {mounted ? (
               <Image
-                alt="dottedMap"
+                alt={t('sitemap_title')}
                 className="pointer-events-none h-full w-full select-none [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)]"
                 draggable={false}
-                height={100}
-                src={isDarkMode ? 'dottedMap-dark.svg' : 'dottedMap.svg'}
+                height={720}
+                src={isDarkMode ? '/dottedMap-dark.svg' : '/dottedMap.svg'}
                 style={{
                   width: '100%',
                   height: '100%',
                   objectFit: 'contain',
                 }}
-                width={100}
+                width={1440}
               />
             ) : (
               <div className="h-full w-full" />
             )}
             {mapPins.map((pin) => (
-              <MapPin key={`${pin.left}-${pin.top}`} {...pin} />
+              <MapPin
+                key={`${pin.left}-${pin.top}`}
+                left={pin.left}
+                top={pin.top}
+              />
             ))}
           </div>
         </div>

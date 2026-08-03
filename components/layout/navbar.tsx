@@ -7,11 +7,11 @@ import ButtonLink from '@/components/button-link'
 import { cn } from '@heroui/react'
 import { Icon } from '@iconify/react'
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { Link } from '@/i18n/navigation'
+import { usePathname } from '@/i18n/navigation'
 import { useEffect, useState } from 'react'
-import DesignThemeSelector from './design-theme-selector'
 import LocaleSwitcher from '../locale-switch'
+import DesignThemeSelector from './design-theme-selector'
 import ThemeToggle from './theme-toggle'
 
 const navItems = [
@@ -19,7 +19,7 @@ const navItems = [
   { key: 'solutions', href: '/solutions' },
   { key: 'products', href: '/products' },
   { key: 'pricing', href: '/#pricing-container' },
-  { key: 'blog', href: '/about/news' },
+  { key: 'about', href: '/about/story' },
 ] as const
 
 export default function NavbarComponent({ className }: { className?: string }) {
@@ -28,7 +28,11 @@ export default function NavbarComponent({ className }: { className?: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const isActive = (href: string) =>
-    href === '/' ? pathname === '/' : pathname.startsWith(href.split('#')[0])
+    href === '/'
+      ? pathname === '/'
+      : href.startsWith('/about')
+        ? pathname.startsWith('/about')
+        : pathname.startsWith(href.split('#')[0])
 
   const closeMenu = () => setIsMenuOpen(false)
 

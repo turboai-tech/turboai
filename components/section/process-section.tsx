@@ -1,14 +1,14 @@
-'use client';
+import { ArrowRight } from 'lucide-react'
+import { getTranslations } from 'next-intl/server'
 
-import ButtonLink from '@/components/button-link';
-import { Icon } from '@iconify/react';
-import { useTranslations } from 'next-intl';
-import SectionHeading from './section-heading';
+import ButtonLink from '@/components/button-link'
 
-const steps = ['1', '2', '3'] as const;
+import SectionHeading from './section-heading'
 
-export default function ProcessSection() {
-  const t = useTranslations('process');
+const steps = ['1', '2', '3'] as const
+
+export default async function ProcessSection() {
+  const t = await getTranslations('process')
 
   return (
     <section
@@ -41,7 +41,7 @@ export default function ProcessSection() {
       <div className="bg-grid relative mt-4 flex flex-col items-start gap-4 overflow-hidden rounded-lg border border-default/40 p-8 sm:flex-row sm:items-center sm:justify-between">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40"
+          className="pointer-events-none absolute inset-0 bg-linear-to-r from-background via-background/85 to-background/40"
         />
         <div className="relative flex flex-col gap-1">
           <h3 className="text-xl font-semibold tracking-tight">
@@ -55,9 +55,9 @@ export default function ProcessSection() {
           className="relative h-11 shrink-0 rounded-full cta-gradient px-6 text-sm font-medium shadow-lg"
           href="/contact">
           {t('cta_button')}
-          <Icon icon="solar:arrow-right-linear" width={16} />
+          <ArrowRight size={16} />
         </ButtonLink>
       </div>
     </section>
-  );
+  )
 }
